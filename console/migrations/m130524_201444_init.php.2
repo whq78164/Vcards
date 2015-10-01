@@ -1,0 +1,38 @@
+<?php
+
+use yii\db\Schema;
+use yii\db\Migration;
+
+class m130524_201444_init extends Migration
+{
+//    const TBL_NAME = '{{%user}}';
+//    public function up()
+    public function safeUp()
+    {
+        $tableOptions = null;
+        if ($this->db->driverName === 'mysql') {
+            // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
+            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';//ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        }
+
+
+        $this->createTable('{{%tel}}', [
+            'telid' => Schema::TYPE_PK,
+            'uid' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'tel_label' => Schema::TYPE_STRING . '(10) NOT NULL',
+            'tel_number' => Schema::TYPE_STRING . '(20) NOT NULL',
+        ], $tableOptions);
+
+        $this->createIndex('uid', '{{%tel}}', ['uid'],true);
+
+      /*******************************************************************/
+
+    }
+
+//    public function down()
+    public function safeDown()
+    {
+
+    $this->dropTable('{{%tel}}');
+    }
+}
