@@ -105,13 +105,13 @@ class m130524_201442_init extends Migration
         ], $tableOptions);
         $this->createIndex('uid', '{{%microlink}}', ['uid'],true);
 
-        $this->createTable('{{%module_micropage}}', [
+        $this->createTable('{{%micropage}}', [
             'pageid' => Schema::TYPE_PK,
             'uid' => Schema::TYPE_INTEGER . ' NOT NULL',
             'page_title' => Schema::TYPE_STRING . '(100) NOT NULL',
             'page_content' => Schema::TYPE_TEXT . ' NOT NULL',
         ], $tableOptions);
-        $this->createIndex('uid', '{{%module_micropage}}', ['uid'],true);
+        $this->createIndex('uid', '{{%micropage}}', ['uid'],true);
 
         $this->createTable('{{%relation}}', [
             'ruid' => Schema::TYPE_PK,

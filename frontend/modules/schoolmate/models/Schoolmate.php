@@ -5,7 +5,7 @@ namespace frontend\modules\schoolmate\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%module_schoolmate}}".
+ * This is the model class for table "{{%schoolmate}}".
  *
  * @property integer $id
  * @property string $name
@@ -33,7 +33,7 @@ class Schoolmate extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%module_schoolmate}}';
+        return '{{%schoolmate}}';
     }
 
     /**
