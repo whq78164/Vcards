@@ -62,6 +62,8 @@ return [
     'Verification Code' => '验证码',
     'Submit' => '确认',
     'Update'=>'修改',
+    'Image'=>'图像',
+    'Title'=>'标题',
     'Update {modelClass}: ' => '修改资料: ',
 
     'Invalid data received for parameter "{param}".' => '"{param}"参数接收到无效的数据。',

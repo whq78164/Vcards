@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'model' => $model,
         ]) ?>
 
-        <section data-am-widget="accordion" class="am-accordion am-accordion-gapped" data-am-accordion='{  }'>
+        <!--section data-am-widget="accordion" class="am-accordion am-accordion-gapped" data-am-accordion='{  }'>
 
 
                         <dl class="am-accordion-item ">
@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <span class="am-icon-credit-card am-success am-icon-md"></span>让生命去等候，去等候，去等候，去等候
                 </dt>
                 <dd class="am-accordion-bd am-collapse ">
-                    <!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
+                    <!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 ->
                     <div class="am-accordion-content">
                         走在忠孝东路 <br/> 徘徊在茫然中 <br/> 在我的人生旅途 <br/> 选择了多少错误 <br/> 我在睡梦中惊醒 <br/> 感叹悔言无尽 <br/> 恨我不能说服自己 <br/> 接受一切教训 <br/> 让生命去等候 <br/> 等候下一个漂流 <br/> 让生命去等候 <br/>等候下一个伤口
                     </div>
@@ -78,19 +78,19 @@ $this->params['breadcrumbs'][] = $this->title;
             </dl>
 
             <dl class="am-accordion-item">
-                <!--class= am-active 代表折叠组件为展开状态-->
+                <!--class= am-active 代表折叠组件为展开状态->
                 <dt class="am-accordion-title">
                     就这样恣意的活着
                 </dt>
                 <dd class="am-accordion-bd am-collapse"><!-- am-in-->
-                    <!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
+                    <!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 ->
                     <div class="am-accordion-content">
                         置身人群中 <br/> 你只需要被淹没 享受 沉默 <br/> 退到人群后 <br/> 你只需给予双手 微笑 等候
                     </div>
                 </dd>
             </dl>
 
-        </section>
+        </section-->
 
 
 

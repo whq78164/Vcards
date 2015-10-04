@@ -11,6 +11,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use frontend\models\AntiReply;
+use frontend\models\AntiSetting;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -114,6 +116,7 @@ class UserController extends Controller
            $model = $this->findModel($uid);
 
            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+               Yii::$app->getSession()->setFlash('success', '设置成功！');
                return $this->redirect([
                    'user',
                    // id' => $model->uid,
@@ -124,34 +127,157 @@ class UserController extends Controller
                'model' => $model,
            ]);}
        }
+    protected function saveform($model,$redirect,$render){
+        $request1=Yii::$app->request;
+        if($request1->isPost){
+      //      $model->uid=$id;
+            $model->load($request1->post());
+            $model->save();//insert to
+            //  Yii::$app->user->setFlash('success', '详细信息设置成功！');
+            Yii::$app->getSession()->setFlash('success', '设置成功！');
+            return $this->redirect($redirect);
+        }else{
+            return $this->render($render, [
+                'model' => $model,
+            ]);
+        }
+    }
 
     public function actionInfo()
     {
+ //       $request = Yii::$app->request;
         $id=Yii::$app->user->id;
-        $model = new Info();
-        $model->uid=$id;
-//        ($model = Info::findOne($id))
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index', //'id' => $model->uid
-            ]);
-        } else {
-            $tempmodel=Info::findOne($id);
-            if ($tempmodel){
-                $model=$tempmodel;
-            return $this->render('info', [
-                'model' => $model,
-            ]);}else//if($tempmodel==null)
-            {
+        $tempmodel=Info::findOne($id);
+        if ($tempmodel==null){
+            $model = new Info();
+            $model->uid=$id;
+            return  $this->saveform($model,['info'],'info');
+      /*      if($request->isPost){
+               // $model->uid=$id;
+                $model->load(Yii::$app->request->post());
+                $model->save();//insert to
+              //  Yii::$app->user->setFlash('success', '详细信息设置成功！');
+                 Yii::$app->getSession()->setFlash('success', '设置成功！');
+                return $this->redirect(['info'//,
+                 ]);
+            }else{
                 return $this->render('info', [
+                    'model' => $model,
+                ]);
+            }*/
+
+        }
+        if(isset($tempmodel)){
+            $model=$tempmodel;
+            $model->uid=$id;
+        return  $this->saveform($model,['info'],'info');
+       /*     if($request->isPost){
+
+                $model->load($request->post());
+                $model->save();//update to
+                \Yii::$app->getSession()->setFlash('success', '修改成功！');
+                return $this->redirect(['info'//,
+                ]);
+            }else{
+                return $this->render('info', [
+                    'model' => $model,
+                ]);
+            }
+*/
+        }
+
+    }
+
+
+    public function actionAnti()
+    {
+     //   $id=Yii::$app->user->id;
+     //   $tmpmodel_setting=AntiSetting::findOne($id);
+     //   $tmpmodel_reply=AntiReply::findOne(['uid'=>$id]);
+        return $this->render('anti');
+    }
+
+public function actionAntisetting()
+{
+
+    $id=Yii::$app->user->id;
+    $tempmodel=AntiSetting::findOne($id);
+
+    if ($tempmodel==null){
+        $model = new AntiSetting();
+        $model->uid=$id;
+        $request=Yii::$app->request;
+        if($request->isPost){
+            $model->load($request->post());
+            $model->save();//insert to
+            Yii::$app->getSession()->setFlash('success', '设置成功！');
+            return $this->redirect(['anti']);
+        }else{
+            return $this->render('_form_antisetting', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    if(isset($tempmodel)){
+        $model=$tempmodel;
+//        $model->uid=$id;
+        $request=Yii::$app->request;
+        if($request->isPost){
+            $model->load($request->post());
+            $model->save();//insert to
+            Yii::$app->getSession()->setFlash('success', '设置成功！');
+            return $this->redirect(['anti']);
+        }else{
+            return $this->render('_form_antisetting', [
+                'model' => $model,
+            ]);
+        }
+
+    }
+}
+
+    public function actionAntireply()
+    {
+
+        $id=Yii::$app->user->id;
+        $tempmodel=AntiReply::findOne(['uid'=>$id]);
+
+        if ($tempmodel==null){
+            $model = new AntiReply();
+            $model->uid=$id;
+            $request=Yii::$app->request;
+            if($request->isPost){
+                $model->load($request->post());
+                $model->save();//insert to
+                Yii::$app->getSession()->setFlash('success', '设置成功！');
+                return $this->redirect(['anti']);
+            }else{
+                return $this->render('_form_antireply', [
                     'model' => $model,
                 ]);
             }
         }
 
+        if(isset($tempmodel)){
+            $model=$tempmodel;
+//        $model->uid=$id;
+            $request=Yii::$app->request;
+            if($request->isPost){
+                $model->load($request->post());
+                $model->save();//insert to
+                Yii::$app->getSession()->setFlash('success', '设置成功！');
+                return $this->redirect(['anti']);
+            }else{
+                return $this->render('_form_antireply', [
+                    'model' => $model,
+                ]);
+            }
+
+        }
     }
 
-       /**
+    /**
         * Displays a single User model.
         * @param integer $id
         * @return mixed
@@ -201,6 +327,8 @@ class UserController extends Controller
             ]);
 
     }
+
+
 
     public function actionPassword()
     {

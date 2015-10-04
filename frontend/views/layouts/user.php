@@ -46,16 +46,16 @@ AppAsset::register($this);
 
 <header class="am-topbar admin-header">
     <div class="am-topbar-brand">
+        <a href="<?=yii\helpers\Url::to(['site/index'], true)?>">
+            <span class="am-icon-home am-icon-md"></span>
+        <strong><?=Yii::t('tbhome', 'Vcards').'微名片'?></strong>
 
-            <span class="am-icon-home"></span>
-        <strong><?=Yii::t('tbhome', 'Vcards')?></strong>
-
-        <a href="<?=yii\helpers\Url::to(['user/index'], true)?>">
+        <!--a href="<?=yii\helpers\Url::to(['user/index'], true)?>">
             <small>用户首页</small>
-        </a>
-        /
-         <a href="<?=yii\helpers\Url::to(['site/index'], true)?>">
-                <small>网站首页</small>
+        </a-->
+
+
+
             </a>
 
     </div>
@@ -66,20 +66,24 @@ AppAsset::register($this);
 
         <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
 
-            <li>
+
+            <!--li>
                 <a href="javascript:;">
                     <span class="am-icon-envelope-o"></span>
                     收件箱
                     <span class="am-badge am-badge-warning">0</span>
                 </a>
-            </li>
-            <li class="am-dropdown" data-am-dropdown>
-                <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+            </li-->
+
+            <!--li class="am-dropdown" data-am-dropdown-->
+               <li>
+                <!--a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;"-->
+                   <a href="<?=yii\helpers\Url::to(['user/index'], true)?>">
                     <span class="am-icon-users"></span>
-                    <?= Yii::$app->user->identity->username . '&nbsp;'.Yii::t('tbhome', 'hello') .'！'?> <span class="am-icon-caret-down">
-                    </span>
+                    <?= Yii::$app->user->identity->username . '&nbsp;'.Yii::t('tbhome', 'hello') .'！'?> <!--span class="am-icon-caret-down">
+                    </span-->
                 </a>
-                <ul class="am-dropdown-content">
+                <!--ul class="am-dropdown-content">
                     <li>
                         <a href="<?=yii\helpers\Url::to(['user/info'], true)?>">
                             <span class="am-icon-user"></span>
@@ -89,16 +93,21 @@ AppAsset::register($this);
                         <a href="<?=yii\helpers\Url::to(['user/setting'], true)?>">
                             <span class="am-icon-cog"></span>
                             设置
-                        </a></li>
-                    <li>
-                        <a href="<?=yii\helpers\Url::to(['site/logout'], true)?>">
-                            <span class="am-icon-power-off"></span>
-                            退出
                         </a>
                     </li>
-                </ul>
+                </ul-->
             </li>
-            <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+
+            <li class="am-hide-sm-only">
+                <a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span>
+                </a>
+            </li>
+            <li>
+                <a href="<?=yii\helpers\Url::to(['site/logout'], true)?>">
+                    <span class="am-icon-power-off"></span>
+                    退出
+                </a>
+            </li>
         </ul>
     </div>
 
@@ -112,49 +121,54 @@ AppAsset::register($this);
 
                 <li>
                     <a href="<?=yii\helpers\Url::to(['user/index'], true)?>">
-                        <span class="am-icon-home"></span>
-                        首页
+                        <span class="am-icon-university am-icon"></span>
+                        账户首页
+                    </a>
+                </li>
+                <li>
+                    <a href="<?=yii\helpers\Url::to(['site/index'], true)?>">
+                        <span class="am-icon-reply"></span>
+                        网站首页
                     </a>
                 </li>
 
                 <li>
                     <a href="<?=yii\helpers\Url::to(['user/setting'], true)?>" class="am-cf">
-                        <span class="am-icon-check"></span>
-                        设置
-                        <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
+                        <span class="am-icon-gear am-icon"></span>
+                        <?//=$this->title?>基本设置
                     </a>
                 </li>
 
-                <li>
+                <!--li>
                     <a href="<?=yii\helpers\Url::to(['user/user'], true)?>" class="am-cf">
                         <span class="am-icon-check"></span>
                         我的账户
 
                     </a>
-                </li>
+                </li-->
 
                 <li class="admin-parent">
                     <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}">
-                        <span class="am-icon-user"></span>
+                        <span class="am-icon-user am-icon"></span>
                         个人资料
                         <span class="am-icon-angle-right am-fr am-margin-right"></span>
                     </a>
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
 
                     <li>
-                    <a href="<?=yii\helpers\Url::to(['user/user'], true)?>" class="am-cf">
-                        <span class="am-icon-check"></span>
+                    <a href="<?=yii\helpers\Url::to(['user/user'], true)?>">
+                        <span class="am-icon-info"></span>
                         基本信息
                         <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
                     </a>
                     </li>
                         <li>
                             <a href="<?=yii\helpers\Url::to(['user/info'], true)?>">
-                                <span class="am-icon-calendar"></span>
+                                <span class="am-icon-server"></span>
                                 详细信息
                             </a>
                         </li>
-                        <li>
+               <!--         <li>
                             <a href="admin-gallery.html">
                                 <span class="am-icon-th"></span>
                                 相册页面
@@ -167,10 +181,11 @@ AppAsset::register($this);
                                 <span class="am-icon-bug"></span> 404
                             </a>
                         </li>
+                  -->
                     </ul>
                 </li>
 
-                <li>
+           <!--     <li>
                     <a href="admin-table.html">
                         <span class="am-icon-table"></span>
                         表格
@@ -182,18 +197,61 @@ AppAsset::register($this);
                         表单
                     </a>
                 </li>
+          -->
+
+                <li class="admin-parent">
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}">
+                        <span class="am-icon-cubes am-icon"></span>
+                        扩展模块
+                        <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                    </a>
+                    <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav1">
+
+                        <li>
+                            <a href="<?//=yii\helpers\Url::to(['user/user'], true)?>" >
+                                <span class="am-icon-credit-card"></span>
+                                二维码微名片
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?=yii\helpers\Url::to(['user/anti'], true)?>">
+                                <span class="am-icon-shield"></span>
+                                产品防伪系统
+                            </a>
+                        </li>
+                        <!--         <li>
+                                     <a href="admin-gallery.html">
+                                         <span class="am-icon-th"></span>
+                                         相册页面
+                                         <span class="am-badge am-badge-secondary am-margin-right am-fr">24</span>
+                                     </a>
+                                 </li>
+
+                                 <li>
+                                     <a href="admin-404.html">
+                                         <span class="am-icon-bug"></span> 404
+                                     </a>
+                                 </li>
+                           -->
+                    </ul>
+                </li>
+
+
                 <li>
                     <a href="<?=yii\helpers\Url::to(['site/logout'], true)?>">
                         <span class="am-icon-sign-out"></span>
                         注销
                     </a>
                 </li>
+
+
+
             </ul>
 
             <div class="am-panel am-panel-default admin-sidebar-panel">
                 <div class="am-panel-bd">
                     <p><span class="am-icon-bookmark"></span> 公告</p>
-                    <p>时光静好，与君语；细水流年，与君同。—— Amaze UI</p>
+                    <p>时光静好，与君语；细水流年，与君同。—— Vcards</p>
                 </div>
             </div>
 
@@ -204,6 +262,7 @@ AppAsset::register($this);
                 </div>
             </div>
         </div>
+
     </div>
     <!-- sidebar end -->
 

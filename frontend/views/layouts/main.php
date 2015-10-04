@@ -31,7 +31,7 @@ AppAsset::register($this);
 
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::t('tbhome', 'Vcards'),
+        'brandLabel' => Yii::t('tbhome', 'Vcards').'微名片',
 //        'brandLabel' => ['label' => Yii::t('tbhome', 'Vcards'), 'class' => 'h1'],
 
         'brandUrl' => Yii::$app->homeUrl,
@@ -102,7 +102,7 @@ AppAsset::register($this);
 <?//php Yii::powered()=Yii::t('tbhome', 'Vcards')?>
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; <?= Yii::powered().' '.date('Y') ?></p>
+        <!--p class="pull-left">&copy; <?= Yii::powered().' '.date('Y') ?></p-->
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>

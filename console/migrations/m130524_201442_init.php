@@ -10,6 +10,7 @@ class m130524_201442_init extends Migration
     public function safeUp()
     {
         $tableOptions = null;
+
         if ($this->db->driverName === 'mysql') {
             // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';//ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -75,14 +76,14 @@ class m130524_201442_init extends Migration
             'address' => Schema::TYPE_STRING . ' NOT NULL',
             'business' => Schema::TYPE_TEXT . ' NOT NULL',
             'signature' => Schema::TYPE_TEXT . ' NOT NULL',
-            'wechat_account' => Schema::TYPE_STRING . '(20) NOT NULL',
-            'wechat_qrcode' => Schema::TYPE_STRING . ' NOT NULL',
             'fax' => Schema::TYPE_STRING . '(20) NOT NULL',
             'location' => Schema::TYPE_STRING . '(30) NOT NULL',
+            'wechat_account' => Schema::TYPE_STRING . '(20) NOT NULL',
+            'wechat_qrcode' => Schema::TYPE_STRING . ' NOT NULL',
         ], $tableOptions);
 
         $this->createTable('{{%tel}}', [
-            'telid' => Schema::TYPE_PK,
+            'id' => Schema::TYPE_PK,
             'uid' => Schema::TYPE_INTEGER . ' NOT NULL',
             'tel_label' => Schema::TYPE_STRING . '(10) NOT NULL',
             'tel_number' => Schema::TYPE_STRING . '(20) NOT NULL',
@@ -90,7 +91,7 @@ class m130524_201442_init extends Migration
         $this->createIndex('uid', '{{%tel}}', ['uid'],true);
 
         $this->createTable('{{%label}}', [
-            'labelid' => Schema::TYPE_PK,
+            'id' => Schema::TYPE_PK,
             'uid' => Schema::TYPE_INTEGER . ' NOT NULL',
             'card_label' => Schema::TYPE_STRING . '(20) NOT NULL',
             'card_value' => Schema::TYPE_STRING . ' NOT NULL',
@@ -98,7 +99,7 @@ class m130524_201442_init extends Migration
         $this->createIndex('uid', '{{%label}}', ['uid'],true);
 
         $this->createTable('{{%microlink}}', [
-            'linkid' => Schema::TYPE_PK,
+            'id' => Schema::TYPE_PK,
             'uid' => Schema::TYPE_INTEGER . ' NOT NULL',
             'link_title' => Schema::TYPE_STRING . '(20) NOT NULL',
             'link_url' => Schema::TYPE_STRING . ' NOT NULL',
@@ -106,7 +107,7 @@ class m130524_201442_init extends Migration
         $this->createIndex('uid', '{{%microlink}}', ['uid'],true);
 
         $this->createTable('{{%micropage}}', [
-            'pageid' => Schema::TYPE_PK,
+            'id' => Schema::TYPE_PK,
             'uid' => Schema::TYPE_INTEGER . ' NOT NULL',
             'page_title' => Schema::TYPE_STRING . '(100) NOT NULL',
             'page_content' => Schema::TYPE_TEXT . ' NOT NULL',
@@ -114,7 +115,7 @@ class m130524_201442_init extends Migration
         $this->createIndex('uid', '{{%micropage}}', ['uid'],true);
 
         $this->createTable('{{%relation}}', [
-            'ruid' => Schema::TYPE_PK,
+            'id' => Schema::TYPE_PK,
             'uid1' => Schema::TYPE_INTEGER . ' NOT NULL',
             'uid2' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
@@ -122,57 +123,61 @@ class m130524_201442_init extends Migration
         $this->createIndex('uid2', '{{%relation}}', ['uid2'],true);
 
         $this->createTable('{{%module}}', [
-            'moduleid' => Schema::TYPE_PK,
+            'id' => Schema::TYPE_PK,
             'modulename' => Schema::TYPE_STRING . '(20) NOT NULL',
             'module_label' => Schema::TYPE_STRING . '(20) NOT NULL',
             'module_des' => Schema::TYPE_TEXT . ' NOT NULL',
         ], $tableOptions);
 
         $this->createTable('{{%usermodule}}', [
-            'muid' => Schema::TYPE_PK,
+            'id' => Schema::TYPE_PK,
             'uid' => Schema::TYPE_INTEGER . ' NOT NULL',
             'moduleid' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'module_satus' => Schema::TYPE_SMALLINT . ' NOT NULL',
+            'module_satus' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
         ], $tableOptions);
         $this->createIndex('uid', '{{%usermodule}}', ['uid'],true);
+        $this->createIndex('moduleid', '{{%usermodule}}', ['moduleid'],true);
+
 
         $this->createTable('{{%sys}}', [
-            'sysid' => Schema::TYPE_PK,
+            'id' => Schema::TYPE_PK,
             'admin_user' => Schema::TYPE_STRING . '(10) NOT NULL',
             'user_password' => Schema::TYPE_STRING . ' NOT NULL',
-            'mysitetitle' => Schema::TYPE_STRING . ' NOT NULL',
-            'mycompany' => Schema::TYPE_STRING . '(50) NOT NULL',
-            'mytel' => Schema::TYPE_STRING . '(20) NOT NULL',
-            'myqq' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'myemail' => Schema::TYPE_STRING . '(50) NOT NULL',
-            'myaddress' => Schema::TYPE_STRING . ' NOT NULL',
-            'mylogo' => Schema::TYPE_STRING . ' NOT NULL',
-            'mykeywords' => Schema::TYPE_TEXT . ' NOT NULL',
-            'mysiturl' => Schema::TYPE_STRING . ' NOT NULL',
-            'mycopyright' => Schema::TYPE_STRING . '(20) NOT NULL',
-            'myicp' => Schema::TYPE_STRING . '(20) NOT NULL',
-            'mystatus' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
+            'sitetitle' => Schema::TYPE_STRING . ' NOT NULL',
+            'company' => Schema::TYPE_STRING . '(50) NOT NULL',
+            'tel' => Schema::TYPE_STRING . '(20) NOT NULL',
+            'qq' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'email' => Schema::TYPE_STRING . '(50) NOT NULL',
+            'address' => Schema::TYPE_STRING . ' NOT NULL',
+            'logo' => Schema::TYPE_STRING . ' NOT NULL',
+            'keywords' => Schema::TYPE_TEXT . ' NOT NULL',
+            'siteurl' => Schema::TYPE_STRING . ' NOT NULL',
+            'copyright' => Schema::TYPE_STRING . '(20) NOT NULL',
+            'icp' => Schema::TYPE_STRING . '(20) NOT NULL',
+            'status' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
         ], $tableOptions);
 
-
-
-            /*    $this->insert('{{%user}}', [
-               'sysid' => 1,
-               'admin_user' => 'admin',
-               'user_password' => 'admin',
-               'mycompany' =>'通宝科技',
-               'mysitetitle' =>'唯卡微名片',
-                ]);
-              */
                 $this->insert('{{%sys}}', [
-                 //   'sysid' => 1,
+                    'id' => 1,
                     'admin_user' => 'admin',
                     'user_password' => 'admin',
                     'qq' =>'798904845',
-                    'mycompany' =>'通宝科技',
-                    'mysitetitle' =>'唯卡微名片',
-                    'mysiteurl' => 'http://www.vcards.top',
+                    'company' =>'通宝科技',
+                    'email' =>'admin@tbhome.com.cn',
+                    'sitetitle' =>'唯卡微名片',
+                    'siteurl' => 'http://www.vcards.top',
                 ]);
+
+        $this->insert('{{%user}}', [
+               'uid' => 1,
+            'username' => '泉州通宝科技',
+            'password_hash' => '$2y$13$ZJ/ceQBUQCYB3mDDQAeat.AsfMIQO/uSKsBk9lrMi9eNXF5sJ73nm',//初始密码：www.vcards.top
+            'name' => '泉州通宝科技',
+            'qq' =>'798904845',
+            'mobile' =>'15980016080',
+            'email' =>'admin@tbhome.com.cn',
+        ]);
+
 
         /*********************************************************************************/
 

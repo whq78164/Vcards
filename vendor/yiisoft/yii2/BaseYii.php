@@ -464,7 +464,8 @@ class BaseYii
      */
     public static function powered()
     {
-        return 'Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a>';
+ //       return 'Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a>';
+        return 'Powered by <a href="http://www.tbhome.com.cn" rel="external">通宝科技</a>';
     }
 
     /**
