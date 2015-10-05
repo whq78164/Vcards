@@ -12,6 +12,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
         <?= $form->field($model, 'title') ?>
+    <?= $form->field($model, 'brand') ?>
         <?//= $form->field($model, 'image') ?>
         <?= $form->field($model, 'api_parameter')->label('对接参数') ?>
         <?= $form->field($model, 'api_select')->label('第三方系统对接') ?>

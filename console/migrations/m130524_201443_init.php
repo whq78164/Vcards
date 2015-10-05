@@ -23,6 +23,7 @@ class m130524_201443_init extends Migration
             'image' => Schema::TYPE_STRING . ' NOT NULL',
             'api_select' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
             'api_parameter' => Schema::TYPE_SMALLINT . ' NOT NULL',
+            'brand' => Schema::TYPE_STRING . ' NOT NULL',
         ], $tableOptions);
  //       $this->createIndex('uid', '{{%anti_setting}}', ['uid'],true);
 

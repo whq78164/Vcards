@@ -14,7 +14,7 @@ class AntiController extends \yii\web\Controller
       //  $antireply=new AntiReply();
         $antisetting=new AntiSetting();
         $setting=AntiSetting::findOne($uid);
-        $info = Info::findOne(['uid'=>$uid]);
+     //   $info = Info::findOne(['uid'=>$uid]);
 
 //        $model=$antireply->findOne($uid);
 
@@ -23,7 +23,7 @@ class AntiController extends \yii\web\Controller
         return $this->renderPartial(
             //'_form_antireply',
             'index',
-           ['info'=>$info,'setting'=>$setting]
+           ['setting'=>$setting]
         );
     }
 
@@ -32,9 +32,14 @@ class AntiController extends \yii\web\Controller
         //print_r($FWcode);
 
         header('Content-Type:text/html;charset=UTF-8');
+
+        echo 'OK!';
         /*接收POST数据*/
         $FWcode=$_POST['FWcode'];//echo $FWcode; 只能传递数字类型的数据
         $FWuid=$_POST['FWuid'];
+
+        echo $FWcode;
+        echo $FWuid;
 
 //		echo $FWcode;//$_POST['FWcode'];
 //		var_dump($FWcode);
@@ -48,8 +53,8 @@ class AntiController extends \yii\web\Controller
 //     if($data &&($data1['fwuid']==$FWuid)) {
 
         if($code) {
-       //     $Form1->where($condition)->setInc('used',1); // 查询次数加1
-       //     $Form1->where($condition)->setField('time', time());//获取查询时间戳
+            //     $Form1->where($condition)->setInc('used',1); // 查询次数加1
+            //     $Form1->where($condition)->setField('time', time());//获取查询时间戳
 
             echo '<div class="alert alert-success" >';
             echo '恭喜！是正品！';
@@ -101,58 +106,8 @@ class AntiController extends \yii\web\Controller
             echo '<div class="alert alert-danger" >';
             echo '谨防假冒！！';//'您所查询的编码不存在！请谨防假冒！';
             echo '</div>';
-
         }
 
-
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-    public function actionForm_antireply()
-    {
-        $model = new AntiReply();
-
-        if ($model->load(Yii::$app->request->post())) {
-            if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
-            }
-        }
-
-        return $this->render('_form_antireply', [
-            'model' => $model,
-        ]);
-    }
-
-    public function actionForm_antisetting()
-    {
-        $model = new AntiSetting();
-
-        if ($model->load(Yii::$app->request->post())) {
-            if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
-            }
-        }
-
-        return $this->render('_form_antisetting', [
-            'model' => $model,
-        ]);
-    }
-
-
 
 }

@@ -151,6 +151,7 @@ return [
 
     'Search'=>'搜索',
     'Reset'=>'重置',
+    'create'=>'增加',
 
     'Microlinks'=>'微链接',
     'Microlink'=>'微链接',
@@ -158,6 +159,13 @@ return [
     'Link Url'=>'链接地址',
     'Create Microlink'=>'创建微链接',
     'Update {modelClass}: '=>'修改 {modelClass}: ',
+
+    'Micropages'=>'微网页',
+    'Micropage'=>'微网页',
+    'Page Title'=>'网页标题',
+    'Page Content'=>'链接地址',
+    'Create Micropage'=>'创建微网页',
+
 
 
 ];

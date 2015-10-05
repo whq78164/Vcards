@@ -3,35 +3,33 @@
 namespace frontend\controllers;
 
 use Yii;
-use frontend\models\Schoolmate;
-use frontend\models\SchoolmateSearch;
+use frontend\models\Micropage;
+use frontend\models\MicropageSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
- * SchoolmateController implements the CRUD actions for Schoolmate model.
+ * MicropageController implements the CRUD actions for Micropage model.
  */
-class SchoolmateController extends Controller
+class MicropageController extends Controller
 {
-public $layout='user';
-/*
-    public function actionsUeditor()
-    {
-        return [
-            'upload' => [
-                'class' => 'kucha\ueditor\UEditorAction',
-                'config' => [
-                    "imageUrlPrefix"  => "http://www.baidu.com",//图片访问路径前缀
-                    "imagePathFormat" => "/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}" //上传保存路径
-                ],
-            ]
-        ];
-    }
-*/
+    public $layout='user';
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+
+                'rules' => [
+
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -42,12 +40,12 @@ public $layout='user';
     }
 
     /**
-     * Lists all Schoolmate models.
+     * Lists all Micropage models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new SchoolmateSearch();
+        $searchModel = new MicropageSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -57,7 +55,7 @@ public $layout='user';
     }
 
     /**
-     * Displays a single Schoolmate model.
+     * Displays a single Micropage model.
      * @param integer $id
      * @return mixed
      */
@@ -69,13 +67,14 @@ public $layout='user';
     }
 
     /**
-     * Creates a new Schoolmate model.
+     * Creates a new Micropage model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Schoolmate();
+        $model = new Micropage();
+        $model->uid=Yii::$app->user->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -87,7 +86,7 @@ public $layout='user';
     }
 
     /**
-     * Updates an existing Schoolmate model.
+     * Updates an existing Micropage model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -95,6 +94,7 @@ public $layout='user';
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->uid=Yii::$app->user->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -106,7 +106,7 @@ public $layout='user';
     }
 
     /**
-     * Deletes an existing Schoolmate model.
+     * Deletes an existing Micropage model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -119,15 +119,15 @@ public $layout='user';
     }
 
     /**
-     * Finds the Schoolmate model based on its primary key value.
+     * Finds the Micropage model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Schoolmate the loaded model
+     * @return Micropage the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Schoolmate::findOne($id)) !== null) {
+        if (($model = Micropage::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

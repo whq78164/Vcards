@@ -31,7 +31,7 @@ class AntiSetting extends \yii\db\ActiveRecord
         return [
             [['api_parameter'], 'required'],
             [['api_select', 'api_parameter'], 'integer'],
-            [['title'], 'string', 'max' => 20],
+            [['title','brand'], 'string', 'max' => 20],
             [['image'], 'string', 'max' => 255]
         ];
     }
@@ -47,6 +47,7 @@ class AntiSetting extends \yii\db\ActiveRecord
             'image' => Yii::t('tbhome', 'Image'),
             'api_select' => Yii::t('tbhome', 'Api Select'),
             'api_parameter' => Yii::t('tbhome', 'Api Parameter'),
+            'brand' => Yii::t('tbhome', 'Brand'),
         ];
     }
 }

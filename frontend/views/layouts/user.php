@@ -25,6 +25,8 @@ AppAsset::register($this);
   <meta name="description" content="这是一个 user 页面">
   <meta name="keywords" content="user">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="csrf-param" content="_csrf">
+    <meta name="csrf-token" content="<?= Yii::$app->request->csrfToken ?>">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
   <link rel="icon" type="image/png" href="assets/i/favicon.png">
@@ -227,6 +229,13 @@ AppAsset::register($this);
                             <a href="<?=yii\helpers\Url::to(['user/anti'], true)?>">
                                 <span class="am-icon-shield"></span>
                                 产品防伪系统
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="<?=yii\helpers\Url::to(['user/anti'], true)?>">
+                                <span class="am-icon-eye"></span>
+                                二维码追溯系统
                             </a>
                         </li>
                         <!--         <li>
