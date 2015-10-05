@@ -15,7 +15,6 @@ use Yii;
  * @property integer $query_time
  * @property integer $clicks
  * @property integer $prize
-
  */
 class AntiCode extends \yii\db\ActiveRecord
 {
@@ -33,11 +32,9 @@ class AntiCode extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-           // [['uid', 'code', 'replyid', 'productid', 'query_time', 'clicks', 'prize', 'hot'], 'required'],
-            [['uid', 'code'], 'required'],
+            [['uid', 'code', 'replyid', 'productid', 'query_time', 'clicks', 'prize'], 'required'],
             [['uid', 'replyid', 'productid', 'query_time', 'clicks', 'prize'], 'integer'],
             [['code'], 'string', 'max' => 255],
-            [['uid'], 'unique'],
             [['code'], 'unique']
         ];
     }

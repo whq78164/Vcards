@@ -15,10 +15,12 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-param" content="_csrf">
+    <meta name="csrf-token" content="<?= Yii::$app->request->csrfToken ?>">
     <title><?=$setting->brand?></title>
     <!-- Bootstrap core CSS -->
     <script Charset="UTF-8" type="text/javascript">
-
+        /*
         $(document).ready(function(){
             $("button").click(function(){
 
@@ -32,22 +34,24 @@ AppAsset::register($this);
                 }, function(data,status){
                     document.getElementById('ReturnResult').innerHTML = data;
                 });
-
-                 /*
-                var FWcode = $("#FWcode").val();
-                var FWuid = $("#FWuid").val();
-                $.post("<?//=yii\helpers\Url::to(['anti/antiquery'],true)?>",
-                    {
-                 FWcode:"Donald Duck",
-                 FWuid:"Duckburg"
-                    },
-                    function(data,status){
-                 document.getElementById('ReturnResult').innerHTML = data+status;
-                    });
-                    */
           });
 
         });
+         */
+        function fwcx() {
+//var FWcode = document.getElementById('FWcode').value;
+            var FWcode = $("#FWcode").val();
+//var FWuid = document.getElementById('FWuid').value;
+            var FWuid = $("#FWuid").val();
+//alert (FWcode1);
+            $.post("<?=yii\helpers\Url::to(['anti/antiquery'],true)?>", {
+                FWcode: FWcode,
+                FWuid: FWuid
+            }, function(data,status){
+                document.getElementById('ReturnResult').innerHTML = data;
+                //alert("Data: " + data + "\nStatus: " + status);
+            });
+        }
 
     </script>
 
@@ -70,10 +74,11 @@ AppAsset::register($this);
     <input type="text" class="form-control" placeholder="请输入防伪密码" name="FWcode" id="FWcode">
     <br>
     <INPUT type="hidden" id="FWuid" name="FWuid" value="<?=$setting->uid?>" />
-    <button id="button" class="btn btn-lg btn-primary btn-block"">点击验证</button>
+    <button id="button" class="btn btn-lg btn-primary btn-block" onclick="fwcx()" >点击验证</button>
     <br>
     <div class="alert alert-info" id="ReturnResult">
        <a href="<?=yii\helpers\Url::to(['anti/antiquery'],true)?>"><?=yii\helpers\Url::to(['anti/antiquery'],true)?></a>
+      <br>  <?=$setting->uid?>
     </div>
     <label class="pull-right"><?=$setting->brand?></label>
 </div>

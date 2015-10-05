@@ -24,6 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
         防伪设置
 </button>
         </a>
+
+        <a href="<?=yii\helpers\Url::to(['anticode/index'],true)?>">
+            <button type="button" class="am-btn am-btn-success am-btn-block">
+                防伪码管理
+            </button>
+        </a>
     </div>
 </div>
 

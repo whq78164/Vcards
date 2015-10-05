@@ -29,7 +29,8 @@ class AntiController extends \yii\web\Controller
 
 
     public function actionAntiquery(){
-        //print_r($FWcode);
+
+
 
         header('Content-Type:text/html;charset=UTF-8');
 
@@ -37,9 +38,8 @@ class AntiController extends \yii\web\Controller
         /*接收POST数据*/
         $FWcode=$_POST['FWcode'];//echo $FWcode; 只能传递数字类型的数据
         $FWuid=$_POST['FWuid'];
+        var_dump($FWcode);
 
-        echo $FWcode;
-        echo $FWuid;
 
 //		echo $FWcode;//$_POST['FWcode'];
 //		var_dump($FWcode);
