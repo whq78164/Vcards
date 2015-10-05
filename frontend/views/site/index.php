@@ -8,20 +8,20 @@ $this->title = '唯卡微名片营销平台';
     p img{max-width:100%;}
     h1, h2 {font-family:"楷体"; line-height:1.5em;}<!-- font-size: 16px; -->
     body p{font-family:"楷体"; line-height:1.5em;}
-
+    .jumbotron { background:#181015 url(images/bg_header.jpg) no-repeat; background-size: cover; text-align: center; color:white; font-family:"Open sans", Helvetica, Arial; min-height:520px; padding-top:50px;  font-weight:300; }
 </style>
-<div class="site-index">
+<div  class="">
 
-    <div class="jumbotron">
+    <header class="jumbotron">
         <h1>开启微商新时代！</h1>
 
         <p style="font-family:'楷体'" class="text-right" >
-            基于微名片的系统整合，献给每一位企业老板和互联网创业者！<br/>------唯卡微名片商务平台
+            基于微名片的系统整合，献给企业老板和互联网创业者！<br/>------唯卡微名片商务平台
         </p>
-<div>
-        <p><a class="text-center btn btn-lg btn-success" href="http://www.yiiframework.com">下载</a></p>
+<div><br><br><br><br>
+        <p><a class="text-center btn btn-lg btn-success" href="">下载</a></p>
         </div>
-    </div>
+    </header>
 
     <div class="body-content">
 
@@ -96,7 +96,7 @@ $this->title = '唯卡微名片营销平台';
             </div>
             <div class="col-lg-4">
                 <h2>产品追溯</h2>
-
+产品二维码追溯系统
                 <p>
                 <ul>
                 <li>支持个性化开发定制</li>

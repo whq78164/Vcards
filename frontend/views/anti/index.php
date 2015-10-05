@@ -22,10 +22,8 @@
             var FWcode = $("#FWcode").val();
 //var FWuid = document.getElementById('FWuid').value;
             var FWuid = $("#FWuid").val();
-//alert (FWcode1);
-            $.post("__URL__/fwcxpost", {FWcode: FWcode, FWuid: FWuid}, function(data,status){
+            $.post("<?=yii\helpers\Url::to(['anti/antiquery'],true)?>", {FWcode: FWcode, FWuid: FWuid}, function(data,status){
                 document.getElementById('ReturnResult').innerHTML = data;
-                //alert("Data: " + data + "\nStatus: " + status);
             });
         };
     </script>
@@ -46,11 +44,11 @@
     <label class="pull-left">请输入防伪编码：</label>
     <input type="text" class="form-control" placeholder="请输入防伪密码" name="FWcode" id="FWcode">
     <br>
-    <INPUT type="hidden" id="FWuid" name="FWuid" value="{$data['fwuid']}" />
+    <INPUT type="hidden" id="FWuid" name="FWuid" value="<?=$info->uid?>" />
     <button id="button" class="btn btn-lg btn-primary btn-block"  onclick="fwcx()">点击验证</button>
     <br>
     <div class="alert alert-info" id="ReturnResult">这里显示您的查询结果</div>
-    <label class="pull-right">{$data['unit']}</label>
+    <label class="pull-right"><?=$info->unit?></label>
 </div> <!-- /container -->
 
 <SCRIPT>

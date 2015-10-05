@@ -24,7 +24,7 @@ class m130524_201443_init extends Migration
             'api_select' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
             'api_parameter' => Schema::TYPE_SMALLINT . ' NOT NULL',
         ], $tableOptions);
-        $this->createIndex('uid', '{{%anti_setting}}', ['uid'],true);
+ //       $this->createIndex('uid', '{{%anti_setting}}', ['uid'],true);
 
 
 
@@ -36,7 +36,7 @@ class m130524_201443_init extends Migration
             'fail' => Schema::TYPE_STRING . ' NOT NULL',
             'valid_clicks' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
         ], $tableOptions);
-        $this->createIndex('uid', '{{%anti_reply}}', ['uid'],true);
+        $this->createIndex('uid', '{{%anti_reply}}', ['uid']);
 
 
       /*******************************************************************/
@@ -47,9 +47,10 @@ class m130524_201443_init extends Migration
             'share' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
             'name' => Schema::TYPE_STRING . ' NOT NULL',
             'grade' => Schema::TYPE_SMALLINT . ' NOT NULL',
+            'hot' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
-        $this->createIndex('uid', '{{%anti_prize}}', ['uid'],true);
-
+        $this->createIndex('uid', '{{%anti_prize}}', ['uid']);
+        $this->createIndex('hot', '{{%anti_prize}}', ['hot']);
 
         $this->createTable('{{%anti_product}}', [
             'id' => Schema::TYPE_PK,
@@ -65,8 +66,8 @@ class m130524_201443_init extends Migration
             'price' => Schema::TYPE_STRING . '(10) NOT NULL',
             'hot' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
-        $this->createIndex('uid', '{{%anti_product}}', ['uid'],true);
-        $this->createIndex('hot', '{{%anti_product}}', ['hot'],true);
+        $this->createIndex('uid', '{{%anti_product}}', ['uid']);
+        $this->createIndex('hot', '{{%anti_product}}', ['hot']);
 
 
         $this->createTable('{{%anti_code}}', [
@@ -78,9 +79,8 @@ class m130524_201443_init extends Migration
             'query_time' => Schema::TYPE_INTEGER . ' NOT NULL',
             'clicks' => Schema::TYPE_INTEGER . ' NOT NULL',
             'prize' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'hot' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
-        $this->createIndex('uid', '{{%anti_code}}', ['uid'],true);
+        $this->createIndex('uid', '{{%anti_code}}', ['uid']);
         $this->createIndex('code', '{{%anti_code}}', ['code'],true);
 
 /***************/

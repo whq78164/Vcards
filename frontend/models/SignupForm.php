@@ -23,25 +23,35 @@ class SignupForm extends Model
         return [
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
+            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => Yii::t('tbhome', '{attribute} "{value}" has already been taken.')],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => Yii::t('tbhome', '{attribute} "{value}" has already been taken.')],
 			
 			['mobile', 'filter', 'filter' => 'trim'],
             ['mobile', 'required'],       
             ['mobile', 'string', 'max' => 255],
-            ['mobile', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This mobile  has already been taken.'],
+            ['mobile', 'unique', 'targetClass' => '\common\models\User', 'message' => Yii::t('tbhome', '{attribute} "{value}" has already been taken.')],
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
         ];
     }
 
+
+    public function attributeLabels()
+    {
+        return [
+            'username' => Yii::t('tbhome', 'Username'),
+            'email' => Yii::t('tbhome', 'Email'),
+            'mobile' => Yii::t('tbhome', 'Mobile'),
+            'password' => Yii::t('tbhome', 'Password'),
+        ];
+    }
     /**
      * Signs user up.
      *

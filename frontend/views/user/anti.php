@@ -40,7 +40,9 @@ $this->params['breadcrumbs'][] = $this->title;
             </a>
         </div>
 </div>
-
-
-
+<div class="col-sm-12 col-md-8">
+        <a href="<?=yii\helpers\Url::to(['anti/index', 'uid'=>Yii::$app->user->id],true)?>" target="_blank">
+            <?= Html::button('查看', ['class' => 'btn btn-success am-btn-block pull-right' ]) ?>
+        </a>
+</div>
 </div>

@@ -22,7 +22,7 @@
 
 
 <!--姓名-->				
-          <a href="{:U('Admin/Index/index')}">
+          <a href="<?=yii\helpers\Url::to(['user/user'], true)?>">
 		  <div class="m-name ui-elli">
 		  <span style="color: #c5c9d2;">
 		  	<?= $userdata['name'] ?>
@@ -34,11 +34,11 @@
 			
 			<div class="m-side-nav">
 				<ul class="navgrounp">
-					<li><a href="{:U('Home/Member/index', array('uid'=>{$data.uid}))}" target = "_blank"><i class="iconfont i-card"></i>我的名片</a></li>
+					<li><a href="<?=yii\helpers\Url::to(['vcards/index', 'uid'=>Yii::$app->user->id], true)?>" target = "_blank"><i class="iconfont i-card"></i>我的名片</a></li>
 <!--					
 					<li><a href="http://mp.soqi.cn/mprs/contact.xhtml"><i class="iconfont i-tx"></i>名片通讯录</a></li>
 -->					
-					<li><a href="http://mp.soqi.cn/mpPersonal/editMC.xhtml"><i class="iconfont i-edit"></i>编辑名片</a></li>
+					<li><a href="<?=yii\helpers\Url::to(['user/vcards'], true)?>"><i class="iconfont i-edit"></i>编辑名片</a></li>
 <!--					
 					<li><a href="http://mp.soqi.cn/mpPersonal/accSys.xhtml"><i class="iconfont i-wallet"></i>我的钱包</a></li>
 					
@@ -52,12 +52,12 @@
 -->					
 					<li>
 					<!--a href="http://mp.soqi.cn/mpServiceServices/installUM.xhtml"-->
-					<a href="{:U('Admin/Index/index')}">
+					<a href="<?=yii\helpers\Url::to(['user/setting'], true)?>">
 					<i class="iconfont i-set"></i>设置</a>
 					</li>
 					
 					<li>
-					<a href="{:U('Admin/Index/index')}">
+					<a href="<?=yii\helpers\Url::to(['user/index'], true)?>">
 					<i class="iconfont i-more"></i>更多</a></li>
 					
 					

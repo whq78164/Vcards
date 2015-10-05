@@ -57,7 +57,6 @@ class m130524_201442_init extends Migration
 /*********************************************************************************/
 
           $this->createTable('{{%setting}}', [
-
             'uid' => Schema::TYPE_PK,
             'bg_image' => Schema::TYPE_STRING . ' NOT NULL',
             'tpl' => Schema::TYPE_INTEGER . ' NOT NULL',
@@ -88,7 +87,7 @@ class m130524_201442_init extends Migration
             'tel_label' => Schema::TYPE_STRING . '(10) NOT NULL',
             'tel_number' => Schema::TYPE_STRING . '(20) NOT NULL',
         ], $tableOptions);
-        $this->createIndex('uid', '{{%tel}}', ['uid'],true);
+        $this->createIndex('uid', '{{%tel}}', ['uid']);
 
         $this->createTable('{{%label}}', [
             'id' => Schema::TYPE_PK,
@@ -96,7 +95,7 @@ class m130524_201442_init extends Migration
             'card_label' => Schema::TYPE_STRING . '(20) NOT NULL',
             'card_value' => Schema::TYPE_STRING . ' NOT NULL',
         ], $tableOptions);
-        $this->createIndex('uid', '{{%label}}', ['uid'],true);
+        $this->createIndex('uid', '{{%label}}', ['uid']);
 
         $this->createTable('{{%microlink}}', [
             'id' => Schema::TYPE_PK,
@@ -104,7 +103,7 @@ class m130524_201442_init extends Migration
             'link_title' => Schema::TYPE_STRING . '(20) NOT NULL',
             'link_url' => Schema::TYPE_STRING . ' NOT NULL',
         ], $tableOptions);
-        $this->createIndex('uid', '{{%microlink}}', ['uid'],true);
+        $this->createIndex('uid', '{{%microlink}}', ['uid']);
 
         $this->createTable('{{%micropage}}', [
             'id' => Schema::TYPE_PK,
@@ -112,15 +111,15 @@ class m130524_201442_init extends Migration
             'page_title' => Schema::TYPE_STRING . '(100) NOT NULL',
             'page_content' => Schema::TYPE_TEXT . ' NOT NULL',
         ], $tableOptions);
-        $this->createIndex('uid', '{{%micropage}}', ['uid'],true);
+        $this->createIndex('uid', '{{%micropage}}', ['uid']);
 
         $this->createTable('{{%relation}}', [
             'id' => Schema::TYPE_PK,
             'uid1' => Schema::TYPE_INTEGER . ' NOT NULL',
             'uid2' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
-        $this->createIndex('uid1', '{{%relation}}', ['uid1'],true);
-        $this->createIndex('uid2', '{{%relation}}', ['uid2'],true);
+        $this->createIndex('uid1', '{{%relation}}', ['uid1','uid2']);
+   //     $this->createIndex('uid2', '{{%relation}}', ['uid2']);
 
         $this->createTable('{{%module}}', [
             'id' => Schema::TYPE_PK,
@@ -135,9 +134,8 @@ class m130524_201442_init extends Migration
             'moduleid' => Schema::TYPE_INTEGER . ' NOT NULL',
             'module_satus' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
         ], $tableOptions);
-        $this->createIndex('uid', '{{%usermodule}}', ['uid'],true);
-        $this->createIndex('moduleid', '{{%usermodule}}', ['moduleid'],true);
-
+        $this->createIndex('uid', '{{%usermodule}}', ['uid']);
+        $this->createIndex('moduleid', '{{%usermodule}}', ['moduleid']);
 
         $this->createTable('{{%sys}}', [
             'id' => Schema::TYPE_PK,

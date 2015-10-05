@@ -35,7 +35,10 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-
+<style type="text/css" xmlns="http://www.w3.org/1999/html">
+    h1, h2 {font-family:"微软雅黑"; line-height:1.5em;}<!-- font-size: 16px; -->
+    body p{font-family:"楷体"; line-height:1.5em;}
+</style>
 <body>
 <?php $this->beginBody() ?>
 <!--[if lte IE 9]>
@@ -54,8 +57,6 @@ AppAsset::register($this);
             <small>用户首页</small>
         </a-->
 
-
-
             </a>
 
     </div>
@@ -66,6 +67,15 @@ AppAsset::register($this);
 
         <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
 
+
+
+            <li>
+
+                    <a href="<?=yii\helpers\Url::to(['vcards/index', 'uid'=>Yii::$app->user->id],true)?>" target="_blank">
+        <span class="am-icon-credit-card"></span>
+      我的名片
+                    </a>
+            </li>
 
             <!--li>
                 <a href="javascript:;">
@@ -79,7 +89,7 @@ AppAsset::register($this);
                <li>
                 <!--a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;"-->
                    <a href="<?=yii\helpers\Url::to(['user/index'], true)?>">
-                    <span class="am-icon-users"></span>
+                    <span class="am-icon-user"></span>
                     <?= Yii::$app->user->identity->username . '&nbsp;'.Yii::t('tbhome', 'hello') .'！'?> <!--span class="am-icon-caret-down">
                     </span-->
                 </a>
@@ -208,7 +218,7 @@ AppAsset::register($this);
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav1">
 
                         <li>
-                            <a href="<?//=yii\helpers\Url::to(['user/user'], true)?>" >
+                            <a href="<?=yii\helpers\Url::to(['user/vcards'], true)?>" >
                                 <span class="am-icon-credit-card"></span>
                                 二维码微名片
                             </a>
@@ -291,9 +301,10 @@ AppAsset::register($this);
         <?= Alert::widget() ?>
         <div class="am-cf am-padding">
             <div class="am-fl am-cf">
-                <strong class="am-text-primary am-text-lg">
-                    <?= Html::encode($this->title) ?>
-                </strong></div>
+                <strong class="am-text-primary">
+                 <h2>   <?= Html::encode($this->title) ?></h2>
+                </strong>
+            </div>
         </div>
         <?= $content ?>
 	</div>
