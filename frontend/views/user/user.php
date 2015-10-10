@@ -2,10 +2,12 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+
 //use frontend\assets\AmazeAsset;
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+$this->params['breadcrumbs'][] = ['label' => Yii::t('tbhome', '微名片'), 'url' => ['user/vcards']];
 $this->title = Yii::t('tbhome', '我的账户');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -13,28 +15,16 @@ $this->params['breadcrumbs'][] = $this->title;
 <hr/>
 <div class="am-g">
 
-    <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
-        <div class="am-panel am-panel-default">
-            <div class="am-panel-bd">
-                <div class="am-g">
-                    <div class="am-u-md-4">
-                        <img class="am-img-circle am-img-thumbnail" src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/200/h/200/q/80" alt=""/>
-                    </div>
-                    <div class="am-u-md-8">
-                        <p>你可以使用<a href="#">gravatar.com</a>提供的头像或者使用本地上传头像。 </p>
-                        <form class="am-form">
-                            <div class="am-form-group">
-                                <input type="file" id="user-pic">
-                                <p class="am-form-help">请选择要上传的文件...</p>
-                                <button type="button" class="am-btn am-btn-primary am-btn-xs">保存</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="am-panel am-panel-default">
+
+
+
+        <?= $this->render('_form_face', [
+            'face' => $face,
+            'info'=>$info
+        ]) ?>
+
+        <!--div class="am-panel am-panel-default">
             <div class="am-panel-bd">
                 <div class="user-info">
                     <p>等级信息</p>
@@ -51,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <p class="user-info-order">信用等级：正常当前 信用积分：<strong>80</strong></p>
                 </div>
             </div>
-        </div>
+        </div-->
 
     </div>
 

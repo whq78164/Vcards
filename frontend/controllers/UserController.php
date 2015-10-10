@@ -13,6 +13,8 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use frontend\models\AntiReply;
 use frontend\models\AntiSetting;
+use yii\web\UploadedFile;
+use frontend\models\Upload;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -47,33 +49,42 @@ class UserController extends Controller
   /*VerbFilter检查请求动作的HTTP请求方式是否允许执行，如果不允许，会抛出HTTP 405异常。*/
                 'class' => VerbFilter::className(),
                 'actions' => [
-    //                'delete' => ['post'],
-     //            'update' => ['get', 'put', 'post'],
+               //     'delete' => ['post'],
+               //  'update' => ['get', 'put', 'post'],
 
                 ],
             ],
         ];
     }
 
+    public function actionUpload()
+    {
+        $face = new Upload();
+        $uid = Yii::$app->user->id;
+
+        $info = Info::findOne($uid);
+        if ($info==null) {$info = new Info();}
 
 
-    /**
-     * Lists all User models.
-     * @return mixed
-     */
-    /*
-        public function actionIndex()
-        {
-            $searchModel = new UserSearch();
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-            return $this->render('index', [
-                'searchModel' => $searchModel,
-                'dataProvider' => $dataProvider,
-            ]);
+        if (Yii::$app->request->isPost) {
+            $face->imageFile = UploadedFile::getInstance($face, 'imageFile');
+            if ($face->upload(time())) {
+                // 文件上传成功
+                $url='Uploads/'. $uid.'/'. time() . '.' . $face->imageFile->extension;
+                $info->uid = $uid;
+                $info->face_box=$url;
+                $info->save();
+                Yii::$app->getSession()->setFlash('success', '上传成功！');
+                return $this->redirect(['user']);
+            }else{
+                Yii::$app->getSession()->setFlash('danger', '上传失败！');
+                return $this->redirect(['user']);
+            }
         }
 
-    */
+     //   return $this->render('upload', ['model' => $model]);
+    }
+
        public function actionIndex()
        {
         //   return $this->redirect(['user/user']);
@@ -84,6 +95,10 @@ class UserController extends Controller
        {
            $uid=Yii::$app->user->id;
            $model = $this->findModel($uid);
+           $face= new Upload();
+          // $info = Info::findOne($uid);
+           $info = Info::findOne($uid);
+           if ($info==null) {$info = new Info();}
 
            if ($model->load(Yii::$app->request->post()) && $model->save()) {
            //    Yii::$app->getSession()->setFlash('success', '设置成功！');
@@ -96,8 +111,11 @@ class UserController extends Controller
 
            return $this->render('user', [
                'model' => $model,
+               'info' => $info,
+               'face' => $face,
            ]);}
        }
+
     protected function saveform($model,$redirect,$render){
         $request1=Yii::$app->request;
         if($request1->isPost){
@@ -123,38 +141,12 @@ class UserController extends Controller
             $model = new Info();
             $model->uid=$id;
             return  $this->saveform($model,['vcards'],'info');
-      /*      if($request->isPost){
-               // $model->uid=$id;
-                $model->load(Yii::$app->request->post());
-                $model->save();//insert to
-              //  Yii::$app->user->setFlash('success', '详细信息设置成功！');
-                 Yii::$app->getSession()->setFlash('success', '设置成功！');
-                return $this->redirect(['info'//,
-                 ]);
-            }else{
-                return $this->render('info', [
-                    'model' => $model,
-                ]);
-            }*/
 
         }
         if(isset($tempmodel)){
             $model=$tempmodel;
             $model->uid=$id;
         return  $this->saveform($model,['vcards'],'info');
-       /*     if($request->isPost){
-
-                $model->load($request->post());
-                $model->save();//update to
-                \Yii::$app->getSession()->setFlash('success', '修改成功！');
-                return $this->redirect(['info'//,
-                ]);
-            }else{
-                return $this->render('info', [
-                    'model' => $model,
-                ]);
-            }
-*/
         }
 
     }
@@ -324,15 +316,18 @@ public function actionAntisetting()
             //   Yii::$app->security->validatePassword($password, $this->password_hash);
 
             if (!$model->validatePassword($post['oldpassword'])) {
-                echo '原密码输入错误！';
+                Yii::$app->getSession()->setFlash('danger', '原密码输入错误！');
+                return $this->redirect(['setting']);
+
             } elseif ($post['password'] !== $post['repassword']) {
-                echo '两次输入的新密码不一致！';
+                Yii::$app->getSession()->setFlash('danger', '两次输入的新密码不一致！');
+                return $this->redirect(['setting']);
             } elseif($password_hash) {
                 $model->password_hash=$password_hash;//$password_hash
                 $model->save();
 
-                echo '密码设置成功！';
-                return $this->redirect(['user/user']);
+                Yii::$app->getSession()->setFlash('success', '密码设置成功！');
+                return $this->redirect(['setting']);
             /*    return $this->render('setting', [
                     'model' => $model,
                     'passwordstatus' => '数据提交成功',
@@ -349,27 +344,6 @@ public function actionAntisetting()
 
     }
 
-
-    /**
-     * Deletes an existing User model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     *
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the User model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return User the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($uid)
     {
         if (($model = User::findOne($uid)) !== null) {

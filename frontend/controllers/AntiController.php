@@ -15,6 +15,7 @@ class AntiController extends \yii\web\Controller
         $antisetting=new AntiSetting();
         $setting=AntiSetting::findOne($uid);
      //   $info = Info::findOne(['uid'=>$uid]);
+        if (!$setting) $setting= new AntiSetting();
 
 //        $model=$antireply->findOne($uid);
 
@@ -28,21 +29,32 @@ class AntiController extends \yii\web\Controller
     }
 
 
-    public function actionAntiquery(){
+    public function actionAntiquery()
+    {
 
-
+      $connection= new \yii\db\Connection([
+            'dsn'=>'mysql:host=rds26izw8p54t86315s7public.mysql.rds.aliyuncs.com;dbname=vcardswe7',
+            'username' => 'vcards',
+            'password' => 'gg770880',
+            'charset' => 'utf8',
+        ]);
+        $connection->open();
 
         header('Content-Type:text/html;charset=UTF-8');
 
-        echo 'OK!';
         /*接收POST数据*/
         $FWcode=$_POST['FWcode'];//echo $FWcode; 只能传递数字类型的数据
         $FWuid=$_POST['FWuid'];
-        var_dump($FWcode);
-
+        $api=AntiSetting::findOne($FWuid)->attributes;
+  //      var_dump($api);
+        $table='ims_super_securitycode_data_'.$api['api_parameter'];
+        $sql='SELECT * FROM '.$table.' WHERE code="'.$FWcode.'"';
+        $command = $connection->createCommand($sql);
+        $queryone=$command->queryOne();
+    //    echo $queryone['brand'];
+    //    echo $queryone['remarks'];
 
 //		echo $FWcode;//$_POST['FWcode'];
-//		var_dump($FWcode);
 
         /*建立数据表模型*/
         $code=AntiCode::findOne(['code'=>$FWcode]);
@@ -52,14 +64,14 @@ class AntiController extends \yii\web\Controller
 //if (!isset($FWcode)){echo '请输入10位纯数字的编码。';}
 //     if($data &&($data1['fwuid']==$FWuid)) {
 
-        if($code) {
+        if($queryone) {
             //     $Form1->where($condition)->setInc('used',1); // 查询次数加1
             //     $Form1->where($condition)->setField('time', time());//获取查询时间戳
 
             echo '<div class="alert alert-success" >';
             echo '恭喜！是正品！';
 
-//	   echo '<br/>编码 ：'.$data['fwcode'];
+	   echo '<br/>编码 ：'.$queryone['code'];
             /*
                    if ($data['money']>0){
                    echo '<br/>摇奖抽中：<br/><strong>'.$data['money'].'</strong> 元！';

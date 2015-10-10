@@ -1,8 +1,4 @@
 <?php
-
-/* @var $this \yii\web\View */
-/* @var $content string */
-
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
@@ -19,21 +15,18 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html class="no-js" lang="<?= Yii::$app->language ?>">
 <head>
-   <meta charset="utf-8">
+    <meta charset="<?= Yii::$app->charset ?>">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="description" content="这是一个 user 页面">
   <meta name="keywords" content="user">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="csrf-param" content="_csrf">
-    <meta name="csrf-token" content="<?= Yii::$app->request->csrfToken ?>">
+    <?= Html::csrfMetaTags() ?>
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
   <link rel="icon" type="image/png" href="assets/i/favicon.png">
   <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-
-    <?//= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
@@ -138,9 +131,10 @@ AppAsset::register($this);
                     </a>
                 </li>
                 <li>
-                    <a href="<?=yii\helpers\Url::to(['site/index'], true)?>">
-                        <span class="am-icon-reply"></span>
-                        网站首页
+
+                    <a href="<?=yii\helpers\Url::to(['vcards/index', 'uid'=>Yii::$app->user->id],true)?>" target="_blank">
+                        <span class="am-icon-credit-card"></span>
+                        我的名片
                     </a>
                 </li>
 
@@ -263,6 +257,14 @@ AppAsset::register($this);
                     </a>
                 </li>
 
+                <li>
+                    <a href="<?=yii\helpers\Url::to(['site/index'], true)?>">
+                        <span class="am-icon-reply"></span>
+                        网站首页
+                    </a>
+                </li>
+
+
 
 
             </ul>
@@ -270,14 +272,14 @@ AppAsset::register($this);
             <div class="am-panel am-panel-default admin-sidebar-panel">
                 <div class="am-panel-bd">
                     <p><span class="am-icon-bookmark"></span> 公告</p>
-                    <p>时光静好，与君语；细水流年，与君同。—— Vcards</p>
+                    <p>使用的过程中，出现的任何问题，请大家积极反馈，有任何建议请不吝提出！<br>唯卡微名片，做人人用得起的网络应用平台。<br><span class="pull-right">—— Vcards</span></p>
                 </div>
             </div>
 
             <div class="am-panel am-panel-default admin-sidebar-panel">
                 <div class="am-panel-bd">
                     <p><span class="am-icon-tag"></span> wiki</p>
-                    <p>Welcome to the Amaze UI wiki!</p>
+                    <p>需要定制开发功能，有行业特殊需求，请联系我们。</p>
                 </div>
             </div>
         </div>
@@ -307,6 +309,9 @@ AppAsset::register($this);
                   isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
  //             ],
         ]) ?>
+        <?php
+
+        ?>
         <?= Alert::widget() ?>
         <div class="am-cf am-padding">
             <div class="am-fl am-cf">
@@ -315,6 +320,7 @@ AppAsset::register($this);
                 </strong>
             </div>
         </div>
+
         <?= $content ?>
 	</div>
 
@@ -335,9 +341,9 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; <?= Yii::t('tbhome', 'Vcards').' '.date('Y') ?></p>
+        <p class="pull-left"><?= Yii::t('tbhome', 'Vcards').'微名片&copy; by 通宝科技 '.date('Y') ?></p>
 
-        <p class="pull-right"><?= 'Vcards'//Yii::powered() ?></p>
+        <!--p class="pull-right"><?= 'Vcards'//Yii::powered() ?></p-->
     </div>
 </footer>
 

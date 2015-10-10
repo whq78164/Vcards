@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'page_content')->widget('frontend\assets\UeditorWidget',[
         'serverparam'=>[
-            'myuploadpath'=> Yii::getAlias('@web/Uploads/').$model['id'],
+            'myuploadpath'=> Yii::getAlias('@web/Uploads/').$model['uid'],
         ],
         'options'=>[
             'focus'=>true,

@@ -8,6 +8,7 @@ use common\models\LoginForm;
 use frontend\models\SignupForm;
 use common\models\User;
 use frontend\models\Info;
+use yii\db\Connection;
 class VcardsController extends \yii\web\Controller
 {
 /*

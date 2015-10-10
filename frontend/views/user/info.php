@@ -9,7 +9,7 @@ $this->title = Yii::t('tbhome', '详细信息');
 //        'modelClass' => 'Info',
 //    ]) . ' ' . $model->uid;
 //$this->params['breadcrumbs'][] = ['label' => Yii::t('tbhome', 'Infos'), 'url' => ['index']];
-//$this->params['breadcrumbs'][] = ['label' => $model->uid, 'url' => ['view', 'id' => $model->uid]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('tbhome', '微名片'), 'url' => ['user/vcards']];
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>

@@ -77,8 +77,7 @@ AppAsset::register($this);
     <button id="button" class="btn btn-lg btn-primary btn-block" onclick="fwcx()" >点击验证</button>
     <br>
     <div class="alert alert-info" id="ReturnResult">
-       <a href="<?=yii\helpers\Url::to(['anti/antiquery'],true)?>"><?=yii\helpers\Url::to(['anti/antiquery'],true)?></a>
-      <br>  <?=$setting->uid?>
+
     </div>
     <label class="pull-right"><?=$setting->brand?></label>
 </div>

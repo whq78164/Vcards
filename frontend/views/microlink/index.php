@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\MicrolinkSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+$this->params['breadcrumbs'][] = ['label' => Yii::t('tbhome', '微名片'), 'url' => ['user/vcards']];
 $this->title = Yii::t('tbhome', 'Microlinks');
 $this->params['breadcrumbs'][] = $this->title;
 ?>

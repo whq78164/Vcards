@@ -21,13 +21,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <a href="<?=yii\helpers\Url::to(['user/antisetting'],true)?>">
 <button type="button" class="am-btn am-btn-success am-btn-block">
-        防伪设置
+        防伪设置<span class="am-icon-angle-right pull-right"></span>
 </button>
         </a>
 
         <a href="<?=yii\helpers\Url::to(['anticode/index'],true)?>">
-            <button type="button" class="am-btn am-btn-success am-btn-block">
-                防伪码管理
+            <button type="button" class="am-btn am-btn-secondary am-btn-block">
+                防伪码管理<span class="am-icon-angle-right pull-right"></span>
             </button>
         </a>
     </div>
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <a href="<?=yii\helpers\Url::to(['user/antireply'],true)?>">
 <button type="button" class="am-btn am-btn-warning am-btn-block">
 
-    查询回复设置
+    查询回复设置<span class="am-icon-angle-right pull-right"></span>
 
 </button>
             </a>
