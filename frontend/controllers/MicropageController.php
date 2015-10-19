@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use backend\models\User;
 use Yii;
 use frontend\models\Micropage;
 use frontend\models\MicropageSearch;
@@ -9,13 +10,15 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use frontend\models\Setting;
 
 /**
  * MicropageController implements the CRUD actions for Micropage model.
  */
 class MicropageController extends Controller
 {
-    public $layout='user';
+    public $layout = 'user';
+
     public function behaviors()
     {
         return [
@@ -45,6 +48,9 @@ class MicropageController extends Controller
      */
     public function actionIndex()
     {
+
+        $role=Yii::$app->user->identity->role;
+        if ($role==10){$this->redirect(['user/vcards']);}
         $searchModel = new MicropageSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -74,7 +80,7 @@ class MicropageController extends Controller
     public function actionCreate()
     {
         $model = new Micropage();
-        $model->uid=Yii::$app->user->id;
+        $model->uid = Yii::$app->user->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -84,6 +90,37 @@ class MicropageController extends Controller
             ]);
         }
     }
+
+    public function  actionOnepage()
+    {
+        $uid=Yii::$app->user->id;
+        $micropage = Micropage::find()->where(['uid' => $uid, 'status' => 10])->all();
+
+        if ($micropage == null) {
+            $model = new Micropage();
+            $model->uid = $uid;
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
+        }
+        $model=$micropage[0];
+        $model->uid = $uid;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+
+
+    }
+
+
 
     /**
      * Updates an existing Micropage model.

@@ -41,7 +41,7 @@ class AntiCodeSearch extends AntiCode
      */
     public function search($params)
     {
-        $query = AntiCode::find();
+        $query = AntiCode::find()->where(['uid' =>Yii::$app->user->id ]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

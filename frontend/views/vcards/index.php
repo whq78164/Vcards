@@ -5,6 +5,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use frontend\models\Micropage;
 //use yii\bootstrap\Nav;
 //use yii\bootstrap\NavBar;
 //use yii\widgets\Breadcrumbs;
@@ -25,7 +26,7 @@ QRCardAsset::register($this);
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="format-detection"content="telephone=no, email=no" />
+        <meta name="format-detection" content="telephone=no, email=no" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <!--公司的LOGO-->
         <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
@@ -39,15 +40,15 @@ QRCardAsset::register($this);
                 <link rel="stylesheet" type="text/css" href="css/theme.css">
         -->
 
-        <div id='wx_pic' style='margin:0 auto;display:none;'>
-            <img src=""picture/mjq5ndm2mdi=.jpg-img300" onerror="this.style.display='none'" />
-        </div>
+        <!--div id='wx_pic' style='margin:0 auto;display:none;'>
+            <img src="<?=$userdata['face_box'] ? $userdata['face_box'] : 'Uploads/default_face.jpg'?>" onerror="this.style.display='none'" />
+        </div-->
+
+        <img src="<?=$userdata['face_box'] ? $userdata['face_box'] : 'Uploads/default_face.jpg'?>" width="0" height="0">
 
 
 
-
-
-        <?php $this->title = $userdata['name'].'的二维码智能名片'; ?>
+        <?php $this->title = $userdata['card_title'] ? $userdata['card_title']:$userdata['name'].'的二维码智能名片'; ?>
 
         <title><?= Html::encode($this->title) ?></title>
 
@@ -116,8 +117,7 @@ QRCardAsset::register($this);
             <div class="whiteBg"></div>
             <div class="headImg">
                 <section >
-                    <div ><img style=" border-radius: 60px;" src="picture/mjq5ndm2mdi=.jpg-img120" onerror="this.style.display='none'"></div>
-
+                    <div ><img style=" border-radius: 60px;" src="<?=$userdata['face_box'] ? $userdata['face_box'] : 'Uploads/default_face.jpg'?>" onerror="this.style.display='none'"></div>
                 </section>
 
             </div>
@@ -141,13 +141,7 @@ QRCardAsset::register($this);
                     <!-- 头像等 -->
                     <section class="m-infos">
                         <a href="<?=yii\helpers\Url::to(['user/user'], true)?>" class="m-face-box">
-                            <!--div class="m-face iconfont"><img src="picture/mjq5ndm2mdi=.jpg-img120" onerror="this.style.display='none'"></div-->
-                            <div class="m-face iconfont"><img src="<?=Yii::getAlias('@web/picture/mjq5ndm2mdi=.jpg-img120') ?>" onerror="this.style.display='none'"></div>
-
-
-
-
-
+                            <div class="m-face iconfont"><img src="<?=$userdata['face_box']?>"></div>
                         </a>
                         <div class="m-infos-cont">
                             <div class="m-name ui-elli"><span>
@@ -164,7 +158,9 @@ QRCardAsset::register($this);
 
 
                         <i class="iconfont i-visitor"></i>
-                        <div class="m-num">324</div>
+                        <div class="m-num">
+                            <!--统计浏览量-->
+                        </div>
 
 
                     </section>
@@ -184,88 +180,79 @@ QRCardAsset::register($this);
                                             <span><?= $userdata['mobile'] ?></span>
                                         </a>
                                     </li>
-
-                                    <li onclick="javascript:mapSkip();">
+<?php
+if ($userdata['address']){
+    $addr = <<<EFO
+<li>
                                         <i class="iconfont i-arrow"></i>
                                         <div class="cont">
                                             <div class="m-address num">
-
-                                                <?= $userdata['address'] ?>
-
+                                              ==add
 
                                             </div>
                                         </div>
-                                    </li>
+                                    </li>;
 
+EFO;
+    echo str_replace('==add', $userdata['address'], $addr);
+}
 
+?>
 
+<?php
 
-
-
-
-
-
-
-
+function labelecho($label, $value){
+    $labeltpl= <<<EOF
                                     <li>
-                                        <span class="m-tle">传真</span>
+                                        <span class="m-tle">++label</span>
                                         <div class="cont">
                                             <div class="ui-elli num" style="">
-                                                <?=$userdata['fax'] ?>
+                                                ++value
                                             </div>
                                         </div>
 
 
-
                                     </li>
+EOF;
+    $labelout=str_replace( ['++label','++value'],[$label,$value],$labeltpl);
+if ($value){
+    echo $labelout;
+}
+}
+
+labelecho('传真', $userdata['fax']);
+labelecho('E-Mail', $userdata['email']);
+labelecho('QQ', $userdata['qq']);
+   ?>
 
 
 
-                                    <li>
-                                        <span class="m-tle">E-Mail</span>
-                                        <div class="cont">
-                                            <div class="ui-elli num" style="">
-                                                <?//=Yii::getAlias('@webroot') ?>
-                                                <?= $userdata['email'] ?>
-
-                                            </div>
-                                        </div>
 
 
-
-                                    </li>
-
-
-
-                                    <li>
-                                        <span class="m-tle">QQ</span>
-                                        <div class="cont">
-                                            <div class="ui-elli num" style="padding-right: 80px;">
-                                                <?= $userdata['qq'] ?>
-                                            </div>
-                                        </div>
-
-                                        <a href="#" class="addfriends" data-action="dailog-addfriends" data-type="qq">加好友</a>
-
-
-
-                                    </li>
-
-
+                                    <?php
+                                    if ($userdata['wechat_account']){
+                                        $wechat_acc = <<<EFO
 
                                     <li>
                                         <span class="m-tle">微信</span>
                                         <div class="cont">
                                             <div class="ui-elli num" style="padding-right: 80px;">
-                                                <?= $userdata['wechat_account'] ?>
+                                             ++account
                                             </div>
                                         </div>
-
 
                                         <a href="#" class="addfriends" data-action="dailog-addfriends" data-type="weixin">加微信</a>
 
 
                                     </li>
+
+EFO;
+ echo str_replace('++account', $userdata['wechat_account'], $wechat_acc);
+                                    }
+
+                                    ?>
+
+
 
 
                                     <!--
@@ -346,7 +333,7 @@ QRCardAsset::register($this);
 
                 <div class="m-cardadd" id="j-m-cardadd">
                     <i class="iconfont i-close" data-action="adclose"></i>
-                    <a href="<?=yii\helpers\Url::to(['vcards/signup'], true)?>" class="cardadd-btn">我也要创建</a>
+                    <a href="<?=yii\helpers\Url::to(['site/signup'], true)?>" class="cardadd-btn">我也要创建</a>
                 </div>
 
             </div>
@@ -362,7 +349,11 @@ QRCardAsset::register($this);
                 <a href="javascript:void(0)" data-action="custom3" class="flex">
                     <i class="am-icon-plus-circle am-icon-lg" id="j-customMore"></i>
                 </a>
-                <a href="http://vd.soqi.cn/s/12101" class="flex">
+<?
+//$tmpnemu = Url::to(['vcards/micropage', 'id'=>$micropage[0]->id], true);
+$menupic= isset($micropage[0]) ? Url::to(['vcards/micropage', 'id'=>$micropage[0]->id], true) : Url::to(['vcards/micropage', 'id'=>1], true);
+?>
+                <a href="<?=$menupic?>" class="flex">
                     <i class="am-icon-file-image-o am-icon-lg"></i>
                 </a>
                 <a href="javascript:void(0)" class="flex" data-action="custom2">
@@ -372,17 +363,37 @@ QRCardAsset::register($this);
             <!-- 标签栏弹出层-微单页 -->
             <section class="m-custommenu" id="j-custom1">
                 <ul class="m-rootweb-list fixed">
-                    <li><a href="http://12306.uodoo.com"><span class="am-icon-external-link am-icon-lg"></span><span>火车票</span></a></li>
+
+                    <li><a href="http://chong.qq.com" target="_blank"><span class="am-icon-cny am-icon-lg "></span><span >充值缴费</span></a></li>
+
+                    <li><a href="http://m.kuaidi100.com" target="_blank"><span class=" am-icon-lg am-icon-search"></span><span >快递查询</span></a></li>
+
+                    <li><a href="http://touch.qunar.com" target="_blank"><span class="am-icon-lg am-icon-send-o"></span><span>出行订票</span></a></li>
+
+                    <li><a href="http://music.baidu.com"><span class="am-icon-lg am-icon-music"></span><span>音乐</span></a></li>
 
 
+                    <?php
+                    $pagePart= <<<EOF
+<li>
+<a href="--url--" target="_blank">
+<span class="am-icon-file-text-o am-icon-lg"></span>
+<span>--title--</span>
+</a>
+</li>
+EOF;
 
-                    <li><a href="http://zc.m.taobao.com/"><span class="am-icon-sitemap am-icon-lg am-success"></span><span >话费充值</span></a></li>
+                    if ($micropage){//!==null
+                        foreach($micropage as $il_part){
+                            $part_il=str_replace(
+                                ['--url--','--title--'],
+                                [Url::to(['vcards/micropage', 'id'=>$il_part->id], true),$il_part->page_title],
+                                $pagePart);
+                            echo $part_il;
+                        }
+                    }
+                    ?>
 
-                    <li><a href="http://m.kuaidi100.com"><span class="am-warning am-icon-lg am-icon-edit"></span><span >快递查询</span></a></li>
-
-                    <li><a href="http://touch.qunar.com/h5/flight/"><span class="am-icon-lg am-icon-weixin"></span><span>机票</span></a></li>
-
-                    <li><a href="http://touch.qunar.com/h5/hotel/index"><span class="am-icon-lg am-icon-photo"></span><span>酒店</span></a></li>
 
                     <!--		<li><a href="http://zuoche.com/"><i class="toolicon"></i><span >公交</span></a></li>
 
@@ -406,61 +417,28 @@ QRCardAsset::register($this);
             <section class="m-custommenu" id="j-custom2">
 
                 <ul class="m-custommenu-ul fixed">
+<?php
+$linkPart= <<<EOF
+<li>
+<a href="_URL%_" target="_blank">
+<span class="am-icon-external-link am-icon-lg"></span>
+<div class="m-tle ui-elli">
+_TITLE%_
+</div>
+</a>
+</li>
+EOF;
 
-                    <li>
-                        <a href="http://www.qzxxs.com" target="_blank">
-
-                            <span class="am-icon-external-link am-icon-lg"></span>
-
-
-
-                            <div class="m-tle ui-elli">13微官网3</div>
-
-                        </a>
-                    </li>
-
-                    <li><a href="<?=yii\helpers\Url::to(['vcards/index'], true)?>" target="_blank">
-                            <span class="am-icon-external-link am-icon-lg"></span>
-
-
-
-                            <div class="m-tle ui-elli">13微网3</div>
-                        </a>
-                    </li>
-
-                    <li><a href="http://hhjhvhjj" target="_blank">
-
-                            <span class="am-icon-external-link am-icon-lg"></span>
-
-
-                            <div class="m-tle ui-elli">13微3官网3</div></a>
-                    </li>
-
-                    <li><a href="http://jjhhhj" target="_blank">
-                            <span class="am-icon-external-link am-icon-lg"></span>
-
-
-
-                            <div class="m-tle ui-elli">13微官网3</div></a>
-                    </li>
-
-                    <li><a href="http://uhb:" target="_blank">
-                            <span class="am-icon-external-link am-icon-lg"></span>
-
-
-
-                            <div class="m-tle ui-elli">13微官网3</div></a>
-                    </li>
-
-                    <li><a href="http://uhb:" target="_blank">
-                            <span class="am-icon-external-link am-icon-lg"></span>
-
-
-                            <div class="m-tle ui-elli">13微官网3</div></a>
-                    </li>
-
-
-
+if ($microlink){//!==null
+foreach($microlink as $il_part){
+    $part_il=str_replace(
+        ['_URL%_','_TITLE%_'],
+        [$il_part->link_url,$il_part->link_title],
+        $linkPart);
+        echo $part_il;
+}
+                    }
+?>
                 </ul>
 
 
@@ -470,7 +448,8 @@ QRCardAsset::register($this);
             <!--
                         <section class="m-bgbox" style="background-image:url(images/otg=.jpg)"></section>
             -->
-            <section class="m-bgbox" style="background-image:url(<?php echo Yii::getAlias('@web/images/otg=.jpg'); ?>)"></section>
+            <section class="m-bgbox" style="background-image:url(
+            <?=isset($bg_image) ? $bg_image : 'Uploads/bg_image/tbhome.jpg' ?>)"></section>
             <!-- 弹出层  begin-->
 
 
@@ -503,15 +482,22 @@ QRCardAsset::register($this);
                         <div class="tc" ><img id="mpLinkQRCode" style="width:80%;"  src=""/></div>
                         <div class="tc mt-5">扫描二维码，访问TA的名片</div>
                     </div>
-
+<?php
+$vcardsmpqr="BEGIN:VCARD%0AVERSION:3.0%0AN:". $userdata['name'] .'%0AORG:'. $userdata['unit'] .'%0AEMAIL:'.$userdata['email'].'%0ATITLE:'.$userdata['position'].'%0ATEL;TYPE=WORK:'.$userdata['work_tel'].'%0ATEL;type=CELL:'. $userdata['mobile'].'%0AURL:'.yii\helpers\Url::to(['vcards/index'], true)."%0AEND:VCARD";
+?>
                     <div id="j-content-qr" class="tab-cont">
-                        <input type="hidden" id="mpContentQRCodeUrl" value="http://www.vcards.top/qrcode.php?value=BEGIN:VCARD%0AVERSION:3.0%0AN:<?= $userdata['name'] ?>%0AORG:<?= $userdata['unit'] ?>%0ATEL;type=CELL:<?= $userdata['mobile'] ?>%0ATEL;TYPE=WORK:<?= $userdata['fax'] ?>%0AURL:<?=yii\helpers\Url::to(['vcards/index'], true)?>%0AEND:VCARD">
+                        <input type="hidden" id="mpContentQRCodeUrl"
+                               value="http://www.vcards.top/qrcode.php?value=<?=$vcardsmpqr?>">
                         <div class=" tc" ><img id="mpContentQRCode" style="width:80%;" src=""/></div>
-                        <div class="fs-16 tc mt-10">微信扫一扫，秒存名片信息</div>
-
-                        <div class="tc mt-10">
-                            <a class="btn-vcf" href="http://mp.soqi.cn/login/downLoadPhone.xhtml?id=12138C1D641F71957CB0BCD31B48A3E7">导入手机通讯录</a>
+                        <div class="fs-16 tc mt-10">
+                            两种方法保存至通讯录：
+                            <br>1.微信扫一扫，秒存名片信息。
+                            <br/>2.按住图片，识别图中二维码。
                         </div>
+
+                        <!--div class="tc mt-10">
+                            <a class="btn-vcf" href="http://localhost/vcards/frontend/web/qrcode.php?vcards=<?//=$vcards?>">导入手机通讯录</a>
+                        </div-->
                     </div>
                     <div class="link-content-qr" style="padding-top: 40px;">
                         <div class="loading-qr ">
@@ -537,32 +523,8 @@ QRCardAsset::register($this);
 
 
 
-                    <input type="hidden" id="qq_addfriendsqr" value="http://7xkt0q.com2.z0.glb.qiniucdn.com/NzgxMzc0Ng==.jpg-imgW320?t=1438695540383">
-                    <img style="display: none;" data-type="qqQr" src = "picture/nzgxmzc0ng==.jpg-imgw120" onerror="javascript:qrimgerror(this);">
-
-
-
-
-
-
-                    <input type="hidden" id="weixin_addfriendsqr" value="http://7xkt0p.com2.z0.glb.qiniucdn.com/ODM5MjYzMA==.jpg-imgW320?t=1438695540383">
-                    <img style="display: none;" data-type="weixinQr" src = "picture/odm5mjyzma==.jpg-imgw120" onerror="javascript:qrimgerror(this);">
-
-
-
-
-
-
-                    <input type="hidden" id="weibo_addfriendsqr" value="http://7xkt0r.com2.z0.glb.qiniucdn.com/ODM5MjY5NQ==.jpg-imgW320?t=1438695540383">
-                    <img style="display: none;" data-type="weiboQr" src = "picture/odm5mjy5nq==.jpg-imgw120" onerror="javascript:qrimgerror(this);">
-
-
-
-
-
-
-
-
+                    <input type="hidden" id="weixin_addfriendsqr" value="<?=$userdata['wechat_qrcode']?>" >
+                    <img style="display: none;" data-type="weixinQr" src = "<?=$userdata['wechat_qrcode']?>" onerror="javascript:qrimgerror(this);">
 
 
                     <div class="tc mt-15">
@@ -598,38 +560,24 @@ QRCardAsset::register($this);
             <section class="ui-popup-mask flex-center" id="j-popupTel">
                 <div class="ui-popup">
                     <ul class="m-tellist">
-
-                        <li>
-                            <a class="m-link" href="tel:15980018000">
-                                <div class="m-des">手机</div>
+<?php
+function telecho($label, $number){
+    $teltpl= <<<EOF
+<li>
+                            <a class="m-link" href="tel:==number">
+                                <div class="m-des">==label</div>
                                 <i class="iconfont"></i>
-                                <span class="m-tel">15980018000</span>
+                                <span class="m-tel">==number</span>
                             </a>
                         </li>
+EOF;
+    $telpart= str_replace(['==label','==number'], [$label, $number], $teltpl);
+    if ($number) echo $telpart;
 
-                        <li>
-                            <a class="m-link" href="tel:22451990">
-                                <div class="m-des">座机</div>
-                                <i class="iconfont"></i>
-                                <span class="m-tel">22451990</span>
-                            </a>
-                        </li>
+}
+telecho('手机', $userdata['mobile']);
 
-                        <li>
-                            <a class="m-link" href="tel:15980016999">
-                                <div class="m-des">手机</div>
-                                <i class="iconfont"></i>
-                                <span class="m-tel">15980016999</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="m-link" href="tel:18906985636">
-                                <div class="m-des">手机</div>
-                                <i class="iconfont"></i>
-                                <span class="m-tel">18906985636</span>
-                            </a>
-                        </li>
+?>
 
 
                     </ul>
@@ -652,10 +600,11 @@ QRCardAsset::register($this);
         <!-- 左侧栏 开始-->
         <!-- 侧栏 -->
 <?php
-if (!Yii::$app->user->isGuest) {
-   echo $this->render('_lsidelogin',['userdata'=>$userdata]);
+if (!Yii::$app->user->isGuest)
+{
+   echo $this->render('_lsidelogin');
          } else {
-    echo $this->render('_lsideguest',['userdata'=>$userdata]);
+    echo $this->render('_lsideguest');
 }
 ?>
         <!--左侧栏结束--->

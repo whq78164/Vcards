@@ -35,6 +35,7 @@ return [
     'rememberMe'=>'记住密码',
     'User'=>'用户',
     'hello'=>'您好',
+    'Hello'=>'您好',
     'Username'=>'登录名',
     'Email'=>'电子邮箱',
     'email'=>'电子邮箱',
@@ -144,7 +145,7 @@ return [
     'Address' => '地址',
     'Business'=> '产品&服务',
     'Signature' => '签名',
-    'Wechat Account' => '微信账号',
+    'Wechat Account' => '微信号',
     'Wechat Qrcode' => '微信二维码',
     'Fax' => '传真',
     'Location' => '位置坐标',
@@ -163,8 +164,23 @@ return [
     'Micropages'=>'微网页',
     'Micropage'=>'微网页',
     'Page Title'=>'网页标题',
-    'Page Content'=>'链接地址',
+    'Page Content'=>'网页内容',
     'Create Micropage'=>'创建微网页',
+
+    'Created IP'=>'注册地IP',
+    'Updated Ip'=>'上次登录IP',
+    'Created At'=>'注册时间',
+    'Updated At'=>'上次登录时间',
+    'Settings' =>'设置',
+    'Infos' =>'明细',
+    'Users' =>'用户',
+    'Status' => '状态',
+    'role' => '地位',
+    'Role' => '角色',
+    'Thank you for contacting us. We will respond to you as soon as possible.'=>'感谢联系，我们会尽快联系您！',
+    'Check your email for further instructions.' => '请查看您的邮箱进行下一步操作',
+    'Follow the link below to reset your password:'=>'请点击下面链接，重置密码',
+
 
 
 

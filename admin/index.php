@@ -1,3 +1,3 @@
 <?php
-Header("Location:../backend/web/ ");
+Header("Location:../frontend/web/index.php?r=site/login");
 ?>

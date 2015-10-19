@@ -19,7 +19,7 @@ $this->title = '唯卡微名片营销平台';
             基于微名片的系统整合，献给企业老板和互联网创业者！<br/>------唯卡微名片商务平台
         </p>
 <div><br><br><br><br>
-        <p><a class="text-center btn btn-lg btn-success" href="">下载</a></p>
+        <p><a class="text-center btn btn-lg btn-success" href="">开始</a></p>
         </div>
     </header>
 
@@ -43,7 +43,7 @@ $this->title = '唯卡微名片营销平台';
 </p>
 
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+                <p><a class="btn btn-default" href="">开始 &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>HTML5场景宣传动画</h2>
@@ -55,7 +55,7 @@ $this->title = '唯卡微名片营销平台';
 </ul>
                 </p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+                <p><a class="btn btn-default" href="http://xiu.vcards.top/">开始 &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>微信营销平台</h2>
@@ -69,10 +69,11 @@ $this->title = '唯卡微名片营销平台';
                     </ul>
                 </p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+                <p><a class="btn btn-default" href="http://weixin.vcards.top/">开始 &raquo;</a></p>
             </div>
         </div>
 
+<!--
         <div class="row">
             <div class="col-lg-4">
                 <h2>品牌防伪</h2>
@@ -99,9 +100,9 @@ $this->title = '唯卡微名片营销平台';
 产品二维码追溯系统
                 <p>
                 <ul>
-                <li>支持个性化开发定制</li>
-                <li>基于ECS和RDS云服务系统</li>
-                <li>前进永不止步</li>
+                <li></li>
+                <li></li>
+                <li></li>
                 </ul>
                 </p>
 
@@ -117,10 +118,10 @@ $this->title = '唯卡微名片营销平台';
                 </ul>
                 </p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">扩展 &raquo;</a></p>
             </div>
         </div>
-
+-->
 
 
     </div>

@@ -9,11 +9,13 @@ use Yii;
  * Signup form
  */
 class SignupForm extends Model
+//class SignupForm extends \yii\db\ActiveRecord
 {
     public $username;
     public $email;
     public $password;
     public $mobile;
+    public $qq;
 
     /**
      * @inheritdoc
@@ -50,6 +52,7 @@ class SignupForm extends Model
             'email' => Yii::t('tbhome', 'Email'),
             'mobile' => Yii::t('tbhome', 'Mobile'),
             'password' => Yii::t('tbhome', 'Password'),
+            'qq' => Yii::t('tbhome', 'Qq'),
         ];
     }
     /**

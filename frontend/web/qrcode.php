@@ -15,6 +15,21 @@ $level='L';
 $size=10;
 $margin=3;
 */
+/*
+$vcards=$_GET['vcards'];
+if($vcards){
+    $filepath=time().'.vcf';
+    $file = fopen($filepath, "x+");//w+
+    fwrite($file, $vcards);
+ //   header('Content-type:application/octet-stream');
+  //  header('Accept-Ranges:bytes');
+ //   header('Accept-Length:' . filesize($filepath));
+  //  header('Content-Disposition:attachment;filename="' . $filename . '"');
+    echo fread($file, filesize($filepath));
+    fclose($file);
+    header("location:$filepath");
+}
+*/
 $value=$_GET['value'];
 //$file=$_GET['file'];
 //$level=$_GET['level'];

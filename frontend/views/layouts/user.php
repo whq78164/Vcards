@@ -7,9 +7,10 @@ use frontend\assets\AppAsset;
 
 //use yii\bootstrap\Nav;
 //use yii\bootstrap\NavBar;
-
+use frontend\assets\Mobile_Detect;
 AmazeAsset::register($this);
 AppAsset::register($this);
+$mobile=new Mobile_Detect();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -121,8 +122,15 @@ AppAsset::register($this);
 <div class="wrap am-cf admin-main">
     <!-- sidebar start -->
  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+
+
         <div class="am-offcanvas-bar admin-offcanvas-bar">
+
+
+
             <ul class="am-list admin-sidebar-list">
+
+
 
                 <li>
                     <a href="<?=yii\helpers\Url::to(['user/index'], true)?>">
@@ -130,19 +138,37 @@ AppAsset::register($this);
                         账户首页
                     </a>
                 </li>
-                <li>
+
+                <!--li>
 
                     <a href="<?=yii\helpers\Url::to(['vcards/index', 'uid'=>Yii::$app->user->id],true)?>" target="_blank">
                         <span class="am-icon-credit-card"></span>
                         我的名片
                     </a>
-                </li>
+                </li-->
 
-                <li>
-                    <a href="<?=yii\helpers\Url::to(['user/setting'], true)?>" class="am-cf">
+
+                <li class="admin-parent">
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}">
                         <span class="am-icon-gear am-icon"></span>
-                        <?//=$this->title?>基本设置
+                        用户设置
+                        <span class="am-icon-angle-right am-fr am-margin-right"></span>
                     </a>
+                    <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav3">
+
+                        <li>
+                            <a href="<?=yii\helpers\Url::to(['user/setting'], true)?>" class="am-cf">
+                                <span class="am-icon-gear am-icon"></span>
+                                <?//=$this->title?>安全设置
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?=yii\helpers\Url::to(['user/specialsetting'], true)?>">
+                                <span class="am-icon-server"></span>
+                                个性设置
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <!--li>
@@ -168,7 +194,7 @@ AppAsset::register($this);
                         <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span>
                     </a>
                     </li>
-                        <li>
+              <!--          <li>
                             <a href="<?=yii\helpers\Url::to(['user/info'], true)?>">
                                 <span class="am-icon-server"></span>
                                 详细信息
@@ -225,14 +251,14 @@ AppAsset::register($this);
                                 产品防伪系统
                             </a>
                         </li>
-
+                        <!--
                         <li>
                             <a href="<?=yii\helpers\Url::to(['user/anti'], true)?>">
                                 <span class="am-icon-eye"></span>
                                 二维码追溯系统
                             </a>
                         </li>
-                        <!--         <li>
+                             <li>
                                      <a href="admin-gallery.html">
                                          <span class="am-icon-th"></span>
                                          相册页面
@@ -266,22 +292,52 @@ AppAsset::register($this);
 
 
 
-
             </ul>
+
+
+
+
 
             <div class="am-panel am-panel-default admin-sidebar-panel">
                 <div class="am-panel-bd">
                     <p><span class="am-icon-bookmark"></span> 公告</p>
-                    <p>使用的过程中，出现的任何问题，请大家积极反馈，有任何建议请不吝提出！<br>唯卡微名片，做人人用得起的网络应用平台。<br><span class="pull-right">—— Vcards</span></p>
+                    <p>在使用的过程中，有任何问题或建议，希望大家能积极反馈，我们全力解决。<br>唯卡微名片，做人人用得起的网络应用平台。<br><span class="pull-right">—— Vcards</span></p>
                 </div>
             </div>
 
+
+            <?php
+            if (!$mobile->isMobile()) {
+                ?>
+
+                <div class="am-u-md-10 am-panel am-panel-default admin-sidebar-panel">
+                    <div class="  panel panel-primary">
+
+                        <div class="panel-heading ">
+                            我的微名片
+                        </div>
+                        <a href="<?= yii\helpers\Url::to(['vcards/index', 'uid' => Yii::$app->user->id], true) ?>"
+                           target="_blank">
+                            <img class="am-img-circle am-img-thumbnail"
+                                 src="http://www.vcards.top/qrcode.php?value=<?= yii\helpers\Url::to(['vcards/index', 'uid' => Yii::$app->user->id], true) ?>">
+                        </a>
+
+                    </div>
+
+                </div>
+
+            <?php } ?>
+
+<!--
             <div class="am-panel am-panel-default admin-sidebar-panel">
                 <div class="am-panel-bd">
                     <p><span class="am-icon-tag"></span> wiki</p>
                     <p>需要定制开发功能，有行业特殊需求，请联系我们。</p>
                 </div>
             </div>
+-->
+
+
         </div>
 
     </div>
@@ -313,13 +369,13 @@ AppAsset::register($this);
 
         ?>
         <?= Alert::widget() ?>
-        <div class="am-cf am-padding">
+        <!--div class="am-cf am-padding">
             <div class="am-fl am-cf">
                 <strong class="am-text-primary">
                  <h2>   <?= Html::encode($this->title) ?></h2>
                 </strong>
             </div>
-        </div>
+        </div-->
 
         <?= $content ?>
 	</div>

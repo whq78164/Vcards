@@ -41,7 +41,8 @@ class MicrolinkSearch extends Microlink
      */
     public function search($params)
     {
-        $query = Microlink::find();
+        $query = Microlink::find()->where(['uid' =>Yii::$app->user->id ]);
+     //   $query = Microlink::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

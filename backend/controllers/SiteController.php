@@ -79,13 +79,16 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+           // return $this->goBack();
+            return $this->redirect('admin/index');
         } else {
             return $this->render('login', [
                 'model' => $model,
             ]);
         }
     }
+
+
 
     public function actionLogout()
     {

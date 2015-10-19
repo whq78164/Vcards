@@ -8,24 +8,31 @@ class Upload extends Model
 {
     /**
      * @var UploadedFile
-     * $this->imageFile->baseName
+     *
      */
 
-    public $imageFile;
+    public $imageFile;//文件路径和姓名
 
     public function rules()
     {
+
         return [
             [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg, bmp'],
         ];
     }
 
-    public function upload($filename)
+    public function upload($filename, $dir="Uploads/")
     {
         if ($this->validate()) {
-            $uid=Yii::$app->user->id;
-            if (!is_dir('Uploads/'. $uid.'/')) mkdir('Uploads/'. $uid.'/');
-            $this->imageFile->saveAs('Uploads/'. $uid.'/'. $filename . '.' . $this->imageFile->extension);
+            //   $uid=Yii::$app->user->id;
+            //   $dirpath='Uploads/'. $uid.'/'.$dir;
+            if (!file_exists($dir)) mkdir($dir, 0777, true);//is_dir
+            $this->imageFile->saveAs($dir. $filename . '.' . $this->imageFile->extension);
+            /*多文件上传使用foreach
+             * foreach ($this->imageFiles as $file) {
+                $file->saveAs('uploads/' . $file->baseName . '.' . $file->extension);
+            }
+             * */
             return true;
         } else {
             return false;

@@ -6,13 +6,14 @@ use Yii;
 use common\models\User;
 use frontend\models\Info;
 //use frontend\models\SignupForm;
-//use frontend\models\UserSearch;
+
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use frontend\models\AntiReply;
 use frontend\models\AntiSetting;
+use frontend\models\Setting;
 use yii\web\UploadedFile;
 use frontend\models\Upload;
 
@@ -63,58 +64,84 @@ class UserController extends Controller
         $uid = Yii::$app->user->id;
 
         $info = Info::findOne($uid);
-        if ($info==null) {$info = new Info();}
+        if ($info == null) {
+            $info = new Info();
+        }
 
 
         if (Yii::$app->request->isPost) {
-            $face->imageFile = UploadedFile::getInstance($face, 'imageFile');
-            if ($face->upload(time())) {
+            $face->imageFile = UploadedFile::getInstance($face, 'imageFile');//上传!
+            $filename = 'face_' . time();
+            $dir = 'Uploads/'.$uid.'/face/';
+       //     if (!file_exists($dir)) mkdir($dir, true);//is_dir
+            if ($face->upload($filename, $dir)) {//新建目录和文件信息保存！
                 // 文件上传成功
-                $url='Uploads/'. $uid.'/'. time() . '.' . $face->imageFile->extension;
+                $url = $dir. $filename . '.' . $face->imageFile->extension;
                 $info->uid = $uid;
-                $info->face_box=$url;
+                $info->face_box = $url;
                 $info->save();
                 Yii::$app->getSession()->setFlash('success', '上传成功！');
                 return $this->redirect(['user']);
-            }else{
+            } else {
                 Yii::$app->getSession()->setFlash('danger', '上传失败！');
                 return $this->redirect(['user']);
             }
-        }
 
-     //   return $this->render('upload', ['model' => $model]);
+        }
     }
 
-       public function actionIndex()
+
+
+    public function actionWechatqr()
+    {
+        $qrcode = new Upload();
+        $uid = Yii::$app->user->id;
+
+        $info = Info::findOne($uid);
+        if ($info == null) {
+            $info = new Info();
+        }
+
+        //上传文件。参数：表单对象模型，field表单域name.//返回一个文件对象。
+
+        if (Yii::$app->request->isPost) {
+            $qrcode->imageFile = UploadedFile::getInstance($qrcode, 'imageFile');//上传!
+            $filename = 'wechatqr_' . time();
+            $dir = 'Uploads/'.$uid.'/wechatqr_/';
+            //     if (!file_exists($dir)) mkdir($dir, true);//is_dir
+            if ($qrcode->imageFile) {
+                $qrcode->upload($filename, $dir);//新建目录和文件信息保存！
+                // 文件上传成功
+                $url = $dir. $filename . '.' . $qrcode->imageFile->extension;
+                $info->uid = $uid;
+                $info->wechat_qrcode = $url;
+                if($info->save()){
+                    Yii::$app->getSession()->setFlash('success', '上传成功！');
+                    return $this->redirect(['user/info']);
+                }else{
+                    Yii::$app->getSession()->setFlash('danger', '保存失败！');
+                    return $this->redirect(['user/info']);
+                }
+
+            } else {
+                Yii::$app->getSession()->setFlash('danger', '上传失败！');
+                return $this->redirect(['user']);
+            }
+
+        }
+
+
+    }
+
+
+    public function actionIndex()
        {
         //   return $this->redirect(['user/user']);
            $this->redirect(['/user/user']);
        }
 
-       public function actionUser()
-       {
-           $uid=Yii::$app->user->id;
-           $model = $this->findModel($uid);
-           $face= new Upload();
-          // $info = Info::findOne($uid);
-           $info = Info::findOne($uid);
-           if ($info==null) {$info = new Info();}
 
-           if ($model->load(Yii::$app->request->post()) && $model->save()) {
-           //    Yii::$app->getSession()->setFlash('success', '设置成功！');
-               Yii::$app->session->setFlash('success', '设置成功！');
-               return $this->redirect([
-                   'vcards',
-                   // id' => $model->uid,
-               ]);
-           } else {
 
-           return $this->render('user', [
-               'model' => $model,
-               'info' => $info,
-               'face' => $face,
-           ]);}
-       }
 
     protected function saveform($model,$redirect,$render){
         $request1=Yii::$app->request;
@@ -132,21 +159,51 @@ class UserController extends Controller
         }
     }
 
+    public function actionUser()
+    {
+        $uid=Yii::$app->user->id;
+        $model = $this->findModel($uid);
+        $face= new Upload();
+        $qrcode = new Upload();
+        // $info = Info::findOne($uid);
+        $info = Info::findOne($uid);
+        if ($info==null) {$info = new Info();}
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('success', '设置成功！');
+            return $this->redirect(['user/user']);
+        } else {
+
+            return $this->render('user', [
+                'model' => $model,
+                'info' => $info,
+                'face' => $face,
+                'qrcode' =>$qrcode,
+            ]);}
+    }
+
     public function actionInfo()
     {
- //       $request = Yii::$app->request;
-        $id=Yii::$app->user->id;
-        $tempmodel=Info::findOne($id);
-        if ($tempmodel==null){
-            $model = new Info();
-            $model->uid=$id;
-            return  $this->saveform($model,['vcards'],'info');
+        $uid=Yii::$app->user->id;
+        $info=Info::findOne($uid);
+        $qrcode = new Upload();
+        if ($info==null){$info=new Info();}
+        $info->uid=$uid;
+        $request=Yii::$app->request;
+        if($request->isPost){
 
-        }
-        if(isset($tempmodel)){
-            $model=$tempmodel;
-            $model->uid=$id;
-        return  $this->saveform($model,['vcards'],'info');
+
+            $info->load($request->post());
+
+            $info->save();//insert to
+            //  Yii::$app->user->setFlash('success', '详细信息设置成功！');
+            Yii::$app->getSession()->setFlash('success', '设置成功！');
+            return $this->redirect(['user/info']);
+        }else{
+            return $this->render('info', [
+                'info' => $info,
+                'qrcode' =>$qrcode,
+            ]);
         }
 
     }
@@ -162,47 +219,46 @@ class UserController extends Controller
 
     public function actionVcards()
     {
-        return $this->render('vcards');
+
+        $uid=Yii::$app->user->id;
+        $user = User::findOne($uid);
+        $role=$user->role;
+
+        return $this->render('vcards',[
+            'role' =>$role
+        ]);
     }
 
 public function actionAntisetting()
 {
 
-    $id=Yii::$app->user->id;
-    $tempmodel=AntiSetting::findOne($id);
+    $uid=Yii::$app->user->id;
+    $model=AntiSetting::findOne($uid);
 
-    if ($tempmodel==null){
+
+    if ($model==null){
         $model = new AntiSetting();
-        $model->uid=$id;
-        $request=Yii::$app->request;
-        if($request->isPost){
-            $model->load($request->post());
-            $model->save();//insert to
-            Yii::$app->getSession()->setFlash('success', '设置成功！');
-            return $this->redirect(['anti']);
-        }else{
-            return $this->render('_form_antisetting', [
-                'model' => $model,
-            ]);
-        }
+        $model->uid=$uid;//必填！
     }
 
-    if(isset($tempmodel)){
-        $model=$tempmodel;
-//        $model->uid=$id;
         $request=Yii::$app->request;
         if($request->isPost){
             $model->load($request->post());
-            $model->save();//insert to
+            if (!$model->load($request->post())){
+                die('赋值失败！');
+            }
+            $model->save();
+            if (!$model->save()){
+                die('保存失败！');
+            }else{
             Yii::$app->getSession()->setFlash('success', '设置成功！');
-            return $this->redirect(['anti']);
+            return $this->redirect(['antisetting']);}
         }else{
             return $this->render('_form_antisetting', [
                 'model' => $model,
             ]);
         }
 
-    }
 }
 
     public function actionAntireply()
@@ -217,9 +273,13 @@ public function actionAntisetting()
             $request=Yii::$app->request;
             if($request->isPost){
                 $model->load($request->post());
-                $model->save();//insert to
+                if($model->save()){
                 Yii::$app->getSession()->setFlash('success', '设置成功！');
                 return $this->redirect(['anti']);
+                }else{
+                    Yii::$app->getSession()->setFlash('danger', '保存失败！');
+                    return $this->redirect(['anti']);
+                }
             }else{
                 return $this->render('_form_antireply', [
                     'model' => $model,
@@ -245,57 +305,76 @@ public function actionAntisetting()
         }
     }
 
-    /**
-        * Displays a single User model.
-        * @param integer $id
-        * @return mixed
-        */
-       public function actionView($id)
-       {
-           return $this->render('view', [
-               'model' => $this->findModel($id),
-           ]);
-       }
 
-       /**
-        * Creates a new User model.
-        * If creation is successful, the browser will be redirected to the 'view' page.
-        * @return mixed
-        *
-       public function actionCreate()
-       {
-           $model = new User();
 
-           if ($model->load(Yii::$app->request->post()) && $model->save()) {
-               return $this->redirect(['view', 'id' => $model->uid]);
-           } else {
-               return $this->render('create', [
-                   'model' => $model,
-               ]);
-           }
-       }
-
-       /**
-        * Updates an existing User model.
-        * If update is successful, the browser will be redirected to the 'view' page.
-        * @param integer $id
-        * @return mixed
-        */
     public function actionSetting()
     {
 
  //       $model = $this->findModel($id);
         $model = Yii::$app->user->identity;
-
-
             return $this->render('setting', [
                 'model' => $model,
-                'passwordstatus'=>'',
-
             ]);
-
     }
 
+
+    public function actionSpecialsetting()
+    {
+        $uid=Yii::$app->user->id;
+        $model = Setting::findOne($uid);
+        $user=User::findOne($uid);
+        $image=new Upload();
+        if ($model==null) {
+            $model = new Setting();
+        $model->uid=$uid;
+        }
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                $model->save();
+
+                Yii::$app->getSession()->setFlash('success', '设置成功！');
+               return $this->redirect(['specialsetting']);
+                // form inputs are valid, do something here
+             //   return;
+            }
+        }
+
+        return $this->render('specialsetting', [
+            'role'=>$user->role,
+            'model' => $model,
+            'image' => $image,
+        ]);
+    }
+
+    public function actionPostbackground(){
+        $bg_image=new Upload();
+        $uid=Yii::$app->user->id;
+
+        $bg_image->imageFile = UploadedFile::getInstance($bg_image, 'imageFile');
+        if ($bg_image->imageFile){
+            $filename='bg_'.$uid.'_'.time();
+            $filepath='Uploads/bg_image/user_image/';
+            if ($bg_image->upload($filename, $filepath)){
+                $model=Setting::findOne($uid);
+                if ($model==null){
+                    $model=new Setting();
+                    $model->uid=$uid;
+                }
+                $model->bg_image=$filepath.$filename.'.'.$bg_image->imageFile->extension;
+                if ($model->save()){
+                Yii::$app->getSession()->setFlash('success', '上传成功！');
+                $this->redirect(['specialsetting']);
+                }
+            }
+        }else{
+            Yii::$app->getSession()->setFlash('danger', '上传失败！');
+            $this->goBack(['user/specialsetting']);
+        }
+
+
+
+    }
 
 
     public function actionPassword()

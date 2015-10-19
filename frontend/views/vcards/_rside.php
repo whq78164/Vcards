@@ -8,21 +8,19 @@
 		
 			
 			
-				<li id="j-i-add-store">
+				<!--li id="j-i-add-store">
 					<a href="javascript:void(0)" data-action="toastIcon">
 						<i class="iconfont i-sc" id="i-sc"></i>
 						<div class="m-tle">收藏名片</div>
 					</a>
 				</li>
-			
-		
 	
 				<li id="j-i-add-swap">
 					<a href="javascript:void(0)">
 					<i class="iconfont i-jh" id="i-jh"></i>
 					<div class="m-tle">交换名片</div>
 					</a>
-				</li>
+				</li-->
 			
 				<li id="phoneShare">
 			<a href="javascript:void(0)">

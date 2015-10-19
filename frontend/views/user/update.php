@@ -9,7 +9,7 @@ $this->title = Yii::t('tbhome', 'Update {modelClass}: ', [
     'modelClass' => 'User',
 ]) . ' ' . $model->name;
 
-$this->params['breadcrumbs'][] = ['label' => Yii::t('tbhome', 'Users'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('tbhome', 'Users'), 'url' => ['indexuser']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->uid]];
 $this->params['breadcrumbs'][] = Yii::t('tbhome', 'Update');
 ?>
@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = Yii::t('tbhome', 'Update');
 
     <?= $this->render('_form', [
         'model' => $model,
+       // 'submitbutton' => $submitbutton,
     ]) ?>
 
 </div>

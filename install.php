@@ -228,6 +228,8 @@ if($action == 'db') {
 
         $db = $_POST['db'];
         $user = $_POST['user'];
+        //$user['username']
+        //$user['password']
         $pieces = explode(':', $db['server']);//把字符串打散成数组，分割号：
         $db['port'] = !empty($pieces[1]) ? $pieces[1] : '3306';
        // $link = mysqli_connect($db['server'], $db['username'], $db['password']);
@@ -268,14 +270,6 @@ if($action == 'db') {
                     $error .= $link->connect_errno;
                 }
 
-            $link->query("SET character_set_connection=utf8, character_set_results=utf8, character_set_client=binary");
-            $link->query("SET sql_mode=''");
-            $link->query('set names "utf8"');
-
-            require("data/DBmanager.php");
-            $DBmanager = new DBManager($db['server'], $db['username'], $db['password'],$db['name']);
-            $DBmanager->executeFromFile("data/db.sql");
-            $DBmanager->close();
 
 
             // mysqli_select_db($link,$db['name']);
@@ -289,24 +283,51 @@ if($action == 'db') {
 
 
             $config = local_config();
-            $cookiekey = make_password();
+			$commonconfig=common_config();
+      //      $cookiekey = make_password();
             //     $authkey = local_salt(8);
             $config = str_replace(
                 array(
-                '{db-server}', '{db-username}', '{db-password}', '{db-port}', '{db-name}', '{db-tablepre}', '{cookiekey}'
+                '{db-server}', '{db-username}', '{db-password}', '{db-port}', '{db-name}', '{db-tablepre}'//, '{cookiekey}'
             ),
                 array(
-                $db['server'], $db['username'], $db['password'], $db['port'], $db['name'], $db['prefix'], $cookiekey
+                $db['server'], $db['username'], $db['password'], $db['port'], $db['name'], $db['prefix']//, $cookiekey
             ),
                 $config
             );
-
+			
+			$commonconfig=str_replace(
+                array(
+                '{db-server}', '{db-username}', '{db-password}', '{db-port}', '{db-name}', '{db-tablepre}'//, '{cookiekey}'
+            ),
+                array(
+                $db['server'], $db['username'], $db['password'], $db['port'], $db['name'], $db['prefix']//, $cookiekey
+            ),
+                $commonconfig
+            );
             //  local_mkdirs(IA_ROOT . '/data');
             file_put_contents(IA_ROOT . '/frontend/config/main-local.php', $config);
-            touch(IA_ROOT . '/data/install.lock');
-            setcookie('action', 'finish');
-            header('location: ?refresh');
-            exit();
+            file_put_contents(IA_ROOT . '/common/config/main-local.php', $commonconfig);
+
+
+//$user['username']
+            //$user['password']
+
+
+            $link->query("SET character_set_connection=utf8, character_set_results=utf8, character_set_client=binary");
+            $link->query("SET sql_mode=''");
+            $link->query('set names "utf8"');
+     //       $link->query('INSERT INTO tbhome_sys (admin_user, user_password) VALUES ('.$user['username'].',' .$user['password'].')');
+
+            require("data/DBmanager.php");
+            $DBmanager = new DBManager($db['server'], $db['username'], $db['password'],$db['name']);
+            $DBmanager->executeFromFile("data/db.sql");
+            $DBmanager->close();
+    setcookie('action', 'finish');
+    touch(IA_ROOT . '/data/install.lock');
+    header('location: ?refresh');
+    exit();
+
 
 
 
@@ -382,9 +403,10 @@ function local_config() {
             'charset' => 'utf8',
             'tablePrefix' => 'tbhome_',
         ],
+
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'www.vcards.top2FV-{cookiekey}',
+            'cookieValidationKey' => 'xpWfUhbMG32BI2FV-SDukLcc4f0v6jA7',
         ],
     ],
 ];
@@ -393,6 +415,38 @@ return \$config;
 EOF;
     return trim($cfg);
 }
+
+function common_config() {
+    $cfg = <<<EOF
+<?php
+\$config = [
+    'components' => [
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn'=>'mysql:host={db-server};dbname={db-name};port={db-port}',
+            'username' => '{db-username}',
+            'password' => '{db-password}',
+            'charset' => 'utf8',
+            'tablePrefix' => 'tbhome_',
+        ],
+         'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'viewPath' => '@common/mail',
+            // send all mails to a file by default. You have to set
+            // 'useFileTransport' to false and configure a transport
+            // for the mailer to send real emails.
+            'useFileTransport' => true,
+        ],
+    
+    ],
+];
+return \$config;
+
+EOF;
+    return trim($cfg);
+}
+
+
 //上面是数据库配置文件内容。
 function local_mkdirs($path) {
     if(!is_dir($path)) {
@@ -749,6 +803,7 @@ function tpl_install_db($error = '') {
 					<label class="col-sm-2 control-label">数据库主机</label>
 					<div class="col-sm-4">
 						<input class="form-control" type="text" name="db[server]" value="127.0.0.1">
+						<p>默认端口为3306，如需更改，请在主机名后加冒号。<br/>如127.0.0.1:3399或msqlrds.vcards.top:3399</p>
 					</div>
 				</div>
 				<div class="form-group">
@@ -780,7 +835,7 @@ function tpl_install_db($error = '') {
 			</div>
 		</div>
 
-		<div class="panel panel-default">
+		<!--div class="panel panel-default">
 			<div class="panel-heading">管理选项</div>
 			<div class="panel-body">
 				<div class="form-group">
@@ -802,7 +857,7 @@ function tpl_install_db($error = '') {
 					</div>
 				</div>
 			</div>
-		</div>
+		</div-->
 
 		<input type="hidden" name="do" id="do" />
 		<ul class="pager">
@@ -827,11 +882,11 @@ function tpl_install_db($error = '') {
 					error = true;
 				}
 			});
-			if(error) {
+/*			if(error) {
 				alert('请检查未填项');
 				return false;
 			}
-			if($(':password').eq(0).val() != $(':password').eq(1).val()) {
+*/			if($(':password').eq(0).val() != $(':password').eq(1).val()) {
 				$(':password').parent().parent().addClass('has-error');
 				alert('确认密码不正确.');
 				return false;
@@ -855,13 +910,35 @@ function tpl_install_finish() {
 		恭喜您!已成功安装“唯卡微名片 - 公众平台自助开源引擎”系统，您现在可以:
 		<br><br><br><br>
 		<p>
-		<span><a target="_blank" class="btn btn-success" href="./frontend/web/index.php">访问网站首页</a></span>
+		
 		<span>
-<a target="_blank" class="pull-right btn btn-success" href="./backend/web/index.php">访问系统后台</a>
-</span>
+<a target="_blank" class="pull-right btn btn-success" href="./admin/">访问系统后台</a>
+        </span>
+		
+		<span>
+		<a target="_blank" class="btn btn-success" href="./frontend/web/index.php">访问网站首页</a>
+		</span>
+
+</p>
+<p>
+初始系统管理员登录名：admin
+<br/>密码：adminadmin
+<br/>请尽快添加或修改系统管理员！！！
 </p>
 
 	</div>
+	
+		<div class="alert alert-danger">
+		<h1>注意！该内容只显示一遍。</h1>
+		<br>
+<p>
+初始系统管理员登录名：admin
+<br/>密码：adminadmin
+<br/>请尽快修改默认设置或添加新系统管理员！！！
+</p>
+
+	</div>
+	
 
 	<!--div class="form-group">
 		<h5><strong>微擎应用商城</strong></h5>

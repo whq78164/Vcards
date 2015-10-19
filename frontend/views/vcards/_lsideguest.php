@@ -11,7 +11,7 @@
 			</div>
 			<div class="m-reg">
 				<div class="m-txt">还没有名片账号?</div>
-				<a class="m-btn" href="<?=\yii\helpers\Url::to(['vcards/login'], true)?>">马上创建名片</a>
+				<a class="m-btn" href="<?=\yii\helpers\Url::to(['site/signup'], true)?>">马上创建名片</a>
 			</div>
 		
 	

@@ -6,15 +6,18 @@
 
 <aside class="flexbox flex-vertical m-sidebox" id="j-m-aside" data-action="aside-menu2">
 	
- 
+ <?php
+ use frontend\models\Info;
+ $loginuid=Yii::$app->user->id;
+ $loginuser= Info::findOne($loginuid);
+ ?>
 	
 		
 			<div class="m-side-member">
-<!--头像				<a href="http://mp.soqi.cn/mpCompany/goIndex.xhtml" class="m-facebox fixed"-->
+<!--头像	-->
 				<a href="<?=yii\helpers\Url::to(['user/user'], true)?>" class="m-facebox fixed">
 					<div class="m-face iconfont">
-					<!--img src="http://7xitth.com2.z0.glb.qiniucdn.com/MjQ5NDM2MDI=.jpg-img120?t=1438700327296" onerror="this.style.display='none'"-->
-					<img src="picture/mjq5ndm2mdi=.jpg-img300" onerror="this.style.display='none'">
+					<img src="<?= $loginuser->face_box ? $loginuser->face_box : 'Uploads/default_face.jpg'?>" onerror="this.style.display='none'">
 					</div>
 				</a>
 				
@@ -22,10 +25,10 @@
 
 
 <!--姓名-->				
-          <a href="<?=yii\helpers\Url::to(['user/user'], true)?>">
+          <a href="<?=yii\helpers\Url::to(['user/info'], true)?>">
 		  <div class="m-name ui-elli">
 		  <span style="color: #c5c9d2;">
-		  	<?= $userdata['name'] ?>
+		  	<?= $loginuser->unit ? $loginuser->unit : '单位名未填写' ?>
 		  </span>
 		  </div>
 		  </a>
@@ -64,9 +67,9 @@
 				</ul>
 			</div>
 			
-			<div class="m-side-ft">
+		<!--	<div class="m-side-ft">
 				<a href="" class="iconfont i-search">企业搜索</a>
 				<a href="<?=yii\helpers\Url::to(['vcards/logout'], true)?>" class="iconfont i-out">退出</a>
 			</div>
-		
+		-->
 </aside>

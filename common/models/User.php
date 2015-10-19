@@ -24,6 +24,7 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    public $password;
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 //    const ROLE_USER = 10;
@@ -65,6 +66,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['password_reset_token'], 'unique'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+
         ];
     }
 
@@ -79,16 +81,17 @@ class User extends ActiveRecord implements IdentityInterface
             'mobile' => Yii::t('tbhome', 'Mobile'),
             'qq' => Yii::t('tbhome', 'Qq'),
             'email' => Yii::t('tbhome', 'Email'),
- //           'password_hash' => Yii::t('tbhome', 'Password Hash'),
+            'password_hash' => Yii::t('tbhome', '密码加密值'),
  //           'auth_key' => Yii::t('tbhome', 'Auth Key'),
- //           'status' => Yii::t('tbhome', 'Status'),
+            'status' => Yii::t('tbhome', 'Status'),
             'login' => Yii::t('tbhome', 'Login'),
  //           'password_reset_token' => Yii::t('tbhome', 'Password Reset Token'),
- //           'role' => Yii::t('tbhome', 'Role'),
- //           'created_ip' => Yii::t('tbhome', 'Created Ip'),
- //           'updated_ip' => Yii::t('tbhome', 'Updated Ip'),
- //           'created_at' => Yii::t('tbhome', 'Created At'),
- //           'updated_at' => Yii::t('tbhome', 'Updated At'),
+            'role' => Yii::t('tbhome', 'Role'),
+            'created_ip' => Yii::t('tbhome', 'Created IP'),
+            'updated_ip' => Yii::t('tbhome', 'Updated Ip'),
+            'created_at' => Yii::t('tbhome', 'Created At'),
+            'updated_at' => Yii::t('tbhome', 'Updated At'),
+          'password' => Yii::t('tbhome', 'Password'),
         ];
     }
 
@@ -223,4 +226,5 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
 }

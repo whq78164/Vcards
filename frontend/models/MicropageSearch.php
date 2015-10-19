@@ -41,7 +41,10 @@ class MicropageSearch extends Micropage
      */
     public function search($params)
     {
-        $query = Micropage::find();
+        $query = Micropage::find()->where(['uid' =>Yii::$app->user->id ]);
+       // if ($query==null){$query=Micropage::find();}
+  //      $query=Micropage::find();
+ //      $query=Micropage::find()->asArray();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

@@ -11,8 +11,6 @@
         <div class="am-u-sm-9">
             <input name="User[name]" type="text" id="user-name" placeholder="姓名 / Name" value="<?=$model->name?>"  >
             <small>输入姓名，让我们记住您!
-                <?=Yii::$app->user->identity->name?>
-                <?=Yii::$app->user->id;?>
             </small>
         </div>
     </div>

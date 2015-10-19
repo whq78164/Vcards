@@ -9,7 +9,7 @@ use frontend\models\AntiCode;
 
 class AntiController extends \yii\web\Controller
 {
-    public function actionIndex($uid=1)
+    public function actionIndex($uid=1, $replyid=1)
     {
       //  $antireply=new AntiReply();
         $antisetting=new AntiSetting();
@@ -24,8 +24,9 @@ class AntiController extends \yii\web\Controller
         return $this->renderPartial(
             //'_form_antireply',
             'index',
-           ['setting'=>$setting]
+           ['setting'=>$setting,'replyid'=>$replyid,]
         );
+
     }
 
 
@@ -45,19 +46,41 @@ class AntiController extends \yii\web\Controller
         /*接收POST数据*/
         $FWcode=$_POST['FWcode'];//echo $FWcode; 只能传递数字类型的数据
         $FWuid=$_POST['FWuid'];
+        $replyid = $_POST['replyid'];//回复语
+
+        //数据表查询取回数据
         $api=AntiSetting::findOne($FWuid)->attributes;
   //      var_dump($api);
         $table='ims_super_securitycode_data_'.$api['api_parameter'];
         $sql='SELECT * FROM '.$table.' WHERE code="'.$FWcode.'"';
         $command = $connection->createCommand($sql);
         $queryone=$command->queryOne();
+
+
+        $reply=AntiReply::findOne($replyid);
+  //      $reply= new AntiReply();
+        $replySuccess=$reply->success;
+        $replyFail=$reply->fail;
+        $replySuccess=str_replace([
+            '[SecurityCode]', '[number]', '[Factory]', '[Products]', '[Brand]', '[Spec]', '[Remarks]',
+        ], [
+            $queryone['code'], $queryone['num'], $queryone['factory'], $queryone['type'], $queryone['brand'], $queryone['spec'], $queryone['remarks'],
+        ], $replySuccess);
+
+        $replyFail=str_replace([
+            '[SecurityCode]', '[number]', '[Factory]', '[Products]', '[Brand]', '[Spec]', '[Remarks]',
+        ], [
+            $queryone['code'], $queryone['num'], $queryone['factory'], $queryone['type'], $queryone['brand'], $queryone['spec'], $queryone['remarks'],
+        ], $replyFail);
+
+
     //    echo $queryone['brand'];
     //    echo $queryone['remarks'];
 
 //		echo $FWcode;//$_POST['FWcode'];
 
         /*建立数据表模型*/
-        $code=AntiCode::findOne(['code'=>$FWcode]);
+ //       $code=AntiCode::findOne(['code'=>$FWcode]);
 
 
         /*视图输出控制器 */
@@ -69,9 +92,10 @@ class AntiController extends \yii\web\Controller
             //     $Form1->where($condition)->setField('time', time());//获取查询时间戳
 
             echo '<div class="alert alert-success" >';
-            echo '恭喜！是正品！';
+       //     echo '恭喜！是正品！';
 
-	   echo '<br/>编码 ：'.$queryone['code'];
+	   echo $replySuccess;//'<br/>编码 ：'.$queryone['code'].$queryone['type'];
+
             /*
                    if ($data['money']>0){
                    echo '<br/>摇奖抽中：<br/><strong>'.$data['money'].'</strong> 元！';
@@ -116,7 +140,7 @@ class AntiController extends \yii\web\Controller
 
         else{
             echo '<div class="alert alert-danger" >';
-            echo '谨防假冒！！';//'您所查询的编码不存在！请谨防假冒！';
+            echo $replyFail;//'谨防假冒！！';//'您所查询的编码不存在！请谨防假冒！';
             echo '</div>';
         }
 

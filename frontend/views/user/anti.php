@@ -33,11 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 
-
 <div class="col-sm-12 col-md-8 ">
         <div class="panel panel-primary">
             <div class="panel-heading">回复语：</div>
-            <a href="<?=yii\helpers\Url::to(['user/antireply'],true)?>">
+            <a href="<?=yii\helpers\Url::to(['antireply/onereply'],true)?>">
 <button type="button" class="am-btn am-btn-warning am-btn-block">
 
     查询回复设置<span class="am-icon-angle-right pull-right"></span>
@@ -52,3 +51,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </a>
 </div>
 </div>
+
+
+

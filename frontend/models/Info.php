@@ -20,12 +20,14 @@ use Yii;
  * @property string $wechat_qrcode
  * @property string $fax
  * @property string $location
+ *
  */
 class Info extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
+ //   public $imageFile;
     public static function tableName()
     {
         return '{{%card_info}}';
@@ -42,8 +44,9 @@ class Info extends \yii\db\ActiveRecord
             [['card_title', 'department', 'position'], 'string', 'max' => 50],
             [['unit'], 'string', 'max' => 80],
             [['face_box', 'address', 'wechat_qrcode'], 'string', 'max' => 255],
-            [['wechat_account', 'fax'], 'string', 'max' => 20],
-            [['location'], 'string', 'max' => 30]
+            [['wechat_account','work_tel', 'fax'], 'string', 'max' => 20],
+            [['location'], 'string', 'max' => 30],
+   //         [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg, bmp'],
         ];
     }
 
@@ -66,6 +69,8 @@ class Info extends \yii\db\ActiveRecord
             'wechat_qrcode' => Yii::t('tbhome', 'Wechat Qrcode'),
             'fax' => Yii::t('tbhome', 'Fax'),
             'location' => Yii::t('tbhome', 'Location'),
+            'imageFile'=>'二维码',
+            'work_tel' => '工作电话',
         ];
     }
 

@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'link_title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'link_url')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'link_url')->textInput(['maxlength' => true])->hint('网址开头，请记得填写http://') ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('tbhome', 'Create') : Yii::t('tbhome', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

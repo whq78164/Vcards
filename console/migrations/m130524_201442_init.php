@@ -169,7 +169,7 @@ class m130524_201442_init extends Migration
         $this->insert('{{%user}}', [
                'uid' => 1,
             'username' => '泉州通宝科技',
-            'password_hash' => '$2y$13$ZJ/ceQBUQCYB3mDDQAeat.AsfMIQO/uSKsBk9lrMi9eNXF5sJ73nm',//初始密码：www.vcards.top
+            'password_hash' => '$2y$13$ZJ/ceQBUQCYB3mDDQAeat.AsfMIQO/uSKsBk9lrMi9eNXF5sJ73nm',
             'name' => '泉州通宝科技',
             'qq' =>'798904845',
             'mobile' =>'15980016080',

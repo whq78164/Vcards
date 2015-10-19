@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use frontend\models\Micropage;
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\MicropageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('tbhome', 'Micropages');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="container">
+<div class="">
 
     <h1><?//= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,8 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
        //     'id',
-       //    'uid',
+        'uid',
+
             'page_title',
+
        //     'page_content:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],

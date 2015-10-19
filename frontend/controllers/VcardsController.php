@@ -8,6 +8,9 @@ use common\models\LoginForm;
 use frontend\models\SignupForm;
 use common\models\User;
 use frontend\models\Info;
+use frontend\models\Microlink;
+use frontend\models\Micropage;
+use frontend\models\Setting;
 use yii\db\Connection;
 class VcardsController extends \yii\web\Controller
 {
@@ -44,16 +47,47 @@ http://localhost/index.php?r=site/page&view=about
             $user2=array();
         }
 */
-
         $user1=User::findOne($uid)->attributes;
+        $user2=Info::findOne($uid);
+        $setting=Setting::findOne($uid);
+        if($setting==null){
+            $setting=new Setting();
+            $setting->bg_image='Uploads/bg_image/tbhome.jpg';
+        }
+
+        if ($user2==null) {
+            Yii::$app->getSession()->setFlash('danger', '请填写名片信息！');
+            $this->redirect(['user/user']);
+        }
         $user2=Info::findOne($uid)->attributes;
         $user = array_merge($user1, $user2);
+        $microlink=Microlink::find()->where(['uid' => $uid, 'status' => 10])->all();
+        $micropage=Micropage::find()->where(['uid' => $uid, 'status' => 10])->all();
 
+      //  if ($microlink==null) {$microlink=new Microlink();}
+      //  var_dump($micropage);
         return $this->renderPartial('index',
             [
+                'bg_image'=>$setting->bg_image ? $setting->bg_image : 'Uploads/bg_image/tbhome.jpg',
+                'user0'=>$user1,
                 'userdata'=>$user,
+                'microlink'=>$microlink,
+                'micropage'=>$micropage,
             ]
         );
+
+    }
+
+    public function actionMicropage($id=1)
+    {
+        $micropage= Micropage::findOne(['id'=>$id]);//find()->where(['uid' => $uid, 'id' => $id])->all();
+        if (!$micropage) {$micropage=new Micropage();}
+        return $this->renderPartial('micropage',
+            [
+                'micropage'=>$micropage,
+            ]
+        );
+
     }
 
     public function actionLogout()
@@ -84,6 +118,8 @@ return $this->render('glogin', [
             ]);
         }
     }
+
+
 
 
 	

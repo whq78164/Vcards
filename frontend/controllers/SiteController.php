@@ -139,34 +139,7 @@ yii\filters\AccessRule::roles：指定该规则用于匹配哪些用户角色。
      *
      * @return mixed
      */
-    public function actionLogin()
-    {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-          //  return $this->goBack();
-            return $this->redirect('@web/index.php?r=user/index');
-        } else {
-            return $this->render('login', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Logs out the current user.
-     *
-     * @return mixed
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
 
     /**
      * Displays contact page.
@@ -178,7 +151,9 @@ yii\filters\AccessRule::roles：指定该规则用于匹配哪些用户角色。
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+       //     if (Yii::$app->params['adminEmail']) {
+         //       Yii::$app->session->setFlash('success', Yii::t('tbhome', Yii::$app->params['adminEmail']));
+                Yii::$app->session->setFlash('success', Yii::t('tbhome', 'Thank you for contacting us. We will respond to you as soon as possible.'));
             } else {
                 Yii::$app->session->setFlash('error', 'There was an error sending email.');
             }
@@ -206,6 +181,23 @@ yii\filters\AccessRule::roles：指定该规则用于匹配哪些用户角色。
      *
      * @return mixed
      */
+    public function actionLogin()
+    {
+        if (!\Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            //  return $this->goBack();
+            return $this->redirect('@web/index.php?r=user/index');
+        } else {
+            return $this->render('login', [
+                'model' => $model,
+            ]);
+        }
+    }
+
     public function actionSignup()
     {
         $model = new SignupForm();
@@ -214,6 +206,13 @@ yii\filters\AccessRule::roles：指定该规则用于匹配哪些用户角色。
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
+                    $setting=new \frontend\models\Setting;
+      //              $info =new \frontend\models\Info;
+                    $uid=Yii::$app->user->id;
+                    $setting->uid=$uid;
+        //            $info->uid=$uid;
+                    $setting->save();
+          //          $info->save();
  //                   return $this->goHome();
                      $this->redirect('@web/index.php?r=user/index');
 
@@ -227,6 +226,14 @@ yii\filters\AccessRule::roles：指定该规则用于匹配哪些用户角色。
 
     }
 
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return $this->goHome();
+    }
+
+
     /**
      * Requests password reset.
      *
@@ -237,7 +244,7 @@ yii\filters\AccessRule::roles：指定该规则用于匹配哪些用户角色。
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
+                Yii::$app->session->setFlash('success', Yii::t('tbhome', 'Check your email for further instructions.'));
 
                 return $this->goHome();
             } else {

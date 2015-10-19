@@ -14,13 +14,31 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'mobile')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'password')->passwordInput(['placeholder'=>'管理员请注意！新密码至少应包含6个字符，否则账户将被锁死！'])//->hint('管理员请注意！新密码至少应包含6个字符，否则账户将被锁死！') ?>
+
+
+    <?= $form->field($model, 'qq')->textInput() ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
+    <?//= $form->field($model, 'auth_key')->textInput(['maxlength' => true]) ?>
+
     <?//= $form->field($model, 'status')->textInput() ?>
 
+    <?//= $form->field($model, 'login')->textInput() ?>
+
     <?//= $form->field($model, 'password_reset_token')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'role')->dropDownList([
+        '10'=>'普通会员',
+        '20'=>'VIP会员',
+        '30'=>'企业会员',
+        '100'=>'系统管理员'
+    ]) ?>
+
+    <?= $form->field($model, 'status')->dropDownList(['10'=>'启用', '20'=>'禁用']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('tbhome', 'Create') : Yii::t('tbhome', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -34,6 +34,7 @@ class AntiReply extends \yii\db\ActiveRecord
             [['uid', 'valid_clicks'], 'integer'],
             [['tag'], 'string', 'max' => 10],
             [['success', 'fail'], 'string', 'max' => 255],
+            [['content'], 'string'],
             [['uid'], 'unique']
         ];
     }
@@ -49,6 +50,7 @@ class AntiReply extends \yii\db\ActiveRecord
             'tag' => Yii::t('tbhome', 'Tag'),
             'success' => Yii::t('tbhome', 'Success'),
             'fail' => Yii::t('tbhome', 'Fail'),
+            'content' => Yii::t('tbhome', '自定义网页'),
             'valid_clicks' => Yii::t('tbhome', 'Valid Clicks'),
         ];
     }

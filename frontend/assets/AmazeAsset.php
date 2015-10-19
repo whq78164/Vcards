@@ -27,11 +27,11 @@ class AmazeAsset extends AssetBundle
     public $js = [
         'assets/amaze/js/jquery.min.js',
 'http://cdn.amazeui.org/amazeui/2.4.2/js/amazeui.min.js',
-
+        'assets/amaze/js/app.js',
 //'http://cdn.amazeui.org/amazeui/2.4.2/js/amazeui.ie8polyfill.min.js',
 
 //'http://cdn.amazeui.org/amazeui/2.4.2/js/amazeui.widgets.helper.min.js',
-        'assets/amaze/js/app.js',
+
     ];
     /*
     public $depends = [

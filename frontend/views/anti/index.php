@@ -43,9 +43,12 @@ AppAsset::register($this);
             var FWcode = $("#FWcode").val();
 //var FWuid = document.getElementById('FWuid').value;
             var FWuid = $("#FWuid").val();
+            var replyid = $("#replyid").val();
+
 //alert (FWcode1);
             $.post("<?=yii\helpers\Url::to(['anti/antiquery'],true)?>", {
                 FWcode: FWcode,
+                replyid: replyid,
                 FWuid: FWuid
             }, function(data,status){
                 document.getElementById('ReturnResult').innerHTML = data;
@@ -73,6 +76,7 @@ AppAsset::register($this);
     <label class="pull-left">请输入防伪编码：</label>
     <input type="text" class="form-control" placeholder="请输入防伪密码" name="FWcode" id="FWcode">
     <br>
+    <INPUT type="hidden" id="replyid" name="replyid" value="<?=$replyid?>" />
     <INPUT type="hidden" id="FWuid" name="FWuid" value="<?=$setting->uid?>" />
     <button id="button" class="btn btn-lg btn-primary btn-block" onclick="fwcx()" >点击验证</button>
     <br>

@@ -5,12 +5,13 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
 
-$this->title = Yii::t('tbhome', '账户设置');
+$this->title = Yii::t('tbhome', '安全设置');
 $setting=$this->title;
 //$this->params['breadcrumbs'][] = ['label' => Yii::t('tbhome', 'Users'), 'url' => ['index']];
 //$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->uid]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<h1><?= Html::encode($this->title) ?></h1>
 <div class="am-g">
 
 
@@ -65,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </form>
-        <span><?=$passwordstatus?></span>
+
 </div>
 
 
