@@ -8,6 +8,8 @@ use frontend\models\AntiCodeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use frontend\models\AntiCodenew;
+
 
 /**
  * AnticodeController implements the CRUD actions for AntiCode model.
@@ -113,7 +115,7 @@ class AnticodeController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = AntiCode::findOne($id)) !== null) {
+        if (($model = AntiCodenew::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

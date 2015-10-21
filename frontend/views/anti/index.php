@@ -17,7 +17,7 @@ AppAsset::register($this);
     <meta name="author" content="">
     <meta name="csrf-param" content="_csrf">
     <meta name="csrf-token" content="<?= Yii::$app->request->csrfToken ?>">
-    <title><?=$setting->brand?></title>
+    <title><?=$antireply->tag?></title>
     <!-- Bootstrap core CSS -->
     <script Charset="UTF-8" type="text/javascript">
         /*
@@ -68,7 +68,7 @@ AppAsset::register($this);
 
 <body style="background-color: #eee;padding-top: 40px; padding-bottom: 40px;">
 <?php $this->beginBody() ?>
-<h3 class="form-signin-heading text-center"><?=$setting->title?></h3>
+<h3 class="form-signin-heading text-center"><?=$antireply->tag?></h3>
 
 <div class="container">
 
@@ -77,13 +77,13 @@ AppAsset::register($this);
     <input type="text" class="form-control" placeholder="请输入防伪密码" name="FWcode" id="FWcode">
     <br>
     <INPUT type="hidden" id="replyid" name="replyid" value="<?=$replyid?>" />
-    <INPUT type="hidden" id="FWuid" name="FWuid" value="<?=$setting->uid?>" />
+    <INPUT type="hidden" id="FWuid" name="FWuid" value="<?=$antireply->uid?>" />
     <button id="button" class="btn btn-lg btn-primary btn-block" onclick="fwcx()" >点击验证</button>
     <br>
     <div class="alert alert-info" id="ReturnResult">
 
     </div>
-    <label class="pull-right"><?=$setting->brand?></label>
+    <label class="pull-right"><?//=$setting->brand?></label>
 </div>
 <?php $this->endBody() ?>
 </body>

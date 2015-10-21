@@ -1,149 +1,233 @@
 <?php
 namespace frontend\controllers;
+use frontend\models\Product;
 use Yii;
 use common\models\User;
 use frontend\models\Info;
 use frontend\models\AntiReply;
 use frontend\models\AntiSetting;
 use frontend\models\AntiCode;
+use frontend\models\AntiCodenew;
+use yii\helpers\ArrayHelper;
+use yii\db\Query;
 
 class AntiController extends \yii\web\Controller
 {
-    public function actionIndex($uid=1, $replyid=1)
+
+    public function beforeAction($action)
     {
-      //  $antireply=new AntiReply();
-        $antisetting=new AntiSetting();
-        $setting=AntiSetting::findOne($uid);
-     //   $info = Info::findOne(['uid'=>$uid]);
-        if (!$setting) $setting= new AntiSetting();
-
-//        $model=$antireply->findOne($uid);
 
 
- //       return $this->renderPartial(
+        if (parent::beforeAction($action)) {
+            $Connection = \Yii::$app->db;
+            $data = '`tbhome_anti_code_'.\Yii::$app->user->id.'`';
+    //        $this->table=$data;
+            $moban = '`tbhome_anti_code`';
+            $sql = 'CREATE TABLE IF NOT EXISTS '.$data.' LIKE '.$moban;
+            $command=$Connection->createCommand($sql);
+            $command->execute();
+            if ($this->enableCsrfValidation && Yii::$app->getErrorHandler()->exception === null && !Yii::$app->getRequest()->validateCsrfToken()) {
+                throw new BadRequestHttpException(Yii::t('yii', 'Unable to verify your data submission.'));
+            }
+            return true;
+        }
+
+        return false;
+    }
+
+    public $layout='user';
+//    public $data;
+
+
+    public function actionIndex($replyid=1)
+    {
+        $antireply=new AntiReply();
+        $antireply=$antireply::findOne($replyid);
+        if (!$antireply || $antireply==null) {$antireply= new AntiReply();};
+
         return $this->renderPartial(
-            //'_form_antireply',
             'index',
-           ['setting'=>$setting,'replyid'=>$replyid,]
+           ['antireply'=>$antireply,'replyid'=>$replyid,]
         );
 
     }
 
+    public function actionGencode()
+    {
+        $uid=Yii::$app->user->id;
+        $product=Product::find()->where(['uid'=>$uid])->all();
+        $listData=ArrayHelper::map($product, 'id', 'name');
+        $reply=AntiReply::find()->where(['uid'=>$uid])->all();
+        $listReply=ArrayHelper::map($reply, 'id', 'tag');
+        $model = new AntiCode();
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+
+        return $this->render('_form_gencode', [
+            'model' => $model,
+            'listData'=>$listData,
+            'listReply'=>$listReply,
+
+        ]);
+    }
+
+    public function random($length, $type = NULL, $special = FALSE){
+        $str = "";
+        switch ($type) {
+            case 1:
+                $str = "0123456789";
+                break;
+            case 2:
+                $str = "abcdefghijklmnopqrstuvwxyz";
+                break;
+            case 3:
+                $str = "abcdefghijklmnopqrstuvwxyz0123456789";
+                break;
+            default:
+                $str = "abcdefghijklmnopqrstuvwxyz0123456789";
+                break;
+        }
+        return substr(str_shuffle(($special != FALSE) ? '!@#$%^&*()_+' . $str : $str), 0, $length);
+    }
+
+
+    public function actionPostgencode()
+    {
+        $Connection = \Yii::$app->db;
+        $table='tbhome_anti_code_'.Yii::$app->user->id;
+//        $column='code';
+  //      $presql="SELECT COUNT($column) from {{$table}}"." where code like '{$_POST['sStr']}%'";
+    //    $result=$Connection->createCommand($presql)->queryScalar();
+//        if (!empty($result)) {
+  //         echo $result;
+    //        exit;
+      //  }
+
+        //     $i=1;
+            //    while($i<=intval($_POST['sNum'])){
+ /*              for ($i=1; $i<=intval($_POST['sNum']); $i++){
+                    $model = new AntiCode();
+                    if ($model->load(Yii::$app->request->post())) {
+                        if ($model->validate()) {
+                    $code = $this->random(intval($_POST['slen']),$_POST['rule'],false);
+                            $Connection = \Yii::$app->db;
+                            $result=$Connection->createCommand()->insert($table, [
+                               'uid'=>Yii::$app->user->id,
+                                'code'=>$_POST['sStr'].$code,
+                                'productid'=>intval($model->productid),
+                                'replyid'=>intval($model->replyid),
+                                'prize'=>$model->prize,
+                                'query_time'=>0,
+                                'create_time'=>time(),
+                                'clicks'=>0,
+                                'status'=>10,
+                            ])->execute();
+                            if (!$result){echo '数据插入失败！';}
+                            //$i++;
+                        }else{echo '数据无效';}
+                    }
+                }
+
+*/
+        $model = new AntiCode();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                for ($i=0; $i<=(intval($_POST['sNum'])-1); $i++) {
+                    $code = $this->random(intval($_POST['slen']), $_POST['rule'], false);
+                    $tableColumn[$i]=[Yii::$app->user->id, $_POST['sStr'].$code, intval($model->productid), intval($model->replyid), $model->prize, 0, time(), 0, 10,];
+                }
+
+
+                $result=$Connection->createCommand()->batchInsert($table, ['uid', 'code', 'productid', 'replyid', 'prize', 'query_time', 'create_time', 'clicks', 'status'], $tableColumn)->execute();
+                if (!$result){echo '数据插入失败！';}
+                //$i++;
+            }else{echo '数据无效';}
+        }
+
+
+        $successMsg='成功生成'.$_POST['sNum'].'条数据！';
+        Yii::$app->getSession()->setFlash('success', $successMsg);
+        return $this->redirect(['anti/gencode']);
+
+    }
+
+
+
+
 
     public function actionAntiquery()
     {
-
-      $connection= new \yii\db\Connection([
-            'dsn'=>'mysql:host=rds26izw8p54t86315s7public.mysql.rds.aliyuncs.com;dbname=vcardswe7',
-            'username' => 'vcards',
-            'password' => 'gg770880',
-            'charset' => 'utf8',
-        ]);
-        $connection->open();
-
         header('Content-Type:text/html;charset=UTF-8');
 
-        /*接收POST数据*/
-        $FWcode=$_POST['FWcode'];//echo $FWcode; 只能传递数字类型的数据
-        $FWuid=$_POST['FWuid'];
-        $replyid = $_POST['replyid'];//回复语
+        $securityCode=$_POST['FWcode'];//echo $FWcode; 只能传递数字类型的数据
+        $uid=intval($_POST['FWuid']);
+        $replyid = intval($_POST['replyid']);//回复语
+        $table='tbhome_anti_code_'.$uid;
 
-        //数据表查询取回数据
-        $api=AntiSetting::findOne($FWuid)->attributes;
-  //      var_dump($api);
-        $table='ims_super_securitycode_data_'.$api['api_parameter'];
-        $sql='SELECT * FROM '.$table.' WHERE code="'.$FWcode.'"';
+        $connection=Yii::$app->db;
+        $sql='SELECT * FROM '.$table.' WHERE code="'.$securityCode.'"';
         $command = $connection->createCommand($sql);
-        $queryone=$command->queryOne();
+        $queryone=$command->queryOne();//返回数组，表anti_code_uid
 
+  //      $query0 = new Query();
+  //      $queryone = $query0->from($table)->where(['code' => $securityCode ])->one();
 
         $reply=AntiReply::findOne($replyid);
-  //      $reply= new AntiReply();
         $replySuccess=$reply->success;
         $replyFail=$reply->fail;
-        $replySuccess=str_replace([
-            '[SecurityCode]', '[number]', '[Factory]', '[Products]', '[Brand]', '[Spec]', '[Remarks]',
-        ], [
-            $queryone['code'], $queryone['num'], $queryone['factory'], $queryone['type'], $queryone['brand'], $queryone['spec'], $queryone['remarks'],
-        ], $replySuccess);
 
-        $replyFail=str_replace([
-            '[SecurityCode]', '[number]', '[Factory]', '[Products]', '[Brand]', '[Spec]', '[Remarks]',
-        ], [
-            $queryone['code'], $queryone['num'], $queryone['factory'], $queryone['type'], $queryone['brand'], $queryone['spec'], $queryone['remarks'],
-        ], $replyFail);
-
-
-    //    echo $queryone['brand'];
-    //    echo $queryone['remarks'];
-
-//		echo $FWcode;//$_POST['FWcode'];
-
-        /*建立数据表模型*/
- //       $code=AntiCode::findOne(['code'=>$FWcode]);
-
-
-        /*视图输出控制器 */
-//if (!isset($FWcode)){echo '请输入10位纯数字的编码。';}
-//     if($data &&($data1['fwuid']==$FWuid)) {
-
-        if($queryone) {
-            //     $Form1->where($condition)->setInc('used',1); // 查询次数加1
-            //     $Form1->where($condition)->setField('time', time());//获取查询时间戳
-
-            echo '<div class="alert alert-success" >';
-       //     echo '恭喜！是正品！';
-
-	   echo $replySuccess;//'<br/>编码 ：'.$queryone['code'].$queryone['type'];
-
-            /*
-                   if ($data['money']>0){
-                   echo '<br/>摇奖抽中：<br/><strong>'.$data['money'].'</strong> 元！';
-                   }
-
-                          if ($data['prize']){
-                   echo '<br/>摇奖抽中：<br/><strong>'.$data['prize'].'</strong> ';
-                   }
-
-            */
-
-            echo '<div class="alert-warning">';
-            /*POS机的机器码*/
-            echo isset($data['mcode']) ? '<br/>对应机器编码：'.$data['mcode'] : '';
-            /*雄盛机械产品属性*/
-            echo isset($data['product']) ? '<br/>产品名称：'.$data['product'] : '';
-            echo isset($data['type']) ? '<br/>处理工艺：'.$data['type'] : '';
-            echo isset($data['size']) ? '<br/>规格：'.$data['size'] : '';
-            echo '</div>';
-
-            /*输出查询次数和时间/
-            //  echo $data['time']>0 ? '<br/>上次查询时间：'.date('Y年m月d日 H:i:s',$data['time']) : '<br/>现为首次查询。';
-            if ($data['time']>0&&$data['used']>0){
-                echo '<br/>该编码此前被查询过： '.$data['used'].' 次！';
-                echo '<br/>上次查询时间：<br/>';
-                echo date('Y年m月d日 H:i:s',$data['time']);
-            }
-            elseif($data['time']==0&&$data['used']==0){
-                echo '<br/>现为首次查询。';
-            }//else{echo ''; }
-
-
-            if (strlen($data['imgurl'])>=5) {
-                echo '<br/><img src='.$data['imgurl'].' />';
-            }//输出图片
-
-            echo '<br/><br>提示：<br/>每个产品具有唯一编码，谨防假冒！';
-            //   echo '<br/>当前时间：'.date('Y年m月d日 H:i:s',time());
-           */ echo '</div>';
-
-        }
-
-        else{
+        if ($queryone==null){//==false
             echo '<div class="alert alert-danger" >';
             echo $replyFail;//'谨防假冒！！';//'您所查询的编码不存在！请谨防假冒！';
             echo '</div>';
+            var_dump($queryone);
+        }
+        if($queryone) {
+            $clicks=intval($queryone['clicks'])+1;
+       Yii::$app->db->createCommand()->update($table, ['clicks' => $clicks, 'query_time'=>time()], "code ='".$securityCode."'")->execute();
+      //     $sqlclick='UPDATE '.$table.'SET click='.$clicks.' WHERE code="'.$securityCode.'"';
+      //      var_dump(Yii::$app->db->createCommand($sqlclick)->execute());
+
+            $productid=intval($queryone['productid']);
+            $product=Product::findOne($productid);
+            $replySuccess=str_replace([
+                '[Code]', '[Clicks]', '[Factory]', '[Product]', '[Brand]', '[Spec]', '[Prize]', '[Time]', '[Price]',
+            ], [
+                $queryone['code'], $queryone['clicks'], $product->factory, $product->name, $product->brand, $product->specification, $queryone['prize'], $queryone['query_time'], $product->price,
+            ], $replySuccess);
+
+            echo '<div class="alert alert-success" >';
+            //     echo '恭喜！是正品！';
+
+
+            echo $replySuccess;//'<br/>编码 ：'.$queryone['code'].$queryone['type'];
+
+
+            echo '<br/><br>提示：<br/>每个产品具有唯一编码，谨防假冒！';
+            //   echo '<br/>当前时间：'.date('Y年m月d日 H:i:s',time());
+
+            echo '</div>';
+
         }
 
+
+
     }
+
+
+
+
+
+
+
+
+
+
+
 
 }

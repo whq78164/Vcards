@@ -18,7 +18,7 @@ class AntiCodeSearch extends AntiCode
     public function rules()
     {
         return [
-            [['id', 'uid', 'replyid', 'productid', 'query_time', 'clicks', 'prize'], 'integer'],
+            [['id', 'uid', 'replyid', 'productid', 'query_time', 'clicks'], 'integer'],
             [['code'], 'safe'],
         ];
     }
@@ -41,7 +41,14 @@ class AntiCodeSearch extends AntiCode
      */
     public function search($params)
     {
-        $query = AntiCode::find()->where(['uid' =>Yii::$app->user->id ]);
+ //       $connection=Yii::$app->db;
+ //       $uid=Yii::$app->user->id;
+ //       $table='tbhome_anti_code_'.$uid;
+ //       $sql='SELECT * FROM '.$table;
+ //       $command = $connection->createCommand($sql);
+ //       $query=$command->queryAll();;
+
+        $query = AntiCodenew::find()->where(['uid' =>Yii::$app->user->id ]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

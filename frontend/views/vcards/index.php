@@ -310,19 +310,24 @@ EFO;
                                 </ul>
                             </section>
 
+<?php
+if (strlen($userdata['signature'])>1) {
+    ?>
+    <section class="m-mod fixed">
+        <ul class="m-personalinfo fixed">
+            <div class="m-signature">
+                <h3>我的签名</h3>
 
-                            <section class="m-mod fixed">
-                                <ul class="m-personalinfo fixed">
-                                    <div class="m-signature">
-                                        <h3>我的签名</h3>
-                                        <div class="m-cont">
-                                            <?= $userdata['signature'] ?>
+                <div class="m-cont">
+                    <?= $userdata['signature'] ?>
 
-                                        </div>
-                                    </div>
-                                    <ul class="m-personalinfo fixed">
-                            </section>
-
+                </div>
+            </div>
+            <ul class="m-personalinfo fixed">
+    </section>
+    <?php
+}
+?>
 
 
 

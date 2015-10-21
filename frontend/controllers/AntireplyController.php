@@ -33,6 +33,8 @@ class AntireplyController extends Controller
      */
     public function actionIndex()
     {
+        $role=Yii::$app->user->identity->role;
+        if ($role<50){return $this->goBack(['user/anti']);}
         $searchModel = new AntireplySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

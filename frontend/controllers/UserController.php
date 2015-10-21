@@ -198,7 +198,7 @@ class UserController extends Controller
             $info->save();//insert to
             //  Yii::$app->user->setFlash('success', '详细信息设置成功！');
             Yii::$app->getSession()->setFlash('success', '设置成功！');
-            return $this->redirect(['user/info']);
+            return $this->redirect(['user/user']);
         }else{
             return $this->render('info', [
                 'info' => $info,

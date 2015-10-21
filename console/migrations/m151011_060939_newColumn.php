@@ -13,6 +13,10 @@ class m151011_060939_newColumn extends Migration
         $this->addColumn('{{%setting}}', 'leader', Schema::TYPE_INTEGER.' NOT NULL ');
         $this->addColumn('{{%card_info}}', 'work_tel', Schema::TYPE_STRING.'(20) NOT NULL');
         $this->addColumn('{{%anti_reply}}', 'content', Schema::TYPE_TEXT . ' NOT NULL');
+        $this->alterColumn('{{%anti_code}}', 'prize', Schema::TYPE_STRING.' NOT NULL');
+        $this->alterColumn('{{%product}}', 'describe', Schema::TYPE_TEXT.' NOT NULL');
+        $this->addColumn('{{%anti_code}}', 'create_time', Schema::TYPE_INTEGER.' NOT NULL');
+        $this->addColumn('{{%anti_code}}', 'status', Schema::TYPE_SMALLINT.' NOT NULL DEFAULT 10');
 
     }
 

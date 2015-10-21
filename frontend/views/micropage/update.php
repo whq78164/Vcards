@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $model frontend\models\Micropage */
 
 $this->title = Yii::t('tbhome', 'Update {modelClass}: ', [
-    'modelClass' => 'Micropage',
-]) . ' ' . $model->page_title;
+    'modelClass' => $model->page_title,
+]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('tbhome', 'Micropages'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->page_title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('tbhome', 'Update');

@@ -181,6 +181,27 @@ return [
     'Check your email for further instructions.' => '请查看您的邮箱进行下一步操作',
     'Follow the link below to reset your password:'=>'请点击下面链接，重置密码',
 
+    'Factory'=>'厂家',
+    'Describe'=>'描述',
+    'Specification'=>'规格参数',
+    'Brand'=>'品牌',
+    'Price' =>'价格(元)',
+    'Prize'=> '奖品',
+
+    'Products'=>'产品',
+    'Product'=>'产品',
+    'Create Product'=>'添加产品',
+    'Anti Replies'=>'回复语管理',
+    'Create Anti Reply'=>'添加回复语',
+    'Tag' =>'标签(标题)',
+    'Success'=> '成功',
+    'Fail' =>'失败',
+    'Clicks'=> '点击数',
+    'create time'=>'创建时间',
+
+
+
+
 
 
 

@@ -35,7 +35,7 @@ class AntiReply extends \yii\db\ActiveRecord
             [['tag'], 'string', 'max' => 10],
             [['success', 'fail'], 'string', 'max' => 255],
             [['content'], 'string'],
-            [['uid'], 'unique']
+      //      [['uid'], 'unique']
         ];
     }
 

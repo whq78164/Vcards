@@ -11,6 +11,7 @@ use frontend\assets\Mobile_Detect;
 AmazeAsset::register($this);
 AppAsset::register($this);
 $mobile=new Mobile_Detect();
+$role=Yii::$app->user->identity->role;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -245,12 +246,19 @@ $mobile=new Mobile_Detect();
                                 二维码微名片
                             </a>
                         </li>
-                        <li>
-                            <a href="<?=yii\helpers\Url::to(['user/anti'], true)?>">
-                                <span class="am-icon-shield"></span>
-                                产品防伪系统
-                            </a>
-                        </li>
+                        <?php
+                        if($role>=40) {
+                            ?>
+
+                            <li>
+                                <a href="<?= yii\helpers\Url::to(['user/anti'], true) ?>">
+                                    <span class="am-icon-shield"></span>
+                                    产品防伪系统
+                                </a>
+                            </li>
+                            <?php
+                        }
+                        ?>
                         <!--
                         <li>
                             <a href="<?=yii\helpers\Url::to(['user/anti'], true)?>">

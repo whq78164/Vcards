@@ -33,9 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'tag',
             'success',
             'fail',
-            'valid_clicks',
+  //          'valid_clicks',
             'content:ntext',
         ],
     ]) ?>
+
+    <?= Html::a(Yii::t('tbhome', '查看防伪页'), ['anti/index', 'replyid'=>$model->id], ['class' => 'btn btn-success pull-right', 'target'=>'_blank']) ?>
 
 </div>

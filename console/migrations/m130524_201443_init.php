@@ -53,22 +53,23 @@ class m130524_201443_init extends Migration
         $this->createIndex('uid', '{{%anti_prize}}', ['uid']);
         $this->createIndex('hot', '{{%anti_prize}}', ['hot']);
 
-        $this->createTable('{{%anti_product}}', [
+        $this->createTable('{{%product}}', [
             'id' => Schema::TYPE_PK,
             'uid' => Schema::TYPE_INTEGER . ' NOT NULL',
             'share' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
             'image' => Schema::TYPE_STRING . ' NOT NULL',
             'factory' => Schema::TYPE_STRING . '(30) NOT NULL',
             'name' => Schema::TYPE_STRING . '(10) NOT NULL',
-            'describe' => Schema::TYPE_STRING . ' NOT NULL',
+            'describe' => Schema::TYPE_TEXT . ' NOT NULL',
             'specification' => Schema::TYPE_STRING . ' NOT NULL',
             'unit' => Schema::TYPE_STRING . '(10) NOT NULL',
             'brand' => Schema::TYPE_STRING . '(20) NOT NULL',
-            'price' => Schema::TYPE_STRING . '(10) NOT NULL',
+//            'price' => Schema::TYPE_STRING . '(10) NOT NULL',
+            'price' => Schema::TYPE_DECIMAL . '(9,2) NOT NULL',
             'hot' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
-        $this->createIndex('uid', '{{%anti_product}}', ['uid']);
-        $this->createIndex('hot', '{{%anti_product}}', ['hot']);
+        $this->createIndex('uid', '{{%product}}', ['uid']);
+        $this->createIndex('hot', '{{%product}}', ['hot']);
 
 
         $this->createTable('{{%anti_code}}', [

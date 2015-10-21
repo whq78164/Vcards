@@ -15,9 +15,9 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?//= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'uid') ?>
+    <?//= $form->field($model, 'uid') ?>
 
     <?= $form->field($model, 'code') ?>
 
@@ -25,11 +25,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'productid') ?>
 
-    <?php // echo $form->field($model, 'query_time') ?>
+    <?php  echo $form->field($model, 'query_time') ?>
 
     <?php // echo $form->field($model, 'clicks') ?>
 
-    <?php // echo $form->field($model, 'prize') ?>
+    <?php  echo $form->field($model, 'prize') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('tbhome', 'Search'), ['class' => 'btn btn-primary']) ?>
