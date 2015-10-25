@@ -18,8 +18,9 @@ class AntiCodeSearch extends AntiCode
     public function rules()
     {
         return [
-            [['id', 'uid', 'replyid', 'productid', 'query_time', 'clicks'], 'integer'],
+            [['id', 'uid', 'replyid', 'create_time', 'productid', 'query_time', 'clicks'], 'integer'],
             [['code'], 'safe'],
+            [['prize'], 'string'],
         ];
     }
 

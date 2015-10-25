@@ -1,9 +1,11 @@
 <?php
 /* @var $this yii\web\View */
 ?>
-<h1>admin/index</h1>
+<div class="col-md-10">
+<h1>欢迎使用唯卡微名片微商营销平台</h1>
 
 <p>
-    You may change the content of this page by modifying
+4654645
 
 </p>
+</div>

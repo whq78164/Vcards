@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'success',
             'fail',
   //          'valid_clicks',
-            'content:ntext',
+  //          'content:ntext',
         ],
     ]) ?>
 

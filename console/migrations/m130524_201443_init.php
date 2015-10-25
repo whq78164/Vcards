@@ -35,6 +35,7 @@ class m130524_201443_init extends Migration
               'tag' => Schema::TYPE_STRING . '(10) NOT NULL',
             'success' => Schema::TYPE_STRING . ' NOT NULL',
             'fail' => Schema::TYPE_STRING . ' NOT NULL',
+              'content' => Schema::TYPE_TEXT . ' NOT NULL',
             'valid_clicks' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
         ], $tableOptions);
         $this->createIndex('uid', '{{%anti_reply}}', ['uid']);
@@ -64,8 +65,8 @@ class m130524_201443_init extends Migration
             'specification' => Schema::TYPE_STRING . ' NOT NULL',
             'unit' => Schema::TYPE_STRING . '(10) NOT NULL',
             'brand' => Schema::TYPE_STRING . '(20) NOT NULL',
-//            'price' => Schema::TYPE_STRING . '(10) NOT NULL',
             'price' => Schema::TYPE_DECIMAL . '(9,2) NOT NULL',
+            'traceability' => Schema::TYPE_INTEGER . ' NOT NULL',//追溯
             'hot' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
         $this->createIndex('uid', '{{%product}}', ['uid']);
@@ -78,9 +79,12 @@ class m130524_201443_init extends Migration
             'code' => Schema::TYPE_STRING . ' NOT NULL',
             'replyid' => Schema::TYPE_INTEGER . ' NOT NULL',
             'productid' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'traceability' => Schema::TYPE_INTEGER . ' NOT NULL',//追溯
             'query_time' => Schema::TYPE_INTEGER . ' NOT NULL',
             'clicks' => Schema::TYPE_INTEGER . ' NOT NULL',
             'prize' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'create_time' => Schema::TYPE_INTEGER.' NOT NULL',
+            'status' => Schema::TYPE_SMALLINT.' NOT NULL DEFAULT 10',
         ], $tableOptions);
         $this->createIndex('uid', '{{%anti_code}}', ['uid']);
         $this->createIndex('code', '{{%anti_code}}', ['code'],true);

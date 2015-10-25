@@ -67,9 +67,11 @@
 				</ul>
 			</div>
 			
-		<!--	<div class="m-side-ft">
+			<div class="m-side-ft">
+				<!--
 				<a href="" class="iconfont i-search">企业搜索</a>
+				-->
 				<a href="<?=yii\helpers\Url::to(['vcards/logout'], true)?>" class="iconfont i-out">退出</a>
 			</div>
-		-->
+
 </aside>

@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
       //      'image',
             'factory',
             'name',
-            'describe',
+  //          'describe',
             'specification',
             'unit',
             'brand',

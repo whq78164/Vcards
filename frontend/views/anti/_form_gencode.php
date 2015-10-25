@@ -29,23 +29,60 @@ use yii\widgets\ActiveForm;
 
     <div class="form-group">
         <label class="control-label">
-            前缀</label>
-        <input class="form-control" name="sStr" type="text" placeholder="" value=""  >
+            防伪码前缀</label>
+        <input class="form-control" id="sStr" name="sStr" type="text" placeholder="" onkeyup="checkstr(this.value)" >
+
     </div>
+
+    <div class="form-group" id="txtHint">设置的防伪码前缀</div>
 
     <div class="form-group">
     <label class="control-label">生成规则：</label>
     <select name="rule" class="form-control">
-        <option value=1>前缀+数字
-        <option value=2>前缀+字母
         <option value=3>前缀+数字+字母
+        <option value=2>前缀+字母
+        <option value=1>前缀+数字
+
     </select>
     </div>
 
-        <?//= $form->field($model, 'code') ?>
-        <?= $form->field($model, 'replyid')->dropDownList($listReply, ['prompt'=>'选择回复语']) ?>
+    <script type="text/javascript">
+          function checkstr(sStr){
+              var csrfToken = $('meta[name="csrf-token"]').attr("content");
+  //  var dat='';
+    $.ajax({
+    type: "POST",
+    url: "<?=yii\helpers\Url::to(['anti/checkstr'], true)?>",
+    data: {
+        sStr:sStr,
+        _csrf:csrfToken
+    },
+    dataType: "json",
+    success: function(data){
+//        document.getElementById("txtHint").innerHTML='<span class="alert alert-success">前缀'+data+'可用</span>';
+
+   if (data >= '1') {
+    document.getElementById("txtHint").innerHTML='<span class="alert alert-danger">数据库中已存在相同前缀的数据'+data+'条,请修改</span>';
+    }else{
+        document.getElementById("txtHint").innerHTML='<span class="alert alert-success">前缀可用</span>';
+    }
+
+    }
+
+    });
+
+
+    }
+    </script>
+
+
+    <?//= $form->field($model, 'code') ?>
+        <?= $form->field($model, 'replyid')->dropDownList(
+            $listReply// ['prompt'=>'选择回复语']
+        ) ?>
         <?= $form->field($model, 'productid')->dropDownList(
-            $listData, ['prompt'=>'请选择产品'])//[1=>'产品1', 2=>'产品2', 3=>'产品3'] ?>
+            $listData// ['prompt'=>'请选择产品']
+        )//[1=>'产品1', 2=>'产品2', 3=>'产品3'] ?>
         <?//= $form->field($model, 'query_time') ?>
         <?//= $form->field($model, 'clicks') ?>
         <?= $form->field($model, 'prize') ?>

@@ -406,7 +406,7 @@ function local_config() {
 
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'xpWfUhbMG32BI2FV-SDukLcc4f0v6jA7',
+            'cookieValidationKey' => '__www.vcards.top__tbhome.com.cn-SDjA7',
         ],
     ],
 ];
@@ -920,12 +920,6 @@ function tpl_install_finish() {
 		</span>
 
 </p>
-<p>
-初始系统管理员登录名：admin
-<br/>密码：adminadmin
-<br/>请尽快添加或修改系统管理员！！！
-</p>
-
 	</div>
 	
 		<div class="alert alert-danger">
@@ -933,7 +927,7 @@ function tpl_install_finish() {
 		<br>
 <p>
 初始系统管理员登录名：admin
-<br/>密码：adminadmin
+<br/>初始密码：adminadmin
 <br/>请尽快修改默认设置或添加新系统管理员！！！
 </p>
 

@@ -223,7 +223,27 @@ if ($value){
 labelecho('传真', $userdata['fax']);
 labelecho('E-Mail', $userdata['email']);
 labelecho('QQ', $userdata['qq']);
-   ?>
+
+?>
+
+
+<?php
+$labelcount=$label->count();
+$label=$label->all();
+                                    for($i=0; $i<$labelcount; $i++){
+                                    ?>
+                                    <li>
+                                        <span class="m-tle"><?= $label[$i]->card_label ?></span>
+
+                                        <div class="cont">
+                                            <div class="ui-elli num" style=""><?= $label[$i]->card_value ?></div>
+                                        </div>
+                                    </li>
+                                    <?php
+                                    }
+?>
+
+
 
 
 
@@ -270,15 +290,6 @@ EFO;
                                     -->
 
                                     <!--
-                                                                                  <li>
-                                                                                      <span class="m-tle">我的爱好</span>
-                                                                                      <div class="cont">
-                                                                                          <div class="ui-elli num" style="">爬山游泳，挖萝卜</div>
-                                                                                      </div>
-
-
-
-                                                                                  </li>
 
 
 
@@ -369,6 +380,9 @@ $menupic= isset($micropage[0]) ? Url::to(['vcards/micropage', 'id'=>$micropage[0
             <section class="m-custommenu" id="j-custom1">
                 <ul class="m-rootweb-list fixed">
 
+
+
+
                     <li><a href="http://chong.qq.com" target="_blank"><span class="am-icon-cny am-icon-lg "></span><span >充值缴费</span></a></li>
 
                     <li><a href="http://m.kuaidi100.com" target="_blank"><span class=" am-icon-lg am-icon-search"></span><span >快递查询</span></a></li>
@@ -376,8 +390,6 @@ $menupic= isset($micropage[0]) ? Url::to(['vcards/micropage', 'id'=>$micropage[0
                     <li><a href="http://touch.qunar.com" target="_blank"><span class="am-icon-lg am-icon-send-o"></span><span>出行订票</span></a></li>
 
                     <li><a href="http://music.baidu.com"><span class="am-icon-lg am-icon-music"></span><span>音乐</span></a></li>
-
-
                     <?php
                     $pagePart= <<<EOF
 <li>
@@ -398,6 +410,7 @@ EOF;
                         }
                     }
                     ?>
+
 
 
                     <!--		<li><a href="http://zuoche.com/"><i class="toolicon"></i><span >公交</span></a></li>

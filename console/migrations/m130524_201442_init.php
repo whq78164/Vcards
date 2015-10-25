@@ -57,11 +57,12 @@ class m130524_201442_init extends Migration
 /*********************************************************************************/
 
           $this->createTable('{{%setting}}', [
-            'uid' => Schema::TYPE_PK,
-            'bg_image' => Schema::TYPE_STRING . ' NOT NULL',
-            'tpl' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'vip' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
-            'upline' => Schema::TYPE_INTEGER . ' NOT NULL',
+              'uid' => Schema::TYPE_PK,
+              'bg_image' => Schema::TYPE_STRING . ' NOT NULL',
+              'tpl' => Schema::TYPE_INTEGER . ' NOT NULL',
+              'vip' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
+              'upline' => Schema::TYPE_INTEGER . ' NOT NULL',
+              'status' => Schema::TYPE_SMALLINT.' NOT NULL DEFAULT 10',
         ], $tableOptions);
 
 
@@ -102,6 +103,7 @@ class m130524_201442_init extends Migration
             'uid' => Schema::TYPE_INTEGER . ' NOT NULL',
             'link_title' => Schema::TYPE_STRING . '(20) NOT NULL',
             'link_url' => Schema::TYPE_STRING . ' NOT NULL',
+            'status' => Schema::TYPE_SMALLINT.' NOT NULL DEFAULT 10',
         ], $tableOptions);
         $this->createIndex('uid', '{{%microlink}}', ['uid']);
 
@@ -110,6 +112,7 @@ class m130524_201442_init extends Migration
             'uid' => Schema::TYPE_INTEGER . ' NOT NULL',
             'page_title' => Schema::TYPE_STRING . '(100) NOT NULL',
             'page_content' => Schema::TYPE_TEXT . ' NOT NULL',
+            'status' => Schema::TYPE_SMALLINT.' NOT NULL DEFAULT 10',
         ], $tableOptions);
         $this->createIndex('uid', '{{%micropage}}', ['uid']);
 
@@ -168,8 +171,8 @@ class m130524_201442_init extends Migration
 
         $this->insert('{{%user}}', [
                'uid' => 1,
-            'username' => '泉州通宝科技',
-            'password_hash' => '$2y$13$ZJ/ceQBUQCYB3mDDQAeat.AsfMIQO/uSKsBk9lrMi9eNXF5sJ73nm',
+            'username' => 'admin',
+            'password_hash' => '$2y$13$SlenslU25pIng3zGfdPdNus8um0U3yim5Z/I7a3GN47gPKj0xsmsW',//密码adminadmin
             'name' => '泉州通宝科技',
             'qq' =>'798904845',
             'role'=>100,

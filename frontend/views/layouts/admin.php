@@ -124,7 +124,12 @@ if (Yii::$app->user->identity->role!==100) {
 
             <ul class="am-list admin-sidebar-list">
 
-
+                <li>
+                    <a href="<?=yii\helpers\Url::to(['admin/index'], true)?>">
+                        <span class="am-icon-university am-icon"></span>
+                        后台首页
+                    </a>
+                </li>
 
                 <li>
                     <a href="<?=yii\helpers\Url::to(['admin/site'], true)?>">

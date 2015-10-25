@@ -3,11 +3,12 @@ namespace frontend\controllers;
 use frontend\models\Product;
 use Yii;
 use common\models\User;
-use frontend\models\Info;
+//use frontend\models\Info;
 use frontend\models\AntiReply;
-use frontend\models\AntiSetting;
+//use frontend\models\AntiSetting;
 use frontend\models\AntiCode;
-use frontend\models\AntiCodenew;
+//use frontend\models\AntiCodetable;
+//use frontend\models\AntiCodenew;
 use yii\helpers\ArrayHelper;
 use yii\db\Query;
 
@@ -52,30 +53,6 @@ class AntiController extends \yii\web\Controller
 
     }
 
-    public function actionGencode()
-    {
-        $uid=Yii::$app->user->id;
-        $product=Product::find()->where(['uid'=>$uid])->all();
-        $listData=ArrayHelper::map($product, 'id', 'name');
-        $reply=AntiReply::find()->where(['uid'=>$uid])->all();
-        $listReply=ArrayHelper::map($reply, 'id', 'tag');
-        $model = new AntiCode();
-
-        if ($model->load(Yii::$app->request->post())) {
-            if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
-            }
-        }
-
-        return $this->render('_form_gencode', [
-            'model' => $model,
-            'listData'=>$listData,
-            'listReply'=>$listReply,
-
-        ]);
-    }
-
     public function random($length, $type = NULL, $special = FALSE){
         $str = "";
         switch ($type) {
@@ -94,6 +71,87 @@ class AntiController extends \yii\web\Controller
         }
         return substr(str_shuffle(($special != FALSE) ? '!@#$%^&*()_+' . $str : $str), 0, $length);
     }
+
+    public function actionGencode()
+    {
+        $uid=Yii::$app->user->id;
+        $product=Product::find()->where(['uid'=>$uid])->all();
+        $listData=ArrayHelper::map($product, 'id', 'name');
+        $reply=AntiReply::find()->where(['uid'=>$uid])->all();
+        $listReply=ArrayHelper::map($reply, 'id', 'tag');
+        $model = new AntiCode();
+
+        return $this->render('_form_gencode', [
+            'model' => $model,
+            'listData'=>$listData,
+            'listReply'=>$listReply,
+
+        ]);
+    }
+
+
+    public function actionAntipage($code='798904845', $replyid=1, $productid=1 )
+    {
+        $connection=Yii::$app->db;
+        $reply=AntiReply::findOne($replyid);
+        $uid=$reply->uid;
+        $table='tbhome_anti_code_'.$uid;
+  //      $sql='SELECT * FROM '.$table.' WHERE code="'.$code.'"';
+        $sql="SELECT * FROM ".$table." WHERE code='".$code."'";
+        $command = $connection->createCommand($sql);
+        $codeData=$command->queryOne();//返回数组，表anti_code_uid
+
+  //   var_dump($codeData);
+        if (!$codeData){
+            $reply=AntiReply::findOne($replyid);
+            $product=Product::findOne($productid);
+
+            return $this->renderPartial(
+                'antipage',
+                [
+                    'antireply'=>$reply,
+                    'queryResult'=>$reply->fail,
+                    'product'=>$product,
+                    'colour'=>'danger',
+                ]
+            );
+
+        }else{
+            $replyid=$codeData['replyid'];
+            $productid=$codeData['productid'];
+            $reply=AntiReply::findOne($replyid);
+            $product=Product::findOne($productid);
+     //       var_dump($reply);
+    //        var_dump($product);
+            $clicks=intval($codeData['clicks'])+1;
+            Yii::$app->db->createCommand()->update($table, ['clicks' => $clicks, 'query_time'=>time()], "code ='".$code."'")->execute();
+
+
+                         $reply->success=str_replace([
+                           '[Code]', '[Clicks]', '[Prize]', '[Time]', '[Factory]', '[Product]', '[Brand]', '[Spec]', '[Price]',
+                       ], [
+                             $codeData['code'], $codeData['clicks'], $codeData['prize'], date('Y年m月d日 H:i:s', $codeData['query_time']), $product->factory, $product->name, $product->brand, $product->specification, $product->price,
+                       ], $reply->success);
+
+
+            return $this->renderPartial(
+                'antipage',
+                [
+                    'antireply'=>$reply,
+                    'queryResult'=>$reply->success,
+                    'product'=>$product,
+                    'colour'=>'success',
+                ]
+            );
+
+        }
+
+
+
+
+    }
+
+
 
 
     public function actionPostgencode()
@@ -139,11 +197,11 @@ class AntiController extends \yii\web\Controller
             if ($model->validate()) {
                 for ($i=0; $i<=(intval($_POST['sNum'])-1); $i++) {
                     $code = $this->random(intval($_POST['slen']), $_POST['rule'], false);
-                    $tableColumn[$i]=[Yii::$app->user->id, $_POST['sStr'].$code, intval($model->productid), intval($model->replyid), $model->prize, 0, time(), 0, 10,];
+                    $tableColumn[$i]=[Yii::$app->user->id, $_POST['sStr'].$code, intval($model->productid), intval($model->replyid), $model->prize, time(), 0, 0, 10,];
                 }
 
 
-                $result=$Connection->createCommand()->batchInsert($table, ['uid', 'code', 'productid', 'replyid', 'prize', 'query_time', 'create_time', 'clicks', 'status'], $tableColumn)->execute();
+                $result=$Connection->createCommand()->batchInsert($table, ['uid', 'code', 'productid', 'replyid', 'prize', 'create_time', 'query_time', 'clicks', 'status'], $tableColumn)->execute();
                 if (!$result){echo '数据插入失败！';}
                 //$i++;
             }else{echo '数据无效';}
@@ -156,6 +214,28 @@ class AntiController extends \yii\web\Controller
 
     }
 
+    public function actionCheckstr(){
+        header('Content-Type:text/html;charset=UTF-8');
+        $uid=Yii::$app->user->id;
+        $sStr = $_POST['sStr'];
+        $connection=Yii::$app->db;
+        $table='tbhome_anti_code_'.$uid;
+        $sql = "SELECT COUNT(*) FROM ".$table." where code LIKE '".$sStr."%'";
+        $command = $connection->createCommand($sql);
+        $rows=$command->queryScalar();
+        //var_dump($rows);
+echo $rows;
+
+
+//        if (!empty($list)) {
+  //          echo count($list);
+    //    }else{
+      //      echo '0';
+      //  }
+
+
+
+    }
 
 
 
@@ -198,7 +278,7 @@ class AntiController extends \yii\web\Controller
             $replySuccess=str_replace([
                 '[Code]', '[Clicks]', '[Factory]', '[Product]', '[Brand]', '[Spec]', '[Prize]', '[Time]', '[Price]',
             ], [
-                $queryone['code'], $queryone['clicks'], $product->factory, $product->name, $product->brand, $product->specification, $queryone['prize'], $queryone['query_time'], $product->price,
+                $queryone['code'], $queryone['clicks'], $product->factory, $product->name, $product->brand, $product->specification, $queryone['prize'], date('Y年m月d日 H:i:s', $queryone['query_time']), $product->price,
             ], $replySuccess);
 
             echo '<div class="alert alert-success" >';
@@ -207,27 +287,9 @@ class AntiController extends \yii\web\Controller
 
             echo $replySuccess;//'<br/>编码 ：'.$queryone['code'].$queryone['type'];
 
-
-            echo '<br/><br>提示：<br/>每个产品具有唯一编码，谨防假冒！';
-            //   echo '<br/>当前时间：'.date('Y年m月d日 H:i:s',time());
-
-            echo '</div>';
-
         }
 
-
-
     }
-
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -18,21 +18,21 @@ use yii\widgets\ActiveForm;
 
     ]); ?>
 
-    <?= $form->field($info, 'card_title')->textInput( ['placeholder'=>'选填。微信转发和分享时，显示该标题。不填为默认。', 'maxlength' => true])//->hint('选填。微信转发和分享时，显示该标题。不填为默认。') ?>
+    <?= $form->field($info, 'card_title')->textInput( ['placeholder'=>'选填。微信转发和分享时，显示该标题。不填为默认。', 'maxlength' => true])->hint('例：通宝科技张三山的格逼微名片！') ?>
 
-    <?= $form->field($info, 'unit')->textInput(['placeholder'=>'必填。XX公司，XX协会等','maxlength' => true])//->hint('必填') ?>
+    <?= $form->field($info, 'unit')->textInput(['placeholder'=>'必填','maxlength' => true])->hint('XX公司，XX协会') ?>
 
     <?//= $form->field($info, 'face_box')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($info, 'department')->textInput(['placeholder'=>'选填', 'maxlength' => true])?>
+    <?= $form->field($info, 'department')->textInput(['placeholder'=>'选填', 'maxlength' => true])->hint('宣传部')?>
 
-    <?= $form->field($info, 'position')->textInput(['placeholder'=>'推荐填写', 'maxlength' => true])->hint('') ?>
+    <?= $form->field($info, 'position')->textInput(['placeholder'=>'', 'maxlength' => true])->hint('总经理') ?>
 
-    <?= $form->field($info, 'address')->textInput(['placeholder'=>'推荐填写', 'maxlength' => true])//->hint('推荐填写') ?>
+    <?= $form->field($info, 'address')->textInput(['placeholder'=>'', 'maxlength' => true])//->hint('推荐填写') ?>
 
     <?= $form->field($info, 'business')->textarea(['placeholder'=>'必填。经营和服务范围等。我们对该信息，进行大数据数据智能匹配，定向推广。请尽可能包含客户能搜到的关键词。', 'rows' => 6])//->hint('必填。内容为经营范围等信息。我们针对该内容，进行数据匹配，智能推广。') ?>
 
-    <?= $form->field($info, 'signature')->textarea(['placeholder'=>'个性签名，选填。商业标语，公司简介，座右铭等...', 'rows' => 6])->hint('')  ?>
+    <?= $form->field($info, 'signature')->textarea(['placeholder'=>'选填.个性签名, 商业标语，公司简介，座右铭等...', 'rows' => 6])->hint('')  ?>
 
     <?= $form->field($info, 'wechat_account')->textInput(['placeholder'=>'推荐填写，并上传微信二维码图片','maxlength' => true]) ?>
 <!--img src="<?=$info->wechat_qrcode?>"-->

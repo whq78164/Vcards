@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = '新增字段';//Yii::t('tbhome', 'Labels');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="label-index">
+<div class="label-index col-md-10">
 
     <h1><?//= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

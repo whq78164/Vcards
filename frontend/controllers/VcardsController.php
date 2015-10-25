@@ -11,6 +11,7 @@ use frontend\models\Info;
 use frontend\models\Microlink;
 use frontend\models\Micropage;
 use frontend\models\Setting;
+use frontend\models\Label;
 use yii\db\Connection;
 class VcardsController extends \yii\web\Controller
 {
@@ -63,6 +64,7 @@ http://localhost/index.php?r=site/page&view=about
         $user = array_merge($user1, $user2);
         $microlink=Microlink::find()->where(['uid' => $uid, 'status' => 10])->all();
         $micropage=Micropage::find()->where(['uid' => $uid, 'status' => 10])->all();
+        $label=Label::find()->where(['uid'=>$uid]);
 
       //  if ($microlink==null) {$microlink=new Microlink();}
       //  var_dump($micropage);
@@ -73,6 +75,7 @@ http://localhost/index.php?r=site/page&view=about
                 'userdata'=>$user,
                 'microlink'=>$microlink,
                 'micropage'=>$micropage,
+                'label'=>$label,
             ]
         );
 

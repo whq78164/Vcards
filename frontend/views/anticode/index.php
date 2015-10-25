@@ -31,11 +31,15 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'replyid',
 //            'productid',
 //             'query_time:datetime',
-            'create_time:datetime',
+ //           'create_time:datetime',
+            [
+                'attribute' => 'create_time', 'format' => ['date', 'php:Y年m月d日']
+            ],
              'prize',
             'clicks',
 
-            ['class' => 'yii\grid\ActionColumn'],
+ //           ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}'],
         ],
     ]); ?>
 

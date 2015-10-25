@@ -38,10 +38,11 @@ class Product extends \yii\db\ActiveRecord
         return [
        //     [['uid', 'image', 'factory', 'name', 'describe', 'specification', 'unit', 'brand', 'price', 'hot'], 'required'],
             [['uid', 'share', 'hot'], 'integer'],
-            [['image', 'describe', 'specification'], 'string', 'max' => 255],
+            [['image', 'specification'], 'string', 'max' => 255],
             [['factory'], 'string', 'max' => 30],
-            [['name', 'unit'], 'string', 'max' => 10],
+            [['name', 'unit'], 'string', 'max' => 30],
             [['price'], 'number'],
+            [['describe'], 'string'],
             [['brand'], 'string', 'max' => 20]
         ];
     }

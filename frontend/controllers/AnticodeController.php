@@ -35,6 +35,13 @@ class AnticodeController extends Controller
      */
     public function actionIndex()
     {
+        $uid=Yii::$app->user->id;
+        $table='tbhome_anti_code_'.$uid;
+        $ta=Yii::$app->db->createCommand("SHOW TABLES LIKE '".$table."'")->queryAll();
+        if($ta==null){
+            Yii::$app->getSession()->setFlash('danger', '请先生成防伪码！');
+            return $this->redirect(['anti/gencode']);
+        }else{
         $searchModel = new AntiCodeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -42,6 +49,7 @@ class AnticodeController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+        }
     }
 
     /**

@@ -206,15 +206,18 @@ yii\filters\AccessRule::roles：指定该规则用于匹配哪些用户角色。
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
-                    $setting=new \frontend\models\Setting;
-      //              $info =new \frontend\models\Info;
                     $uid=Yii::$app->user->id;
+
+                    $setting=new \frontend\models\Setting;
+                    $info =new \frontend\models\Info;
+
                     $setting->uid=$uid;
-        //            $info->uid=$uid;
+                    $info->uid=$uid;
                     $setting->save();
-          //          $info->save();
+                    $info->save();
  //                   return $this->goHome();
-                     $this->redirect('@web/index.php?r=user/index');
+ //                    $this->redirect('@web/index.php?r=user/index');
+                    $this->redirect(['user/index']);
 
                 }
             }

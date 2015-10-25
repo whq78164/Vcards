@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="micropage-form">
+<div class="micropage-form col-md-10">
 
     <?php $form = ActiveForm::begin(); ?>
 
