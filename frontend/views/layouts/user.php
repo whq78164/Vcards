@@ -247,7 +247,7 @@ $role=Yii::$app->user->identity->role;
                             </a>
                         </li>
                         <?php
-                        if($role>=40) {
+                        if($role>=40 ) {
                             ?>
 
                             <li>
@@ -258,15 +258,19 @@ $role=Yii::$app->user->identity->role;
                             </li>
                             <?php
                         }
+                        if ($role>=60){
                         ?>
-                        <!--
+
                         <li>
-                            <a href="<?=yii\helpers\Url::to(['user/anti'], true)?>">
+                            <a href="<?=yii\helpers\Url::to(['user/traceability'], true)?>">
                                 <span class="am-icon-eye"></span>
-                                二维码追溯系统
+                                质量追溯系统
                             </a>
                         </li>
-                             <li>
+                            <?php
+                        }
+                        ?>
+                             <!--li>
                                      <a href="admin-gallery.html">
                                          <span class="am-icon-th"></span>
                                          相册页面
@@ -278,8 +282,9 @@ $role=Yii::$app->user->identity->role;
                                      <a href="admin-404.html">
                                          <span class="am-icon-bug"></span> 404
                                      </a>
-                                 </li>
-                           -->
+                                 </li-->
+
+
                     </ul>
                 </li>
 

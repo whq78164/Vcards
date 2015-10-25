@@ -217,6 +217,11 @@ class UserController extends Controller
         return $this->render('anti');
     }
 
+    public function actionTraceability()
+    {
+        return $this->render('traceability');
+    }
+
     public function actionVcards()
     {
 

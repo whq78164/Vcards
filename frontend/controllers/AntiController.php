@@ -125,12 +125,14 @@ class AntiController extends \yii\web\Controller
     //        var_dump($product);
             $clicks=intval($codeData['clicks'])+1;
             Yii::$app->db->createCommand()->update($table, ['clicks' => $clicks, 'query_time'=>time()], "code ='".$code."'")->execute();
+            $query_time=date('Y年m月d日', $codeData['query_time']);//$query_time=date('Y年m月d日 H:i:s', $codeData['query_time']);
+            if ($codeData['query_time']==0){$query_time=0;}
 
 
                          $reply->success=str_replace([
                            '[Code]', '[Clicks]', '[Prize]', '[Time]', '[Factory]', '[Product]', '[Brand]', '[Spec]', '[Price]',
                        ], [
-                             $codeData['code'], $codeData['clicks'], $codeData['prize'], date('Y年m月d日 H:i:s', $codeData['query_time']), $product->factory, $product->name, $product->brand, $product->specification, $product->price,
+                             $codeData['code'], $codeData['clicks'], $codeData['prize'], $query_time, $product->factory, $product->name, $product->brand, $product->specification, $product->price,
                        ], $reply->success);
 
 
@@ -275,10 +277,13 @@ echo $rows;
 
             $productid=intval($queryone['productid']);
             $product=Product::findOne($productid);
+            $query_time=date('Y年m月d日', $queryone['query_time']);//$query_time=date('Y年m月d日 H:i:s', $queryone['query_time']);
+            if ($queryone['query_time']==0){$query_time=0;}
+
             $replySuccess=str_replace([
                 '[Code]', '[Clicks]', '[Factory]', '[Product]', '[Brand]', '[Spec]', '[Prize]', '[Time]', '[Price]',
             ], [
-                $queryone['code'], $queryone['clicks'], $product->factory, $product->name, $product->brand, $product->specification, $queryone['prize'], date('Y年m月d日 H:i:s', $queryone['query_time']), $product->price,
+                $queryone['code'], $queryone['clicks'], $product->factory, $product->name, $product->brand, $product->specification, $queryone['prize'], $query_time, $product->price,
             ], $replySuccess);
 
             echo '<div class="alert alert-success" >';

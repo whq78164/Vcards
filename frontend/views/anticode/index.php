@@ -7,16 +7,16 @@ use yii\grid\GridView;
 /* @var $searchModel frontend\models\AntiCodeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('tbhome', 'Anti Codes');
+$this->title = Yii::t('tbhome', 'Anti Code');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="anti-code-index">
+<div class="anti-code-index col-md-12">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('tbhome', 'Create Anti Code'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('tbhome', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -32,9 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'productid',
 //             'query_time:datetime',
  //           'create_time:datetime',
-            [
-                'attribute' => 'create_time', 'format' => ['date', 'php:Y年m月d日']
-            ],
+            ['attribute' => 'create_time', 'format' => ['date', 'php:Y年m月d日']],
+//            ['attribute' => 'query_time', 'format' => ['date', 'php:Y年m月d日']],
              'prize',
             'clicks',
 

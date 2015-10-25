@@ -196,8 +196,21 @@ return [
     'Tag' =>'标签(标题)',
     'Success'=> '成功',
     'Fail' =>'失败',
-    'Clicks'=> '点击数',
+    'Clicks'=> '点击量',
     'create time'=>'创建时间',
+    'Query Time'=>'查询时间',
+
+    'Traceabilitydata'=> '追溯数据',
+    'Remark' =>'备注',
+    'Create Time'=> '创建时间',
+    'Uid'=>'用户编号',
+    'Traceabilityinfo'=>'追溯信息',
+    'Code'=> '编码',
+    'Label' =>'标签',
+    'Add'=> '添加',
+    'Anti Code'=>'防伪码',
+    'SecurityCode'=>'防伪码',
+    'ID'=>'序号',
 
 
 

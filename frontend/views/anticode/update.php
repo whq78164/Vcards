@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('tbhome', 'Anti Codes'), 'ur
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('tbhome', 'Update');
 ?>
-<div class="anti-code-update">
+<div class="anti-code-update col-md-12">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

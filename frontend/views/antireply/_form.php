@@ -16,7 +16,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tag')->textInput(['placeholder'=>'唯卡微防伪', 'maxlength' => true])->hint('请填写防伪查询页标题，如：友臣肉松饼防伪查询系统') ?>
 
-    <?= $form->field($model, 'success')->textarea(['rows' => 6])->label('查询成功回复：')->hint('用于返回查询结果，动态变量：[Code](防伪码)、[Clicks](查询次数)、[Price](参考价格)、[Factory](生产厂家)、[Time](上次查询时间)、[Product](产品名称)、[Brand](产品品牌)、[Spec](规格参数)、[Prize](奖品)')//、[CreditName](积分名称)、[CreditNum](积分数)、[Effedate](有效日期)、[Weight](产品重量) ?>
+    <?= $form->field($model, 'success')->textarea(['rows' => 6])->label('查询成功回复：')->hint('
+例：<br/>
+您好！您所查询的商品为原装正品！&lt;br/&gt;<br/>
+产品名称：[Product]&lt;br/&gt;<br/>
+生产厂家：[Factory]&lt;br/&gt;<br/>
+品牌：[Brand]&lt;br/&gt;<br/>
+之前已被查询：[Clicks]次，&lt;br/&gt;<br/>
+上次查询时间：[Time]<br/>
+(<strong>注：&lt;br/&gt;为换行符号。中括号为替换变量。防伪码：[Code]，产品规格：[Spec]，奖品名称：[Prize]，产品价格：[Price]</strong>)
+') ?>
     <?= $form->field($model, 'fail')->textarea(['rows' => 6])->label('查询失败回复语：') ?>
     <?= $form->field($model, 'content')->widget('frontend\assets\UeditorWidget',[
         'serverparam'=>[

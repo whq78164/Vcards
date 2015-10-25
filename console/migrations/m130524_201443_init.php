@@ -79,21 +79,48 @@ class m130524_201443_init extends Migration
             'code' => Schema::TYPE_STRING . ' NOT NULL',
             'replyid' => Schema::TYPE_INTEGER . ' NOT NULL',
             'productid' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'traceability' => Schema::TYPE_INTEGER . ' NOT NULL',//追溯
+            'traceabilityid' => Schema::TYPE_INTEGER . ' NOT NULL',//追溯
             'query_time' => Schema::TYPE_INTEGER . ' NOT NULL',
             'clicks' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'prize' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'prize' => Schema::TYPE_STRING . ' NOT NULL',
             'create_time' => Schema::TYPE_INTEGER.' NOT NULL',
             'status' => Schema::TYPE_SMALLINT.' NOT NULL DEFAULT 10',
         ], $tableOptions);
         $this->createIndex('uid', '{{%anti_code}}', ['uid']);
         $this->createIndex('code', '{{%anti_code}}', ['code'],true);
 
+        $this->createTable('{{%traceability_info}}', [
+            'id' => Schema::TYPE_PK,
+            'uid' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'code' => Schema::TYPE_STRING . ' NOT NULL',
+            'label' => Schema::TYPE_STRING . ' NOT NULL',
+            'describe' => Schema::TYPE_TEXT . ' NOT NULL',
+            'remark' => Schema::TYPE_STRING . ' NOT NULL',
+            'create_time' => Schema::TYPE_INTEGER.' NOT NULL',
+            'status' => Schema::TYPE_SMALLINT.' NOT NULL DEFAULT 10',
+        ], $tableOptions);
+        $this->createIndex('uid', '{{%traceability_info}}', ['uid']);
+        $this->createIndex('code', '{{%traceability_info}}', ['code']);
+
+
+        $this->createTable('{{%traceability_data}}', [
+            'id' => Schema::TYPE_PK,
+            'uid' => Schema::TYPE_INTEGER . ' NOT NULL',
+//            'code' => Schema::TYPE_STRING . ' NOT NULL',
+            'productid' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'traceabilityid' => Schema::TYPE_INTEGER . ' NOT NULL',//追溯
+            'query_time' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'clicks' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'remark' => Schema::TYPE_STRING . ' NOT NULL',
+            'create_time' => Schema::TYPE_INTEGER.' NOT NULL',
+            'status' => Schema::TYPE_SMALLINT.' NOT NULL DEFAULT 10',
+        ], $tableOptions);
+        $this->createIndex('uid', '{{%traceability_data}}', ['uid']);
+
 /***************/
         $this->insert('{{%anti_setting}}', [
             'uid' => 1,
             'title' => '防伪系统',
-
         ]);
 
         $this->insert('{{%anti_reply}}', [

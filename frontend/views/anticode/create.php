@@ -10,7 +10,7 @@ $this->title = Yii::t('tbhome', 'Create Anti Code');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('tbhome', 'Anti Codes'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="anti-code-create">
+<div class="anti-code-create col-md-12">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

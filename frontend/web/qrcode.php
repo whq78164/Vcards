@@ -31,15 +31,20 @@ if($vcards){
 }
 */
 $value=$_GET['value'];
+$filename=$_GET['filename'];
 //$file=$_GET['file'];
 //$level=$_GET['level'];
 //$size=$_GET['size'];
 //$margin=$_GET['margin'];
 //二维码内容
-
+//header('Content-Type:text/html;charset=UTF-8');
 //生成二维码图片
+if(!isset($filename)){
 QRcode::png($value,false,'M',6,1);
-
+}else{
+    QRcode::png($value,$filename,'M',6,1);
+    echo '<img src="'.$filename.'">';
+}
 /*
 
 public static function png($text, $outfile=false, $level=QR_ECLEVEL_L, $size=3, $margin=4, $saveandprint=false)

@@ -10,7 +10,7 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('tbhome', 'Anti Codes'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="anti-code-view">
+<div class="anti-code-view col-md-12">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -33,8 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'code',
             'replyid',
             'productid',
-            'query_time:datetime',
-            'create_time:datetime',
+         //   'query_time:datetime',
+            ['attribute' => 'create_time', 'format' => ['date', 'php:Y年m月d日']],
+            ['attribute' => 'query_time', 'format' => ['date', 'php:Y年m月d日']],
             'clicks',
             'prize',
         ],
