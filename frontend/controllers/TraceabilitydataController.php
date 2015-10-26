@@ -9,6 +9,9 @@ use frontend\models\TraceabilitydataSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
+use frontend\models\Product;
+use frontend\models\ProductSearch;
 
 /**
  * TraceabilitydataController implements the CRUD actions for Traceabilitydata model.
@@ -41,6 +44,12 @@ class TraceabilitydataController extends Controller
             Yii::$app->getSession()->setFlash('danger', '请先批量生产数据！');
             return $this->redirect(['traceability/genproduct']);
         }else {
+      //      $uid=Yii::$app->user->id;
+            $product=Product::find()->where(['uid'=>$uid])->all();
+
+            $listProduct=ArrayHelper::map($product, 'id', 'name');
+            $listProduct['']='全部';
+
 
             $searchModel = new TraceabilitydataSearch();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -48,6 +57,8 @@ class TraceabilitydataController extends Controller
             return $this->render('index', [
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
+                'listProduct' => $listProduct,
+  //              'searchProduct' => $searchProduct,
             ]);
         }
     }

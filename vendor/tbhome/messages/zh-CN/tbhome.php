@@ -185,7 +185,7 @@ return [
     'Describe'=>'描述',
     'Specification'=>'规格参数',
     'Brand'=>'品牌',
-    'Price' =>'价格(单位：元。请填数字)',
+    'Price' =>'价格(单位：元)',
     'Prize'=> '奖品',
 
     'Products'=>'产品',

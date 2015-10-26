@@ -50,7 +50,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'brand')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'price')->textInput(['placeholder'=>'必填，仅保留小数点后两位', 'maxlength' => true]) ?>
 
     <?//= $form->field($model, 'hot')->textInput() ?>
 

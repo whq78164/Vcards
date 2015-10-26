@@ -2,10 +2,13 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use frontend\models\Product;
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\TraceabilitydataSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $listProduct frontend\models\Product */
 
 $this->title = Yii::t('tbhome', 'Traceabilitydata');
 $this->params['breadcrumbs'][] = $this->title;
@@ -30,7 +33,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'headerOptions' => ['width' => '70'],
             ],
             //'uid',
-       //     'productid',
+
+            [
+                'attribute' => 'productid',
+                'label' => '产品名称',
+            'filter' => Html::activeDropDownList($searchModel, 'productid', $listProduct, ['class' => 'form-control']),
+                'value' => function ($model) {
+               // 'content' => function ($model) {
+                    $productid=$model->productid;
+                    $product=Product::findOne($productid);
+                    return Html::encode($product->name);
+                 //   return Html::a("请求地址", $model->productid);
+                },
+            ],
        //     'traceabilityid',
       //      'query_time:datetime',
             [

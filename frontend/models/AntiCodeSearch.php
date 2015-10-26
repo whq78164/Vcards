@@ -20,7 +20,7 @@ class AntiCodeSearch extends AntiCode
         return [
             [['id', 'uid', 'replyid', 'create_time', 'productid', 'query_time', 'clicks'], 'integer'],
             [['code'], 'safe'],
-            [['prize'], 'string'],
+           [['prize'], 'string'],
         ];
     }
 
@@ -70,10 +70,11 @@ class AntiCodeSearch extends AntiCode
             'productid' => $this->productid,
             'query_time' => $this->query_time,
             'clicks' => $this->clicks,
-            'prize' => $this->prize,
+        //    'prize' => $this->prize,
         ]);
 
-        $query->andFilterWhere(['like', 'code', $this->code]);
+        $query->andFilterWhere(['like', 'code', $this->code])
+            ->andFilterWhere(['like', 'prize', $this->prize]);
 
         return $dataProvider;
     }

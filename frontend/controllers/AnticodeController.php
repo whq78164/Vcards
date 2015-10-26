@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use frontend\models\AntiCodenew;
+use yii\helpers\ArrayHelper;
+use frontend\models\Product;
 
 
 /**
@@ -42,12 +44,16 @@ class AnticodeController extends Controller
             Yii::$app->getSession()->setFlash('danger', '请先生成防伪码！');
             return $this->redirect(['anti/gencode']);
         }else{
+            $product=Product::find()->where(['uid'=>$uid])->all();
+            $listProduct=ArrayHelper::map($product, 'id', 'name');
+            $listProduct['']='全部';
         $searchModel = new AntiCodeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'listProduct' => $listProduct,
         ]);
         }
     }

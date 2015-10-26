@@ -79,6 +79,21 @@ class TraceabilityController extends \yii\web\Controller
         return $this->redirect(['traceability/genproduct']);
     }
 
+    public function actionChecktraceability(){
+        header('Content-Type:text/html;charset=UTF-8');
+        $uid=Yii::$app->user->id;
+        $traceabilityCode = $_POST['sStr'];
+        $traceabilityinfo=TraceabilityInfo::findOne(['uid'=>$uid, 'code'=>$traceabilityCode]);
+        if(!$traceabilityinfo){
+            return 0;//false;
+        }else{
+            return $traceabilityinfo->id;
+           // var_dump($traceabilityinfo->id);
+       }
+
+
+    }
+
 
 
 

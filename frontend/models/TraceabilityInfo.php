@@ -50,7 +50,7 @@ class TraceabilityInfo extends \yii\db\ActiveRecord
             'code' => Yii::t('tbhome', 'Code'),
             'label' => Yii::t('tbhome', 'Label'),
             'describe' => Yii::t('tbhome', 'Describe'),
-            'remark' => Yii::t('tbhome', 'Remark'),
+            'remark' => '追溯信息备注',//Yii::t('tbhome', 'Remark'),
             'create_time' => Yii::t('tbhome', 'Create Time'),
             'status' => Yii::t('tbhome', 'Status'),
         ];

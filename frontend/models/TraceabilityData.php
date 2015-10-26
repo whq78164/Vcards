@@ -51,7 +51,7 @@ class TraceabilityData extends \yii\db\ActiveRecord
             'traceabilityid' => Yii::t('tbhome', 'Traceabilityid'),
             'query_time' => Yii::t('tbhome', 'Query Time'),
             'clicks' => Yii::t('tbhome', 'Clicks'),
-            'remark' => Yii::t('tbhome', 'Remark'),
+            'remark' => '生产备注',//Yii::t('tbhome', 'Remark'),
             'create_time' => Yii::t('tbhome', 'Create Time'),
             'status' => Yii::t('tbhome', 'Status'),
         ];
