@@ -7,11 +7,11 @@ use common\models\User;
 use frontend\models\AntiReply;
 //use frontend\models\AntiSetting;
 use frontend\models\AntiCode;
+use frontend\models\TraceabilityInfonew;
 //use frontend\models\AntiCodetable;
 //use frontend\models\AntiCodenew;
 use yii\helpers\ArrayHelper;
 use yii\db\Query;
-
 class AntiController extends \yii\web\Controller
 {
 
@@ -27,6 +27,13 @@ class AntiController extends \yii\web\Controller
             $sql = 'CREATE TABLE IF NOT EXISTS '.$data.' LIKE '.$moban;
             $command=$Connection->createCommand($sql);
             $command->execute();
+
+            $traceaInfo='tbhome_traceability_info_'.\Yii::$app->user->id;
+            $mobanInfo = 'tbhome_traceability_info';
+            $sqlInfo = 'CREATE TABLE IF NOT EXISTS '.$traceaInfo.' LIKE '.$mobanInfo;
+            $commandInfo=$Connection->createCommand($sqlInfo);
+            $commandInfo->execute();
+
             if ($this->enableCsrfValidation && Yii::$app->getErrorHandler()->exception === null && !Yii::$app->getRequest()->validateCsrfToken()) {
                 throw new BadRequestHttpException(Yii::t('yii', 'Unable to verify your data submission.'));
             }
@@ -38,7 +45,6 @@ class AntiController extends \yii\web\Controller
 
     public $layout='user';
 //    public $data;
-
 
     public function actionIndex($replyid=1)
     {
@@ -79,16 +85,33 @@ class AntiController extends \yii\web\Controller
         $listData=ArrayHelper::map($product, 'id', 'name');
         $reply=AntiReply::find()->where(['uid'=>$uid])->all();
         $listReply=ArrayHelper::map($reply, 'id', 'tag');
+
+        $traceabiliy=TraceabilityInfonew::find()->all();
+        $listTraceability=ArrayHelper::map($traceabiliy, 'id', 'label');
+
         $model = new AntiCode();
+        if (!$listReply){
+            Yii::$app->getSession()->setFlash('danger', '回复语未填写！');
+            return $this->redirect(['antireply/onereply']);
+        }
+        if (!$listData){
+            Yii::$app->getSession()->setFlash('danger', '请先添加产品！');
+            return $this->redirect(['product/index']);
+        }
+        if (!$listTraceability){
+            Yii::$app->getSession()->setFlash('danger', '请先添加追溯信息！');
+            return $this->redirect(['traceabilityinfo/create']);
+        }
 
         return $this->render('_form_gencode', [
             'model' => $model,
             'listData'=>$listData,
             'listReply'=>$listReply,
+            'listTraceability'=>$listTraceability,
+
 
         ]);
     }
-
 
     public function actionAntipage($code='798904845', $replyid=1, $productid=1 )
     {
@@ -128,11 +151,11 @@ class AntiController extends \yii\web\Controller
             $query_time=date('Y年m月d日', $codeData['query_time']);//$query_time=date('Y年m月d日 H:i:s', $codeData['query_time']);
             if ($codeData['query_time']==0){$query_time=0;}
 
-
+            $productImage='<img src="'.$product->image.'" >';
                          $reply->success=str_replace([
-                           '[Code]', '[Clicks]', '[Prize]', '[Time]', '[Factory]', '[Product]', '[Brand]', '[Spec]', '[Price]',
+                           '[Code]', '[Clicks]', '[Prize]', '[Time]', '[Factory]', '[Product]', '[Brand]', '[Spec]', '[Price]', '[Image]', '[Desc]', '[Unit]'
                        ], [
-                             $codeData['code'], $codeData['clicks'], $codeData['prize'], $query_time, $product->factory, $product->name, $product->brand, $product->specification, $product->price,
+                             $codeData['code'], $codeData['clicks'], $codeData['prize'], $query_time, $product->factory, $product->name, $product->brand, $product->specification, $product->price, $productImage, $product->describe, $product->unit,
                        ], $reply->success);
 
 
@@ -152,8 +175,6 @@ class AntiController extends \yii\web\Controller
 
 
     }
-
-
 
 
     public function actionPostgencode()
@@ -199,11 +220,11 @@ class AntiController extends \yii\web\Controller
             if ($model->validate()) {
                 for ($i=0; $i<=(intval($_POST['sNum'])-1); $i++) {
                     $code = $this->random(intval($_POST['slen']), $_POST['rule'], false);
-                    $tableColumn[$i]=[Yii::$app->user->id, $_POST['sStr'].$code, intval($model->productid), intval($model->replyid), $model->prize, time(), 0, 0, 10,];
+                    $tableColumn[$i]=[Yii::$app->user->id, $_POST['sStr'].$code, intval($model->productid), intval($model->replyid), $model->prize, time(), 0, 0, 10, intval($model->traceabilityid)];
                 }
 
 
-                $result=$Connection->createCommand()->batchInsert($table, ['uid', 'code', 'productid', 'replyid', 'prize', 'create_time', 'query_time', 'clicks', 'status'], $tableColumn)->execute();
+                $result=$Connection->createCommand()->batchInsert($table, ['uid', 'code', 'productid', 'replyid', 'prize', 'create_time', 'query_time', 'clicks', 'status', 'traceabilityid'], $tableColumn)->execute();
                 if (!$result){echo '数据插入失败！';}
                 //$i++;
             }else{echo '数据无效';}
@@ -238,8 +259,6 @@ echo $rows;
 
 
     }
-
-
 
 
     public function actionAntiquery()
@@ -279,11 +298,11 @@ echo $rows;
             $product=Product::findOne($productid);
             $query_time=date('Y年m月d日', $queryone['query_time']);//$query_time=date('Y年m月d日 H:i:s', $queryone['query_time']);
             if ($queryone['query_time']==0){$query_time=0;}
-
+            $productImage='<img src="'.$product->image.'" >';
             $replySuccess=str_replace([
-                '[Code]', '[Clicks]', '[Factory]', '[Product]', '[Brand]', '[Spec]', '[Prize]', '[Time]', '[Price]',
+                '[Code]', '[Clicks]', '[Factory]', '[Product]', '[Brand]', '[Spec]', '[Prize]', '[Time]', '[Price]', '[Image]', '[Desc]', '[Unit]'
             ], [
-                $queryone['code'], $queryone['clicks'], $product->factory, $product->name, $product->brand, $product->specification, $queryone['prize'], $query_time, $product->price,
+                $queryone['code'], $queryone['clicks'], $product->factory, $product->name, $product->brand, $product->specification, $queryone['prize'], $query_time, $product->price, $productImage, $product->describe, $product->unit,
             ], $replySuccess);
 
             echo '<div class="alert alert-success" >';
@@ -295,6 +314,10 @@ echo $rows;
         }
 
     }
+
+
+
+
 
 
 }

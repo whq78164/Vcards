@@ -8,7 +8,8 @@ use frontend\models\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use frontend\models\Upload;
+use yii\web\UploadedFile;
 /**
  * ProductController implements the CRUD actions for Product model.
  */
@@ -62,16 +63,54 @@ class ProductController extends Controller
     public function actionCreate()
     {
         $model = new Product();
-        $model->uid = Yii::$app->user->id;
+        $uid=Yii::$app->user->id;
+        $model->uid = $uid;
+       // $image=new Upload();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+                    Yii::$app->getSession()->setFlash('success', '保存成功！');
+                    return $this->redirect(['view', 'id'=>$model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+         //       'image'=>$image,
             ]);
         }
     }
+
+
+    public function actionUpload()
+    {
+        $image = new Upload();
+        $uid = Yii::$app->user->id;
+
+        if (Yii::$app->request->isPost) {
+           // $model->load(Yii::$app->request->post());
+            $id=$_POST['id'];
+            $productid=$id;
+
+            $image->imageFile = UploadedFile::getInstance($image, 'imageFile');//上传!
+            $filename = 'product_'.$productid .'_'. time();
+            $dir = 'Uploads/'.$uid.'/products/';
+            //     if (!file_exists($dir)) mkdir($dir, true);//is_dir
+            if ($image->upload($filename, $dir)) {//新建目录和文件信息保存！
+                // 文件上传成功
+                $url = $dir. $filename . '.' . $image->imageFile->extension;
+                $product = Product::findOne($productid);
+                $product->id = $productid;
+                $product->image = $url;
+                $product->save();
+                Yii::$app->getSession()->setFlash('success', '上传成功！');
+                return $this->redirect(['product/update', 'id'=>$id]);
+            } else {
+                Yii::$app->getSession()->setFlash('danger', '上传失败！');
+                return $this->redirect(['user']);
+            }
+
+        }
+    }
+
+
 
     /**
      * Updates an existing Product model.
@@ -82,12 +121,24 @@ class ProductController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $image= new Upload();
+        $request=Yii::$app->request;
+        if ($request->isPost) {
+                $model->load($request->post());
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+                if($model->save()){
+                    Yii::$app->getSession()->setFlash('success', '保存成功！');
+                             return $this->redirect(['view', 'id'=>$model->id]);
+
+                }else{
+                    Yii::$app->getSession()->setFlash('danger', '保存失败！');
+                    return $this->redirect(['product/update', 'id'=>$model->id]);
+                }
+
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'image'=>$image,
             ]);
         }
     }

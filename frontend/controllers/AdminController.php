@@ -88,7 +88,6 @@ class AdminController extends \yii\web\Controller
     public function actionUpdate($id)
     {
 
-
         //$model = User::findIdentity($id);
 
         $model = new User();
@@ -100,13 +99,22 @@ class AdminController extends \yii\web\Controller
 
       //      $post = $request->post();
       //      var_dump($_POST);
-            $password_hash = Yii::$app->security->generatePasswordHash($_POST['User']['password']);
+            $password=$_POST['User']['password'];
+
+
+
             $model->load($request->post());
-            $model->password_hash=$password_hash;
+            if (strlen($password)>5){
+                $password_hash = Yii::$app->security->generatePasswordHash($password);
+                $model->password_hash=$password_hash;
+            }else{
+                Yii::$app->getSession()->setFlash('danger', '密码未修改');
+            }
             //  var_dump($model);
 
             $model->save();
-            return $this->redirect(['admin/view', 'id' => $model->uid]);
+             $this->redirect(['admin/view', 'id' => $model->uid]);
+       //     var_dump($password);
         } else {
             return $this->render('/user/update', [
                 'model' => $model,
@@ -115,11 +123,36 @@ class AdminController extends \yii\web\Controller
     }
 
 
+    public function actionCreate()
+    {
 
+        //$model = User::findIdentity($id);
 
+        $model = new User();
 
+        $request = Yii::$app->request;
+        if ($request->isPost) {
 
+            $password=$_POST['User']['password'];
 
+            $model->load($request->post());
+            if (strlen($password)>5){
+                $password_hash = Yii::$app->security->generatePasswordHash($password);
+                $model->password_hash=$password_hash;
+            }else{
+                Yii::$app->getSession()->setFlash('danger', '密码长度不够');
+            }
+            //  var_dump($model);
+
+            $model->save();
+            $this->redirect(['admin/view', 'id' => $model->uid]);
+            //     var_dump($password);
+        } else {
+            return $this->render('/user/create', [
+                'model' => $model,
+            ]);
+        }
+    }
 
 
 

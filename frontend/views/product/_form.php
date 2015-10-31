@@ -10,7 +10,14 @@ use yii\widgets\ActiveForm;
 
 <div class="product-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+
+    <?php $form = ActiveForm::begin([
+        'id' => "article-form",
+        'enableAjaxValidation' => false,
+        'options' => ['enctype' => 'multipart/form-data'],
+     //   'action' => $action,
+        'class' =>'am-form',
+    ]) ?>
 
     <?//= $form->field($model, 'uid')->textInput() ?>
 
@@ -40,9 +47,6 @@ use yii\widgets\ActiveForm;
             'style'=>'height:80px'
         ]
     ]); ?>
-
-
-
 
     <?= $form->field($model, 'specification')->textInput(['maxlength' => true]) ?>
 

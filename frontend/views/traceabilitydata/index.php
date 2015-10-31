@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use frontend\models\Product;
+use frontend\models\TraceabilityInfo;
 
 
 /* @var $this yii\web\View */
@@ -19,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('tbhome', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?//= Html::a(Yii::t('tbhome', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -47,24 +48,50 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
        //     'traceabilityid',
+
+            //[
+           //     'attribute' => 'code',
+        //        'label' => '追溯编码',
+       //        'filter' =>'' ,//Html::activeTextInput($traceabilitySearch, 'code', ['class' => 'form-control']),
+   // 'value' => function ($model) {
+    // 'content' => function ($model) {
+  //  $traceabilityid=$model->id;
+    //    if($productid==0){return '无';}
+  //  $traceability=TraceabilityInfo::findOne($productid);
+  //  return Html::encode($traceability->code);}
+             //   'value' => 'tbhome_traceability_info.code',
+   //         ],
+
+
       //      'query_time:datetime',
             [
                 'attribute' => 'clicks',
-                //    'label'=>'创建时间',
+                    'label'=>'扫描次数',
 
                 'headerOptions' => ['width' => '70'],
             ],
             [
                 'attribute' => 'create_time',
                 //    'label'=>'创建时间',
+                'filter' =>'' ,
                 'value'=>
                     function($model){
                         return  date('Y-m-d H:i:s',$model->create_time);   //主要通过此种方式实现
                     },
                 'headerOptions' => ['width' => '170'],
             ],
+            'remark',
+            [
+                'header'=>'二维码图片', 'format' => 'html', 'value'=>function($data){
+                $urlval=yii\helpers\Url::to(['traceability/page', 'id'=>$data->id, 'uid'=>$data->uid], true);
+            //    $urlval=urlencode($urlval);
+                $src='http://www.vcards.top/qrcode.php?value='.$urlval;
+                return   //'&lt;img src="'.$src.'"&gt;';
+                    Html::img($src, ['width'=>'150px']);
+            },
+            ],
 
-             'remark',
+
 
    //         ['attribute' => 'create_time', 'format' => ['date', 'php:Y年m月d日']],
 

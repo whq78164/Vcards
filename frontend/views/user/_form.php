@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'mobile')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'password')->passwordInput(['placeholder'=>'管理员请注意！新密码至少应包含6个字符，否则账户将被锁死！'])//->hint('管理员请注意！新密码至少应包含6个字符，否则账户将被锁死！') ?>
+    <?= $form->field($model, 'password')->passwordInput(['placeholder'=>'密码至少应包含6个字符！'])//->hint('管理员请注意！新密码至少应包含6个字符，否则账户将被锁死！') ?>
 
 
     <?= $form->field($model, 'qq')->textInput() ?>

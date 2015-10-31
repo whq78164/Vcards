@@ -3,6 +3,8 @@
 namespace frontend\controllers;
 
 use frontend\models\TraceabilityDatanew;
+use frontend\models\TraceabilityInfo;
+use frontend\models\TraceabilityinfoSearch;
 use Yii;
 use frontend\models\TraceabilityData;//小写data
 use frontend\models\TraceabilitydataSearch;
@@ -12,6 +14,7 @@ use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use frontend\models\Product;
 use frontend\models\ProductSearch;
+//use frontend\models\TraceabilityInfo;
 
 /**
  * TraceabilitydataController implements the CRUD actions for Traceabilitydata model.
@@ -37,6 +40,7 @@ class TraceabilitydataController extends Controller
      */
     public function actionIndex()
     {
+
         $uid=Yii::$app->user->id;
         $table='tbhome_traceability_data_'.$uid;
         $ta=Yii::$app->db->createCommand("SHOW TABLES LIKE '".$table."'")->queryAll();
@@ -50,15 +54,15 @@ class TraceabilitydataController extends Controller
             $listProduct=ArrayHelper::map($product, 'id', 'name');
             $listProduct['']='全部';
 
-
             $searchModel = new TraceabilitydataSearch();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+          $traceabilitySearch = new TraceabilityinfoSearch();
 
             return $this->render('index', [
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
                 'listProduct' => $listProduct,
-  //              'searchProduct' => $searchProduct,
+                'traceabilitySearch' => $traceabilitySearch,
             ]);
         }
     }

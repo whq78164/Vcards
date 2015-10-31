@@ -83,7 +83,70 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'productid')->dropDownList(
             $listData// ['prompt'=>'请选择产品']
         )//[1=>'产品1', 2=>'产品2', 3=>'产品3'] ?>
-        <?//= $form->field($model, 'query_time') ?>
+
+
+    <div class="panel panel-primary">
+        <div class="panel panel-heading">追溯信息：</div>
+        <div class="panel panel-body">
+            <div class="text-right " ><label id="txtHint1"></label></div>
+            <?= $form->field($model, 'traceabilityid',
+                [ 'inputOptions' => [
+                    'id'=>"traceabilityid",
+                    'class' => 'form-control',
+                ]])->dropDownList(
+                $listTraceability
+            )->label('追溯内容') ?>
+
+
+            <div class="text-right " ><label id="txtHint"></label></div>
+            <div class="form-group">
+                <label class="control-label">
+                    追溯编码</label>
+                <input class="form-control" id="traceabilityCode" name="traceabilityCode" type="text" placeholder="选填。用于自动搜索追溯信息" onchange="checkstr1(this.value)" >
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <script type="text/javascript">
+        function checkstr1(sStr){
+            var csrfToken = $('meta[name="csrf-token"]').attr("content");
+            $.ajax({
+                type: "POST",
+                url: "<?=yii\helpers\Url::to(['traceability/checktraceability'], true)?>",
+                data: {
+                    sStr:sStr,
+                    _csrf:csrfToken
+                },
+                // dataType: "json",
+                success: function(data){
+                    if (data <1 ) {
+                        document.getElementById("txtHint1").innerHTML = '<span class="alert alert-danger" id="txtHint">该追溯编码不存在</span>';
+                    }else{
+                        document.getElementById("traceabilityid").value=data;
+                        document.getElementById("txtHint1").innerHTML = '<span class="alert alert-success" id="txtHint">追溯信息已选好</span>';
+                    }
+
+
+                }
+
+            });
+
+
+        }
+
+    </script>
+
+
+
+
+
+
+    <?//= $form->field($model, 'query_time') ?>
         <?//= $form->field($model, 'clicks') ?>
         <?= $form->field($model, 'prize') ?>
     

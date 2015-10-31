@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use Yii;
+//use frontend\models\TraceabilityInfo;
 
 /**
  * This is the model class for table "{{%traceability_data}}".
@@ -19,6 +20,9 @@ use Yii;
  */
 class TraceabilityDatanew extends \yii\db\ActiveRecord
 {
+ //   public function getTraceabilityInfo(){
+ //       return $this->hasOne(TraceabilityInfo::className(), ['id'=>'traceabilityid']);
+ //   }
     /**
      * @inheritdoc
      */

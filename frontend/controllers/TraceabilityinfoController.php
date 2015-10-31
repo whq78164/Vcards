@@ -3,7 +3,8 @@
 namespace frontend\controllers;
 
 use Yii;
-use frontend\models\Traceabilityinfo;
+use frontend\models\TraceabilityInfonew;
+use frontend\models\TraceabilityInfo;
 use frontend\models\TraceabilityinfoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -14,7 +15,31 @@ use yii\filters\VerbFilter;
  */
 class TraceabilityinfoController extends Controller
 {
+
+    public function beforeAction($action)
+    {
+
+
+        if (parent::beforeAction($action)) {
+            $Connection = \Yii::$app->db;
+
+            $traceaInfo='tbhome_traceability_info_'.\Yii::$app->user->id;
+            $mobanInfo = 'tbhome_traceability_info';
+            $sqlInfo = 'CREATE TABLE IF NOT EXISTS '.$traceaInfo.' LIKE '.$mobanInfo;
+            $commandInfo=$Connection->createCommand($sqlInfo);
+            $commandInfo->execute();
+
+            if ($this->enableCsrfValidation && Yii::$app->getErrorHandler()->exception === null && !Yii::$app->getRequest()->validateCsrfToken()) {
+                throw new BadRequestHttpException(Yii::t('yii', 'Unable to verify your data submission.'));
+            }
+            return true;
+        }
+
+        return false;
+    }
+
     public $layout='user';
+
     public function behaviors()
     {
         return [
@@ -61,7 +86,7 @@ class TraceabilityinfoController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Traceabilityinfo();
+        $model = new TraceabilityInfonew();
         $uid=Yii::$app->user->id;
         $model->uid=$uid;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -114,7 +139,7 @@ class TraceabilityinfoController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Traceabilityinfo::findOne($id)) !== null) {
+        if (($model = TraceabilityInfonew::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

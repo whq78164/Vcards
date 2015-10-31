@@ -10,8 +10,9 @@ use frontend\models\Traceabilitydata;
 /**
  * TraceabilitydataSearch represents the model behind the search form about `frontend\models\Traceabilitydata`.
  */
-class TraceabilitydataSearch extends Traceabilitydata
+class TraceabilitydataSearch extends TraceabilityDatanew
 {
+ //   public $code;
     /**
      * @inheritdoc
      */
@@ -42,6 +43,7 @@ class TraceabilitydataSearch extends Traceabilitydata
     public function search($params)
     {
         $query = TraceabilityDatanew::find()->where(['uid' =>Yii::$app->user->id ]);
+    //    $query->joinWith(['TraceabilityInfo']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -67,6 +69,9 @@ class TraceabilitydataSearch extends Traceabilitydata
         ]);
 
         $query->andFilterWhere(['like', 'remark', $this->remark]);
+     //   ->andFilterWhere(['like', 'tbhome_traceability_info.code', $this->code]);
+
+
 
         return $dataProvider;
     }

@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('tbhome', 'Products');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-index col-md-10">
+<div class="product-index col-md-12">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -28,17 +28,24 @@ $this->params['breadcrumbs'][] = $this->title;
  //           'id',
    //         'uid',
      //       'share',
-//            'image',
+
+            [
+                'header'=>'产品图片', 'format' => 'html', 'value'=>function($data){
+                return   //'&lt;img src="'.$src.'"&gt;';
+                    Html::img($data->image, ['width'=>'150px']);
+            },
+            ],
+
             'factory',
              'name',
     //         'describe',
              'specification',
-             'unit',
+    //         'unit',
              'brand',
              'price',
             // 'hot',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}'],
         ],
     ]); ?>
 

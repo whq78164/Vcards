@@ -5,10 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Traceabilityinfo */
 
-$this->title = Yii::t('tbhome', 'Update {modelClass}: ', [
-    'modelClass' => 'Traceabilityinfo',
-]) . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('tbhome', 'Traceabilityinfos'), 'url' => ['index']];
+$this->title = Yii::t('tbhome', $model->label);
+$this->params['breadcrumbs'][] = ['label' => Yii::t('tbhome', 'Traceabilityinfo'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('tbhome', 'Update');
 ?>

@@ -52,6 +52,7 @@ class AntiCode extends \yii\db\ActiveRecord
             'uid' => Yii::t('tbhome', 'Uid'),
             'code' => Yii::t('tbhome', 'Code'),
             'replyid' => Yii::t('tbhome', '查询回复语'),
+			'traceabilityid' => Yii::t('tbhome', '追溯序号'),
             'productid' => Yii::t('tbhome', '防伪产品'),
             'query_time' => Yii::t('tbhome', 'Query Time'),
             'clicks' => Yii::t('tbhome', 'Clicks'),

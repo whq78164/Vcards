@@ -29,12 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
   //          'uid',
             'code',
             'label',
- //           'describe:ntext',
+ //           'describe:html',
              'remark',
+
             // 'create_time:datetime',
             // 'status',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}'],
         ],
     ]); ?>
 

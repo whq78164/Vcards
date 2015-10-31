@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'code')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'label')->textInput() ?>
+    <?= $form->field($model, 'label')->textInput()->label('标签（标题）') ?>
 
     <?//= $form->field($model, 'describe')->textarea(['rows' => 6]) ?>
     <?= $form->field($model, 'describe')->widget('frontend\assets\UeditorWidget',[
@@ -32,9 +32,9 @@ use yii\widgets\ActiveForm;
         ],
 
         'attributes'=>[
-            'style'=>'height:80px'
+            'style'=>'height:100px'
         ]
-    ]); ?>
+    ])->hint('替换变量：生产备注：[Remark]点击量：[Clicks], 厂家：[Factory], 产品名称：[Product], 品牌：[Brand], 规格：[Spec], 参考价格：[Price], 图片：[Image], 商品描述：[Desc], 计量单位：[Unit]'); ?>
 
     <?= $form->field($model, 'remark')->textInput(['maxlength' => true]) ?>
 

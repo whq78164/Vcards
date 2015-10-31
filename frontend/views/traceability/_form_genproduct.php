@@ -40,7 +40,7 @@ use yii\widgets\ActiveForm;
                     'class' => 'form-control',
                 ]])->dropDownList(
                 $listTraceabilityInfo// ['prompt'=>'选择回复语']
-            ) ?>
+            )->label('追溯内容') ?>
 
 
             <div class="text-right " ><label id="txtHint"></label></div>
@@ -64,7 +64,7 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'productid')->dropDownList(
             $listData// ['prompt'=>'请选择产品']
-        )//[1=>'产品1', 2=>'产品2', 3=>'产品3'] ?>
+        )->label('产品名称')//[1=>'产品1', 2=>'产品2', 3=>'产品3'] ?>
     <?= $form->field($model, 'remark')->textInput() ?>
     
         <div class="form-group">

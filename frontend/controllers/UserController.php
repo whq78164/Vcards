@@ -107,7 +107,7 @@ class UserController extends Controller
         if (Yii::$app->request->isPost) {
             $qrcode->imageFile = UploadedFile::getInstance($qrcode, 'imageFile');//上传!
             $filename = 'wechatqr_' . time();
-            $dir = 'Uploads/'.$uid.'/wechatqr_/';
+            $dir = 'Uploads/'.$uid.'/wechatqr/';
             //     if (!file_exists($dir)) mkdir($dir, true);//is_dir
             if ($qrcode->imageFile) {
                 $qrcode->upload($filename, $dir);//新建目录和文件信息保存！
@@ -117,7 +117,7 @@ class UserController extends Controller
                 $info->wechat_qrcode = $url;
                 if($info->save()){
                     Yii::$app->getSession()->setFlash('success', '上传成功！');
-                    return $this->redirect(['user/info']);
+                    return $this->redirect(['user/user']);
                 }else{
                     Yii::$app->getSession()->setFlash('danger', '保存失败！');
                     return $this->redirect(['user/info']);
