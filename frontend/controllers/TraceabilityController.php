@@ -6,6 +6,7 @@ use Yii;
 use frontend\models\Product;
 use frontend\models\TraceabilityInfonew;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 class TraceabilityController extends \yii\web\Controller
 {
     public $layout='user';
@@ -79,21 +80,32 @@ class TraceabilityController extends \yii\web\Controller
 
         $model = new TraceabilityData();
         if ($model->load(Yii::$app->request->post())) {
+            $uid=Yii::$app->user->id;
             if ($model->validate()) {
-                for ($i=0; $i<=(intval($_POST['sNum'])-1); $i++) {
-              //      $code = $this->random(intval($_POST['slen']), $_POST['rule'], false);
-                    $tableColumn[$i]=[Yii::$app->user->id, intval($model->productid), intval($model->traceabilityid), time(), 0, 0, 10,$model->remark];
+                $genNum=intval($_POST['sNum'])-1;
+                for ($i=0; $i<=$genNum; $i++) {
+                    $createTime[$i]=time();
+           //         $url=Url::to(['/traceability/page', 'id'=>intval($model->id), 'uid'=>$uid], true);
+                    $tableColumn[$i]=[$uid, intval($model->productid), intval($model->traceabilityid), $createTime[$i], 0, 0, 10,$model->remark, ''];
                 }
 
 
-                $result=$Connection->createCommand()->batchInsert($table, ['uid', 'productid', 'traceabilityid', 'create_time', 'query_time', 'clicks', 'status', 'remark'], $tableColumn)->execute();
-                if (!$result){echo '数据插入失败！';}
+                $result=$Connection->createCommand()->batchInsert($table, ['uid', 'productid', 'traceabilityid', 'create_time', 'query_time', 'clicks', 'status', 'remark', 'url'], $tableColumn)->execute();
+
+    //            $Connection->createCommand()->update($table, ['status' => 1], 'age > 30')->execute();
+                if (!$result){
+                    $successMsg= '数据插入失败！';
+                }else{
+                    $successMsg='成功生成'.$_POST['sNum'].'条数据！';
+                }
                 //$i++;
-            }else{echo '数据无效';}
+            }else{
+                $successMsg= '数据无效！';
+            }
         }
 
 
-        $successMsg='成功生成'.$_POST['sNum'].'条数据！';
+
         Yii::$app->getSession()->setFlash('success', $successMsg);
         return $this->redirect(['traceability/genproduct']);
     }
@@ -141,7 +153,7 @@ class TraceabilityController extends \yii\web\Controller
 
         $productImage='<img src="'.$product->image.'" >';
             $reply=str_replace([
-                 '[Clicks]', '[Remark]', '[Factory]', '[Product]', '[Brand]', '[Spec]', '[Price]', '[Image]', '[Desc]', '[Unit]'
+                 '{{点击量}}', '{{生产备注}}', '{{产品厂家}}', '{{产品名称}}', '{{产品品牌}}', '{{产品规格}}', '{{产品价格}}', '{{产品图片}}', '{{产品详情}}', '{{计量单位}}'
             ], [
                 $traceabilityData['clicks'], $traceabilityData['remark'], $product->factory, $product->name, $product->brand, $product->specification, $product->price, $productImage, $product->describe, $product->unit
             ], $describe);

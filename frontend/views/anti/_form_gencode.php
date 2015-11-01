@@ -148,7 +148,8 @@ use yii\widgets\ActiveForm;
 
     <?//= $form->field($model, 'query_time') ?>
         <?//= $form->field($model, 'clicks') ?>
-        <?= $form->field($model, 'prize') ?>
+        <?= $form->field($model, 'prize')->label('奖品')->hint('选填') ?>
+    <?= $form->field($model, 'remark')->label('备注')->hint('选填')->textarea() ?>
     
         <div class="form-group">
             <?= Html::submitButton(Yii::t('tbhome', 'Submit'), ['class' => 'btn btn-primary']) ?>

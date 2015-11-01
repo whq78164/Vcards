@@ -33,11 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'code',
             'replyid',
             'productid',
+            'traceabilityid',
          //   'query_time:datetime',
             ['attribute' => 'create_time', 'format' => ['date', 'php:Y年m月d日']],
             ['attribute' => 'query_time', 'format' => ['date', 'php:Y年m月d日']],
             'clicks',
             'prize',
+            'remark',
         ],
     ]) ?>
 

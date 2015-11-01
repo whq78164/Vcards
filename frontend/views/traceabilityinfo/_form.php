@@ -32,9 +32,9 @@ use yii\widgets\ActiveForm;
         ],
 
         'attributes'=>[
-            'style'=>'height:100px'
+            'style'=>'height:80px'
         ]
-    ])->hint('替换变量：生产备注：[Remark]点击量：[Clicks], 厂家：[Factory], 产品名称：[Product], 品牌：[Brand], 规格：[Spec], 参考价格：[Price], 图片：[Image], 商品描述：[Desc], 计量单位：[Unit]'); ?>
+    ])->hint('替换变量：{{点击量}}, {{生产备注}}, {{产品名称}}, {{产品厂家}}, {{产品品牌}}, {{产品规格}}, {{产品价格}}, {{产品图片}}, {{产品详情}}, {{计量单位}}'); ?>
 
     <?= $form->field($model, 'remark')->textInput(['maxlength' => true]) ?>
 

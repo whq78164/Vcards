@@ -84,11 +84,18 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'header'=>'二维码图片', 'format' => 'html', 'value'=>function($data){
                 $urlval=yii\helpers\Url::to(['traceability/page', 'id'=>$data->id, 'uid'=>$data->uid], true);
-            //    $urlval=urlencode($urlval);
+                $urlval=urlencode($urlval);
                 $src='http://www.vcards.top/qrcode.php?value='.$urlval;
                 return   //'&lt;img src="'.$src.'"&gt;';
                     Html::img($src, ['width'=>'150px']);
             },
+            ],
+            [
+                'header'=>'网页', 'format' => 'html', 'value'=>function($data){
+
+                //return '<a href="'.$data->url.'"></a>';
+                return Html::a('查看',['/traceability/page', 'id'=>$data->id, 'uid'=>Yii::$app->user->id]);
+            }
             ],
 
 

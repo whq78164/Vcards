@@ -26,10 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-//            'id',
+            'traceabilityid',
 //            'uid',
             'code',
             [
+                'headerOptions' => ['width' => '170'],
                 'attribute' => 'productid',
                 'label' => '产品名称',
                 'filter' => Html::activeDropDownList($searchModel, 'productid', $listProduct, ['class' => 'form-control']),
@@ -43,6 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             'prize',
+            'remark',
 
             ['attribute' => 'create_time', 'format' => ['date', 'php:Y年m月d日']],
 //            ['attribute' => 'query_time', 'format' => ['date', 'php:Y年m月d日']],
@@ -57,10 +59,18 @@ $this->params['breadcrumbs'][] = $this->title;
              Html::img($src, ['width'=>'150px']);
             },
             ],
+            //'url:html',
+            [
+                'header'=>'网页', 'format' => 'html', 'value'=>function($data){
+
+                //return '<a href="'.$data->url.'"></a>';
+                return Html::a('查看',$data->url, ['target' => '_blank', 'class'=>'klj']);
+            }
+            ],
 
 
  //           ['class' => 'yii\grid\ActionColumn'],
-            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}'],
+            ['class' => 'yii\grid\ActionColumn', 'header'=>'操作', 'template' => '{view} {update}'],
         ],
     ]); ?>
 

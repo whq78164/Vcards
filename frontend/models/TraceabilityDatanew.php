@@ -40,7 +40,7 @@ class TraceabilityDatanew extends \yii\db\ActiveRecord
         return [
      //       [['uid', 'productid', 'traceabilityid', 'query_time', 'clicks', 'remark', 'create_time'], 'required'],
             [['uid', 'productid', 'traceabilityid', 'query_time', 'clicks', 'create_time', 'status'], 'integer'],
-            [['remark'], 'string', 'max' => 255]
+            [['remark', 'url'], 'string', 'max' => 255]
         ];
     }
 
@@ -53,7 +53,7 @@ class TraceabilityDatanew extends \yii\db\ActiveRecord
             'id' => Yii::t('tbhome', 'ID'),
             'uid' => Yii::t('tbhome', 'Uid'),
             'productid' => Yii::t('tbhome', 'Productid'),
-            'traceabilityid' => Yii::t('tbhome', 'Traceabilityid'),
+            'traceabilityid' => Yii::t('tbhome', '追溯'),
             'query_time' => Yii::t('tbhome', 'Query Time'),
             'clicks' => Yii::t('tbhome', 'Clicks'),
             'remark' => '生产备注',//Yii::t('tbhome', 'Remark'),

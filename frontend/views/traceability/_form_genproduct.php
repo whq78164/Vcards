@@ -56,16 +56,12 @@ use yii\widgets\ActiveForm;
 
     </div>
 
-
-
-
-
-
+    
 
         <?= $form->field($model, 'productid')->dropDownList(
             $listData// ['prompt'=>'请选择产品']
         )->label('产品名称')//[1=>'产品1', 2=>'产品2', 3=>'产品3'] ?>
-    <?= $form->field($model, 'remark')->textInput() ?>
+    <?= $form->field($model, 'remark')->textarea() ?>
     
         <div class="form-group">
             <?= Html::submitButton(Yii::t('tbhome', 'Submit'), ['class' => 'btn btn-primary']) ?>

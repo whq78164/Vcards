@@ -83,6 +83,8 @@ class m130524_201443_init extends Migration
             'query_time' => Schema::TYPE_INTEGER . ' NOT NULL',
             'clicks' => Schema::TYPE_INTEGER . ' NOT NULL',
             'prize' => Schema::TYPE_STRING . ' NOT NULL',
+            'remark' => Schema::TYPE_STRING . ' NOT NULL',
+            'url' => Schema::TYPE_STRING . ' NOT NULL',
             'create_time' => Schema::TYPE_INTEGER.' NOT NULL',
             'status' => Schema::TYPE_SMALLINT.' NOT NULL DEFAULT 10',
         ], $tableOptions);
@@ -106,7 +108,7 @@ class m130524_201443_init extends Migration
         $this->createTable('{{%traceability_data}}', [
             'id' => Schema::TYPE_PK,
             'uid' => Schema::TYPE_INTEGER . ' NOT NULL',
-//            'code' => Schema::TYPE_STRING . ' NOT NULL',
+            'url' => Schema::TYPE_STRING . ' NOT NULL',
             'productid' => Schema::TYPE_INTEGER . ' NOT NULL',
             'traceabilityid' => Schema::TYPE_INTEGER . ' NOT NULL',//追溯
             'query_time' => Schema::TYPE_INTEGER . ' NOT NULL',

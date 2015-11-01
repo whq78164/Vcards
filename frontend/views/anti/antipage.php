@@ -39,9 +39,9 @@ AppAsset::register($this);
         <div class="alert alert-<?=$colour?>" >
 <?=$queryResult?>
         </div>
-        <div class="row col-md-10">
-        <?=$antireply->content?>
-        </div>
+        <!--div class="row col-md-10">
+        <?//=$antireply->content?>
+        </div-->
     </div>
     <label class="pull-right"><?$product->brand?></label>
 </div>

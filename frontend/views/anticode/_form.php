@@ -17,6 +17,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'code')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'replyid')->textInput() ?>
+    <?= $form->field($model, 'traceabilityid')->textInput() ?>
 
     <?= $form->field($model, 'productid')->textInput() ?>
 

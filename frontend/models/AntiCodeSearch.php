@@ -10,7 +10,7 @@ use frontend\models\AntiCode;
 /**
  * AntiCodeSearch represents the model behind the search form about `frontend\models\AntiCode`.
  */
-class AntiCodeSearch extends AntiCode
+class AntiCodeSearch extends AntiCodenew
 {
     /**
      * @inheritdoc
@@ -18,9 +18,9 @@ class AntiCodeSearch extends AntiCode
     public function rules()
     {
         return [
-            [['id', 'uid', 'replyid', 'create_time', 'productid', 'query_time', 'clicks'], 'integer'],
+            [['id', 'uid', 'replyid', 'traceabilityid', 'create_time', 'productid', 'query_time', 'clicks'], 'integer'],
             [['code'], 'safe'],
-           [['prize'], 'string'],
+           [['prize', 'remark'], 'string'],
         ];
     }
 
@@ -49,7 +49,7 @@ class AntiCodeSearch extends AntiCode
  //       $command = $connection->createCommand($sql);
  //       $query=$command->queryAll();;
 
-        $query = AntiCodenew::find()->where(['uid' =>Yii::$app->user->id ]);
+        $query = AntiCodenew::find();//->where(['uid' =>Yii::$app->user->id ]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -64,16 +64,18 @@ class AntiCodeSearch extends AntiCode
         }
 
         $query->andFilterWhere([
-            'id' => $this->id,
+         //   'id' => $this->id,
             'uid' => $this->uid,
             'replyid' => $this->replyid,
             'productid' => $this->productid,
+            'traceabilityid' => $this->traceabilityid,
             'query_time' => $this->query_time,
             'clicks' => $this->clicks,
         //    'prize' => $this->prize,
         ]);
 
         $query->andFilterWhere(['like', 'code', $this->code])
+            ->andFilterWhere(['like', 'remark', $this->code])
             ->andFilterWhere(['like', 'prize', $this->prize]);
 
         return $dataProvider;

@@ -5,6 +5,7 @@
  * Date: 2015-10-01
  * Time: 16:55
  */
+//use \phpqrcode\QRcode;
 require(__DIR__ . '/../assets/phpqrcode/qrlib.php');
 //$qrlibpath=Yii::getAlias('@web/../assets/phpqrcode/qrlib.php');
 //require($qrlibpath);
@@ -40,7 +41,7 @@ $filename=$_GET['filename'];
 //header('Content-Type:text/html;charset=UTF-8');
 //生成二维码图片
 if(!isset($filename)){
-QRcode::png($value,false,'M',6,1);
+    QRcode::png($value,false,'M',8,1);
 }else{
     QRcode::png($value,$filename,'M',6,1);
     echo '<img src="'.$filename.'">';

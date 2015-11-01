@@ -35,7 +35,8 @@ class TraceabilityInfonew extends \yii\db\ActiveRecord
      //       [['uid', 'code', 'label', 'describe', 'remark', 'create_time'], 'required'],
             [['uid', 'create_time', 'status'], 'integer'],
             [['describe', 'label'], 'string'],
-            [['code', 'remark'], 'string', 'max' => 255]
+            [['code', 'remark'], 'string', 'max' => 255],
+            [['code'], 'unique']
         ];
     }
 

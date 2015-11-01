@@ -12,10 +12,12 @@ use Yii;
  * @property string $code
  * @property integer $replyid
  * @property integer $productid
+  * @property integer $traceabilityid
  * @property integer $query_time
  * @property integer $create_time
  * @property integer $status
  * @property integer $clicks
+ * @property string $remark
  * @property string $prize
  */
 class AntiCode extends \yii\db\ActiveRecord
@@ -36,8 +38,8 @@ class AntiCode extends \yii\db\ActiveRecord
         return [
   //          [['uid', 'code', 'replyid', 'productid', 'query_time', 'clicks', 'prize'
     //        ], 'required'],
-            [['uid', 'replyid', 'create_time', 'productid', 'query_time', 'clicks'], 'integer'],
-            [['code', 'prize'], 'string', 'max' => 255],
+            [['uid', 'replyid', 'traceabilityid', 'create_time', 'productid', 'query_time', 'clicks'], 'integer'],
+            [['code', 'remark', 'prize', 'url'], 'string', 'max' => 255],
             [['code'], 'unique']
         ];
     }
@@ -52,11 +54,12 @@ class AntiCode extends \yii\db\ActiveRecord
             'uid' => Yii::t('tbhome', 'Uid'),
             'code' => Yii::t('tbhome', 'Code'),
             'replyid' => Yii::t('tbhome', '查询回复语'),
-			'traceabilityid' => Yii::t('tbhome', '追溯序号'),
+			'traceabilityid' => Yii::t('tbhome', '追溯'),
             'productid' => Yii::t('tbhome', '防伪产品'),
             'query_time' => Yii::t('tbhome', 'Query Time'),
             'clicks' => Yii::t('tbhome', 'Clicks'),
-            'prize' => Yii::t('tbhome', 'Prize'),
+            'prize' => Yii::t('tbhome', '奖品'),
+            'remark' => Yii::t('tbhome', '备注'),
             'create_time' => Yii::t('tbhome', 'create time'),
             'status' => Yii::t('tbhome', 'status'),
         ];

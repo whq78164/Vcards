@@ -35,7 +35,7 @@ class TraceabilityData extends \yii\db\ActiveRecord
         return [
      //       [['uid', 'productid', 'traceabilityid', 'query_time', 'clicks', 'remark', 'create_time'], 'required'],
             [['uid', 'productid', 'traceabilityid', 'query_time', 'clicks', 'create_time', 'status'], 'integer'],
-            [['remark'], 'string', 'max' => 255]
+            [['remark', 'url'], 'string', 'max' => 255]
         ];
     }
 

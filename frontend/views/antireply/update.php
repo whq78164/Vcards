@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('tbhome', 'Anti Replies'), '
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('tbhome', 'Update');
 ?>
-<div class="anti-reply-update col-md-8">
+<div class="anti-reply-update col-md-10">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
