@@ -71,11 +71,10 @@ class AntiCodeSearch extends AntiCodenew
             'traceabilityid' => $this->traceabilityid,
             'query_time' => $this->query_time,
             'clicks' => $this->clicks,
-        //    'prize' => $this->prize,
         ]);
 
         $query->andFilterWhere(['like', 'code', $this->code])
-            ->andFilterWhere(['like', 'remark', $this->code])
+            ->andFilterWhere(['like', 'remark', $this->remark])
             ->andFilterWhere(['like', 'prize', $this->prize]);
 
         return $dataProvider;

@@ -26,6 +26,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'clicks')->textInput() ?>
 
     <?= $form->field($model, 'prize')->textInput() ?>
+    <?= $form->field($model, 'remark')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('tbhome', 'Create') : Yii::t('tbhome', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

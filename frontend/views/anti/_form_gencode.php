@@ -85,6 +85,10 @@ use yii\widgets\ActiveForm;
         )//[1=>'产品1', 2=>'产品2', 3=>'产品3'] ?>
 
 
+    <?php
+    if ($role>60){
+    ?>
+
     <div class="panel panel-primary">
         <div class="panel panel-heading">追溯信息：</div>
         <div class="panel panel-body">
@@ -111,7 +115,6 @@ use yii\widgets\ActiveForm;
 
     </div>
 
-
     <script type="text/javascript">
         function checkstr1(sStr){
             var csrfToken = $('meta[name="csrf-token"]').attr("content");
@@ -136,11 +139,12 @@ use yii\widgets\ActiveForm;
 
             });
 
-
         }
 
     </script>
-
+<?php
+    }
+?>
 
 
 

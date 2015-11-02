@@ -13,12 +13,17 @@ return [
     'controllerNamespace' => 'frontend\controllers',
 //    'language' => 'zh-CN',
     //'charset' => 'UTF-8',
-
+    'modules' => [
+        'gridview' =>  [
+            'class' => '\kartik\grid\Module',
+        ]
+    ],
     'components' => [
-        'aliases' => [
-            'class'=>'phpqrcode',  //如果不定义该类，将会报错。值就是在phpqrcode.php中定义的命名空间
-            '@phpqrcode' => '@vendor/tbhome/phpqrcode',  //@phpqrcode 就是在phpqrcode.php中定义的命名空间，@vendor/phpqrcode 为该类的路径
-        ],
+  //      'aliases' => [
+    //        'class'=>'phpqrcode',  //如果不定义该类，将会报错。值就是在phpqrcode.php中定义的命名空间
+      //      '@phpqrcode' => '@vendor/tbhome/phpqrcode',  //@phpqrcode 就是在phpqrcode.php中定义的命名空间，@vendor/phpqrcode 为该类的路径
+       // ],
+
 
  //       'db' => require(__DIR__ . '/db.php'),
         'i18n' => [

@@ -29,8 +29,6 @@ class TraceabilityController extends \yii\web\Controller
             $commandInfo=$Connection->createCommand($sqlInfo);
             $commandInfo->execute();
 
-
-
             if ($this->enableCsrfValidation && Yii::$app->getErrorHandler()->exception === null && !Yii::$app->getRequest()->validateCsrfToken()) {
                 throw new BadRequestHttpException(Yii::t('yii', 'Unable to verify your data submission.'));
             }
@@ -85,14 +83,27 @@ class TraceabilityController extends \yii\web\Controller
                 $genNum=intval($_POST['sNum'])-1;
                 for ($i=0; $i<=$genNum; $i++) {
                     $createTime[$i]=time();
-           //         $url=Url::to(['/traceability/page', 'id'=>intval($model->id), 'uid'=>$uid], true);
-                    $tableColumn[$i]=[$uid, intval($model->productid), intval($model->traceabilityid), $createTime[$i], 0, 0, 10,$model->remark, ''];
+           //
+                    $tableColumn[$i]=[$uid, intval($model->productid), intval($model->traceabilityid), $createTime[$i], 0, 0, 10,$model->remark, '', $model->localremark];
                 }
 
+                $result=$Connection->createCommand()->batchInsert($table, ['uid', 'productid', 'traceabilityid', 'create_time', 'query_time', 'clicks', 'status', 'remark', 'url', 'localremark'], $tableColumn)->execute();
 
-                $result=$Connection->createCommand()->batchInsert($table, ['uid', 'productid', 'traceabilityid', 'create_time', 'query_time', 'clicks', 'status', 'remark', 'url'], $tableColumn)->execute();
+
+/*
+                Yii::$app->db->createCommand()->update($table, ['url' => $clicks, 'query_time'=>time()], "code ='".$securityCode."'")->execute();
+                $dataRows=TraceabilityData::find()->where([])
+                $url=Url::to(['/traceability/page', 'id'=>intval($model->id), 'uid'=>$uid], true);
+
+                 $sql='SELECT * FROM '.$table.' WHERE code="'.$securityCode.'"';
+        $command = $connection->createCommand($sql);
 
     //            $Connection->createCommand()->update($table, ['status' => 1], 'age > 30')->execute();
+
+*/
+
+
+
                 if (!$result){
                     $successMsg= '数据插入失败！';
                 }else{

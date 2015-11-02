@@ -19,7 +19,6 @@ class AntiController extends \yii\web\Controller
     public function beforeAction($action)
     {
 
-
         if (parent::beforeAction($action)) {
             $Connection = \Yii::$app->db;
             $data = '`tbhome_anti_code_'.\Yii::$app->user->id.'`';
@@ -29,11 +28,6 @@ class AntiController extends \yii\web\Controller
             $command=$Connection->createCommand($sql);
             $command->execute();
 
-            $traceaInfo='tbhome_traceability_info_'.\Yii::$app->user->id;
-            $mobanInfo = 'tbhome_traceability_info';
-            $sqlInfo = 'CREATE TABLE IF NOT EXISTS '.$traceaInfo.' LIKE '.$mobanInfo;
-            $commandInfo=$Connection->createCommand($sqlInfo);
-            $commandInfo->execute();
 
             if ($this->enableCsrfValidation && Yii::$app->getErrorHandler()->exception === null && !Yii::$app->getRequest()->validateCsrfToken()) {
                 throw new BadRequestHttpException(Yii::t('yii', 'Unable to verify your data submission.'));
@@ -133,13 +127,12 @@ class AntiController extends \yii\web\Controller
                     $traceaReply='';
                 }
 
-            }
+            }else{$traceaReply='';}//$codeData['traceabilityid']==0
 
 
 
 
-     //       var_dump($reply);
-    //        var_dump($product);
+
            $clicks=intval($codeData['clicks'])+1;
            Yii::$app->db->createCommand()->update($table, ['clicks' => $clicks, 'query_time'=>time()], "code ='".$code."'")->execute();
 
@@ -155,11 +148,27 @@ class AntiController extends \yii\web\Controller
                              $code, $codeData['clicks'], $codeData['remark'], $codeData['prize'], $query_time, $product->factory, $product->name, $product->brand, $product->specification, $product->price, $productImage, $product->describe, $product->unit, $traceaReply,  $diypage
                        ], $reply->success);
 
+            $reply->fail=str_replace([
+                '{{防伪码}}', '{{查询次数}}', '{{生产备注}}', '{{奖品}}', '{{查询时间}}', '{{产品厂家}}', '{{产品名称}}', '{{产品品牌}}', '{{产品规格}}', '{{产品价格}}', '{{产品图片}}', '{{产品详情}}', '{{计量单位}}', '{{追溯信息}}', '{{自定义网页}}'
+            ], [
+                $code, $codeData['clicks'], $codeData['remark'], $codeData['prize'], $query_time, $product->factory, $product->name, $product->brand, $product->specification, $product->price, $productImage, $product->describe, $product->unit, $traceaReply,  $diypage
+            ], $reply->fail);
+
+            $validClicks=$reply->valid_clicks;
+            if ($codeData['clicks']>$validClicks){
+                $queryResult=$reply->fail;
+            }else{
+                $queryResult=$reply->success;
+            }
+
+
+
+
             return $this->renderPartial(
                 'antipage',
                 [
                     'antireply'=>$reply,
-                    'queryResult'=>$reply->success,
+                    'queryResult'=>$queryResult,
                     'product'=>$product,
                     'colour'=>'success',
                 ]
@@ -175,13 +184,14 @@ class AntiController extends \yii\web\Controller
     public function actionGencode()
     {
         $uid=Yii::$app->user->id;
+        $role=Yii::$app->user->identity->role;
         $product=Product::find()->where(['uid'=>$uid])->all();
         $listData=ArrayHelper::map($product, 'id', 'name');
         $reply=AntiReply::find()->where(['uid'=>$uid])->all();
         $listReply=ArrayHelper::map($reply, 'id', 'tag');
 
-        $traceabiliy=TraceabilityInfonew::find()->all();
-        $listTraceability=ArrayHelper::map($traceabiliy, 'id', 'label');
+
+
 
         $model = new AntiCode();
         if (!$listReply){
@@ -192,16 +202,33 @@ class AntiController extends \yii\web\Controller
             Yii::$app->getSession()->setFlash('danger', '请先添加产品！');
             return $this->redirect(['product/index']);
         }
-        if (!$listTraceability){
-            Yii::$app->getSession()->setFlash('danger', '请先添加追溯信息！');
-            return $this->redirect(['traceabilityinfo/create']);
+
+
+        if ($role>60){
+            $traceaInfo='tbhome_traceability_info_'.\Yii::$app->user->id;
+            $mobanInfo = 'tbhome_traceability_info';
+            $sqlInfo = 'CREATE TABLE IF NOT EXISTS '.$traceaInfo.' LIKE '.$mobanInfo;
+            $commandInfo=Yii::$app->db->createCommand($sqlInfo);
+            $commandInfo->execute();
+
+            $traceabiliy=TraceabilityInfonew::find()->all();
+            $listTraceability=ArrayHelper::map($traceabiliy, 'id', 'label');
+            if (!$listTraceability){
+                Yii::$app->getSession()->setFlash('danger', '请先添加追溯信息！');
+                return $this->redirect(['traceabilityinfo/create']);
+            }
+
+        }else{
+            $listTraceability=array();
         }
+
 
         return $this->render('_form_gencode', [
             'model' => $model,
             'listData'=>$listData,
             'listReply'=>$listReply,
             'listTraceability'=>$listTraceability,
+            'role'=>$role,
 
 
         ]);
@@ -221,17 +248,18 @@ class AntiController extends \yii\web\Controller
                 $date=date('Y_m_d_Hms', time());
                 $dirPath='Uploads/'.Yii::$app->user->id.'/GenQRcode/'.$date.'/';
                 if (!file_exists($dirPath)) {mkdir($dirPath, 0777, true);}
+                $traceabilityid=intval($model->traceabilityid) ? intval($model->traceabilityid) : 1;
 
                 for ($i=0; $i<=(intval($_POST['sNum'])-1); $i++) {
                     $code = $this->random(intval($_POST['slen']), $_POST['rule'], false);
                     $url=Url::to(['/anti/antipage', 'replyid'=>intval($model->replyid), 'productid'=>intval($model->productid), 'code'=>$_POST['sStr'].$code], true);
-                    $tableColumn[$i]=[Yii::$app->user->id, $_POST['sStr'].$code, intval($model->productid), intval($model->replyid), $model->prize, time(), 0, 0, 10, intval($model->traceabilityid), $url];
+                    $tableColumn[$i]=[Yii::$app->user->id, $_POST['sStr'].$code, intval($model->productid), intval($model->replyid), $model->prize, time(), 0, 0, 10, $traceabilityid, $url, $model->remark];
 
    //                 \QRcode::png($url,$dirPath.$_POST['sStr'].$code.'.png','M',6,1);
                 }
 
 
-                $result=$Connection->createCommand()->batchInsert($table, ['uid', 'code', 'productid', 'replyid', 'prize', 'create_time', 'query_time', 'clicks', 'status', 'traceabilityid', 'url'], $tableColumn)->execute();
+                $result=$Connection->createCommand()->batchInsert($table, ['uid', 'code', 'productid', 'replyid', 'prize', 'create_time', 'query_time', 'clicks', 'status', 'traceabilityid', 'url', 'remark'], $tableColumn)->execute();
                 if (!$result){echo '数据插入失败！';}
                 //$i++;
             }else{echo '数据无效';}
@@ -292,12 +320,26 @@ echo $rows;
         $replySuccess=$reply->success;
         $replyFail=$reply->fail;
 
+
         if ($queryone==null){//==false
+            $diypage=$reply->content;
+            $replyFail=str_replace([
+                '{{防伪码}}', '{{查询次数}}', '{{生产备注}}', '{{奖品}}', '{{产品厂家}}', '{{产品名称}}', '{{产品品牌}}', '{{产品规格}}', '{{查询时间}}', '{{产品价格}}', '{{产品图片}}', '{{产品详情}}', '{{计量单位}}', '{{追溯信息}}', '{{自定义网页}}'
+            ], [
+                '', '', '', '', '', '', '', '', '', '', '', '','', '', $diypage
+            ], $replyFail);
+
+
             echo '<div class="alert alert-danger" >';
             echo $replyFail;//'谨防假冒！！';//'您所查询的编码不存在！请谨防假冒！';
             echo '</div>';
-            var_dump($queryone);
+           // var_dump($queryone);
         }
+
+
+        $validClicks=$reply->valid_clicks;
+
+
         if($queryone) {
             $clicks=intval($queryone['clicks'])+1;
        Yii::$app->db->createCommand()->update($table, ['clicks' => $clicks, 'query_time'=>time()], "code ='".$securityCode."'")->execute();
@@ -326,21 +368,31 @@ echo $rows;
             }
 
 
-
             $query_time=date('Y年m月d日', $queryone['query_time']);//$query_time=date('Y年m月d日 H:i:s', $queryone['query_time']);
             if ($queryone['query_time']==0){$query_time=0;}
             $productImage='<img src="'.$product->image.'" >';
             $diypage=$reply->content;
-            $replySuccess=str_replace([
+
+
+
+            if ($queryone['clicks']>$validClicks){
+                $queryResult=$replyFail;
+            }else{
+                $queryResult=$replySuccess;
+            }
+
+
+            $queryResult=str_replace([
                        '{{防伪码}}', '{{查询次数}}', '{{生产备注}}', '{{奖品}}', '{{产品厂家}}', '{{产品名称}}', '{{产品品牌}}', '{{产品规格}}', '{{查询时间}}', '{{产品价格}}', '{{产品图片}}', '{{产品详情}}', '{{计量单位}}', '{{追溯信息}}', '{{自定义网页}}'
             ], [
                 $queryone['code'], $queryone['clicks'], $queryone['remark'], $queryone['prize'], $product->factory, $product->name, $product->brand, $product->specification, $query_time, $product->price, $productImage, $product->describe, $product->unit, $traceaReply, $diypage
-            ], $replySuccess);
+            ], $queryResult);
 
-            echo '<div class="alert alert-success" >';
+            if ($queryResult==$replySuccess){echo '<div class="alert alert-success" >';}else{
+                echo '<div class="alert alert-danger" >';
+            }
 
-
-            echo $replySuccess;//'<br/>编码 ：'.$queryone['code'].$queryone['type'];
+            echo $queryResult;//'<br/>编码 ：'.$queryone['code'].$queryone['type'];
           //  var_dump($traceabilityinfo);
             echo '</div>';
 

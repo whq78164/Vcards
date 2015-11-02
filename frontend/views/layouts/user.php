@@ -247,7 +247,7 @@ $role=Yii::$app->user->identity->role;
                             </a>
                         </li>
                         <?php
-                        if($role>=40 ) {
+                        if(($role>=40&&$role<60)||$role>=80 ) {
                             ?>
 
                             <li>

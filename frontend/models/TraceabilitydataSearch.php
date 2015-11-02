@@ -20,7 +20,7 @@ class TraceabilitydataSearch extends TraceabilityDatanew
     {
         return [
             [['id', 'uid', 'productid', 'traceabilityid', 'query_time', 'clicks', 'create_time', 'status'], 'integer'],
-            [['remark'], 'safe'],
+            [['remark','localremark'], 'safe'],
         ];
     }
 
@@ -68,7 +68,8 @@ class TraceabilitydataSearch extends TraceabilityDatanew
             'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'remark', $this->remark]);
+        $query->andFilterWhere(['like', 'remark', $this->remark])
+            ->andFilterWhere(['like', 'localremark', $this->localremark]);
      //   ->andFilterWhere(['like', 'tbhome_traceability_info.code', $this->code]);
 
 

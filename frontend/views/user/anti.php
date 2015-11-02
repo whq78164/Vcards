@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php
 $role=Yii::$app->user->identity->role;
-if($role==50 || $role==100) {
+if(($role>=50&&$role<60) || $role>=80) {
     ?>
     <a href="<?= yii\helpers\Url::to(['antireply/index'], true) ?>">
         <button type="button" class="am-btn am-btn-secondary am-btn-block">

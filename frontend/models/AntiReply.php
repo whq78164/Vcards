@@ -51,7 +51,8 @@ class AntiReply extends \yii\db\ActiveRecord
             'success' => Yii::t('tbhome', 'Success'),
             'fail' => Yii::t('tbhome', 'Fail'),
             'content' => Yii::t('tbhome', '自定义网页'),
-            'valid_clicks' => Yii::t('tbhome', 'Valid Clicks'),
+            //'valid_clicks' => Yii::t('tbhome', 'Valid Clicks'),
+            'valid_clicks' => Yii::t('tbhome', '有效次数'),
         ];
     }
 }

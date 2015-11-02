@@ -24,7 +24,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ])*/ ?>
     </p>
+<?php
 
+$urlval=yii\helpers\Url::to(['traceability/page', 'id'=>$model->id, 'uid'=>$model->uid], true);
+$urlval=urlencode($urlval);
+$src='http://www.vcards.top/qrcode.php?value='.$urlval;
+$img= Html::img($src, ['width'=>'200px']);
+
+?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -35,8 +42,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'query_time:datetime',
             'clicks',
             'remark',
+            'localremark',
             'create_time:datetime',
             'status',
+            [
+
+                'attribute'=>'二维码', 'format' => 'html', 'value'=>$img,
+//$model->code,
+
+            ],
         ],
     ]) ?>
 

@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'tag',
             'success',
             'fail',
-            // 'valid_clicks',
+             'valid_clicks',
             // 'content:ntext',
 
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}'],

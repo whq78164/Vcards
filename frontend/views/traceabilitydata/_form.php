@@ -22,7 +22,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'clicks')->textInput() ?>
 
-    <?= $form->field($model, 'remark')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'remark')->textarea(['maxlength' => true]) ?>
+    <?= $form->field($model, 'localremark')->textarea(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'create_time')->textInput() ?>
 

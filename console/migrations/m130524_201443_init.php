@@ -79,7 +79,7 @@ class m130524_201443_init extends Migration
             'code' => Schema::TYPE_STRING . ' NOT NULL',
             'replyid' => Schema::TYPE_INTEGER . ' NOT NULL',
             'productid' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'traceabilityid' => Schema::TYPE_INTEGER . ' NOT NULL',//追溯
+            'traceabilityid' => Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 1',//追溯
             'query_time' => Schema::TYPE_INTEGER . ' NOT NULL',
             'clicks' => Schema::TYPE_INTEGER . ' NOT NULL',
             'prize' => Schema::TYPE_STRING . ' NOT NULL',
@@ -114,6 +114,7 @@ class m130524_201443_init extends Migration
             'query_time' => Schema::TYPE_INTEGER . ' NOT NULL',
             'clicks' => Schema::TYPE_INTEGER . ' NOT NULL',
             'remark' => Schema::TYPE_STRING . ' NOT NULL',
+            'localremark' => Schema::TYPE_STRING . ' NOT NULL',
             'create_time' => Schema::TYPE_INTEGER.' NOT NULL',
             'status' => Schema::TYPE_SMALLINT.' NOT NULL DEFAULT 10',
         ], $tableOptions);

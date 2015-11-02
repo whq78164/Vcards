@@ -24,7 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) */?>
     </p>
-
+<?php
+$urlval=yii\helpers\Url::to(['anti/antipage', 'code'=>$model->code, 'replyid'=>$model->replyid, 'productid'=>$model->replyid], true);
+$urlval=urlencode($urlval);
+$src='http://www.vcards.top/qrcode.php?value='.$urlval;
+$img= Html::img($src, ['width'=>'200px']);
+?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -40,6 +45,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'clicks',
             'prize',
             'remark',
+            [
+
+                'attribute'=>'二维码', 'format' => 'html', 'value'=>$img,
+//$model->code,
+
+            ],
         ],
     ]) ?>
 

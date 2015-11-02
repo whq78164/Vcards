@@ -126,48 +126,20 @@ if (!$mobile->isMobile()){
 
 
 <?php
-if ($role!==10) {
+if ($role>=20) {
     ?>
     <div class="col-sm-12 col-md-5">
         <div class="panel panel-primary">
             <div class="panel-heading ">VIP专享：</div>
 
-            <section data-am-widget="accordion" class="am-accordion am-accordion-gapped" data-am-accordion='{  }'>
-                <dl class="am-accordion-item">
-                    <dt class="am-accordion-title">
-                        <button type="button" class="btn btn-primary am-btn-block">
-                            <span class="am-icon-plus-square pull-left"></span> <span class="pull-right">更多</span>
-                        </button>
-                    </dt>
-                    <dd class="am-accordion-bd am-collapse">
-
                         <a href="<?= yii\helpers\Url::to(['label/index'], true) ?>">
                             <button type="button" class="am-btn am-btn-secondary am-btn-block">
-                                新增字段<span class="am-icon-angle-right pull-right"></span>
+                                新增字段<!--span class="am-icon-angle-right pull-right"></span-->
                             </button>
                         </a>
 
-                        <a href="<?= yii\helpers\Url::to(['micropage/index'], true) ?>">
-                            <button type="button" class="am-btn am-btn-warning am-btn-block">
-                                微网页<span class="am-icon-angle-right pull-right"></span>
-                            </button>
-                        </a>
+            <?=Html::a('微网页', ['micropage/index'], ['class'=>'am-btn am-btn-warning am-btn-block'])?>
 
-                    </dd>
-
-                </dl>
-                <!--dl class="am-accordion-item">
-                    <dt class="am-accordion-title">
-                        让生命去等候，去等候，去等候，去等候
-                    </dt>
-                    <dd class="am-accordion-bd am-collapse ">
-
-                        <div class="am-accordion-content">
-                            走在忠孝东路 <br/> 徘徊在茫然中 <br/> 在我的人生旅途 <br/> 选择了多少错误 <br/> 我在睡梦中惊醒 <br/> 感叹悔言无尽 <br/> 恨我不能说服自己 <br/> 接受一切教训 <br/> 让生命去等候 <br/> 等候下一个漂流 <br/> 让生命去等候 <br/>等候下一个伤口
-                        </div>
-                    </dd>
-                </dl-->
-            </section>
 
         </div>
     </div>
