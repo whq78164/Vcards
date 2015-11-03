@@ -37098,3 +37098,1767 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1446479709.4336
     'REQUEST_TIME' => 1446479709
 ]
+2015-11-03 01:15:16 [127.0.0.1][6][s92s2ek9hs92q39ounlk68vbh1][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in D:\Program Files\PHPStudy\WWW\vcards\frontend\views\anti\antipage.php:46
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\frontend\views\anti\antipage.php(46): yii\base\ErrorHandler->handleError(8, 'Trying to get p...', 'D:\\Program File...', 46, Array)
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\View.php(325): require('D:\\Program File...')
+#2 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\\Program File...', Array)
+#3 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\\Program File...', Array, Object(frontend\controllers\AntiController))
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(402): yii\base\View->render('antipage', Array, Object(frontend\controllers\AntiController))
+#5 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php(102): yii\base\Controller->renderPartial('antipage', Array)
+#6 [internal function]: frontend\controllers\AntiController->actionAntipage('loaguk7vjb1n', '6', '6')
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#9 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('antipage', Array)
+#10 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('anti/antipage', Array)
+#11 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#13 {main}
+2015-11-03 01:15:16 [127.0.0.1][6][s92s2ek9hs92q39ounlk68vbh1][info][application] $_GET = [
+    'r' => 'anti/antipage'
+    'code' => 'loaguk7vjb1n'
+    'replyid' => '6'
+    'productid' => '6'
+]
+
+$_COOKIE = [
+    'CNZZDATA1254397725' => '376447555-1444276282-http%3A%2F%2Flocalhost%2F|1444276282'
+    '_identity' => '690579e3dc6ab620e8e9fd2ce227fbf8dd00ed4bc3b36f7442e54e9676cecc46a:2:{i:0;s:9:\"_identity\";i:1;s:14:\"[6,\"\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 6
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\admin\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WHQ78164'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\admin'
+    'LOCALAPPDATA' => 'C:\\Users\\admin\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WHQ78164'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\Program Files\\PHPStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;D:\\Program Files\\Composer'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'AMD64 Family 21 Model 16 Stepping 1, AuthenticAMD'
+    'PROCESSOR_LEVEL' => '21'
+    'PROCESSOR_REVISION' => '1001'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WHQ78164'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WHQ78164'
+    'USERNAME' => 'admin'
+    'USERPROFILE' => 'C:\\Users\\admin'
+    'VBOX_MSI_INSTALL_PATH' => 'D:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    'HTTP_COOKIE' => 'CNZZDATA1254397725=376447555-1444276282-http%253A%252F%252Flocalhost%252F%7C1444276282; _identity=690579e3dc6ab620e8e9fd2ce227fbf8dd00ed4bc3b36f7442e54e9676cecc46a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A14%3A%22%5B6%2C%22%22%2C2592000%5D%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'localhost'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '57497'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/Program Files/PHPStudy/WWW'
+    'DOCUMENT_URI' => '/vcards/frontend/web/index.php'
+    'REQUEST_URI' => '/vcards/frontend/web/index.php?r=anti%2Fantipage&code=loaguk7vjb1n&replyid=6&productid=6'
+    'SCRIPT_NAME' => '/vcards/frontend/web/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=anti%2Fantipage&code=loaguk7vjb1n&replyid=6&productid=6'
+    'PATH_TRANSLATED' => 'D:/Program Files/PHPStudy/WWW'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/Program Files/PHPStudy/WWW/vcards/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/vcards/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1446484516.1963
+    'REQUEST_TIME' => 1446484516
+]
+2015-11-03 01:15:32 [127.0.0.1][6][s92s2ek9hs92q39ounlk68vbh1][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in D:\Program Files\PHPStudy\WWW\vcards\frontend\views\anti\antipage.php:46
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\frontend\views\anti\antipage.php(46): yii\base\ErrorHandler->handleError(8, 'Trying to get p...', 'D:\\Program File...', 46, Array)
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\View.php(325): require('D:\\Program File...')
+#2 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\\Program File...', Array)
+#3 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\\Program File...', Array, Object(frontend\controllers\AntiController))
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(402): yii\base\View->render('antipage', Array, Object(frontend\controllers\AntiController))
+#5 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php(102): yii\base\Controller->renderPartial('antipage', Array)
+#6 [internal function]: frontend\controllers\AntiController->actionAntipage('loaguk7vjb1n', '6', '6')
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#9 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('antipage', Array)
+#10 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('anti/antipage', Array)
+#11 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#13 {main}
+2015-11-03 01:15:31 [127.0.0.1][6][s92s2ek9hs92q39ounlk68vbh1][info][application] $_GET = [
+    'r' => 'anti/antipage'
+    'code' => 'loaguk7vjb1n'
+    'replyid' => '6'
+    'productid' => '6'
+]
+
+$_COOKIE = [
+    'CNZZDATA1254397725' => '376447555-1444276282-http%3A%2F%2Flocalhost%2F|1444276282'
+    'PHPSESSID' => 's92s2ek9hs92q39ounlk68vbh1'
+    '_identity' => '690579e3dc6ab620e8e9fd2ce227fbf8dd00ed4bc3b36f7442e54e9676cecc46a:2:{i:0;s:9:\"_identity\";i:1;s:14:\"[6,\"\",2592000]\";}'
+    '_csrf' => '144b17a01576d4a3ed1610e09a1f062a2970604874e6b3ede477ded40ecc1583a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"3nxRW4K7bfOLVyLytgerOXEeiBRM-kdA\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 6
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\admin\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WHQ78164'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\admin'
+    'LOCALAPPDATA' => 'C:\\Users\\admin\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WHQ78164'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\Program Files\\PHPStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;D:\\Program Files\\Composer'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'AMD64 Family 21 Model 16 Stepping 1, AuthenticAMD'
+    'PROCESSOR_LEVEL' => '21'
+    'PROCESSOR_REVISION' => '1001'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WHQ78164'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WHQ78164'
+    'USERNAME' => 'admin'
+    'USERPROFILE' => 'C:\\Users\\admin'
+    'VBOX_MSI_INSTALL_PATH' => 'D:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    'HTTP_COOKIE' => 'CNZZDATA1254397725=376447555-1444276282-http%253A%252F%252Flocalhost%252F%7C1444276282; PHPSESSID=s92s2ek9hs92q39ounlk68vbh1; _identity=690579e3dc6ab620e8e9fd2ce227fbf8dd00ed4bc3b36f7442e54e9676cecc46a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A14%3A%22%5B6%2C%22%22%2C2592000%5D%22%3B%7D; _csrf=144b17a01576d4a3ed1610e09a1f062a2970604874e6b3ede477ded40ecc1583a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%223nxRW4K7bfOLVyLytgerOXEeiBRM-kdA%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'localhost'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '57497'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/Program Files/PHPStudy/WWW'
+    'DOCUMENT_URI' => '/vcards/frontend/web/index.php'
+    'REQUEST_URI' => '/vcards/frontend/web/index.php?r=anti%2Fantipage&code=loaguk7vjb1n&replyid=6&productid=6'
+    'SCRIPT_NAME' => '/vcards/frontend/web/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=anti%2Fantipage&code=loaguk7vjb1n&replyid=6&productid=6'
+    'PATH_TRANSLATED' => 'D:/Program Files/PHPStudy/WWW'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/Program Files/PHPStudy/WWW/vcards/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/vcards/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1446484531.8667
+    'REQUEST_TIME' => 1446484531
+]
+2015-11-03 01:15:51 [127.0.0.1][6][s92s2ek9hs92q39ounlk68vbh1][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php:82
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php(82): yii\base\ErrorHandler->handleError(8, 'Trying to get p...', 'D:\\Program File...', 82, Array)
+#1 [internal function]: frontend\controllers\AntiController->actionAntipage('798904845', 1, 1)
+#2 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#3 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('antipage', Array)
+#5 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('anti/antipage', Array)
+#6 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2015-11-03 01:15:51 [127.0.0.1][6][s92s2ek9hs92q39ounlk68vbh1][info][application] $_GET = [
+    'r' => 'anti/antipage'
+]
+
+$_COOKIE = [
+    'CNZZDATA1254397725' => '376447555-1444276282-http%3A%2F%2Flocalhost%2F|1444276282'
+    'PHPSESSID' => 's92s2ek9hs92q39ounlk68vbh1'
+    '_csrf' => '144b17a01576d4a3ed1610e09a1f062a2970604874e6b3ede477ded40ecc1583a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"3nxRW4K7bfOLVyLytgerOXEeiBRM-kdA\";}'
+    '_identity' => '690579e3dc6ab620e8e9fd2ce227fbf8dd00ed4bc3b36f7442e54e9676cecc46a:2:{i:0;s:9:\"_identity\";i:1;s:14:\"[6,\"\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 6
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\admin\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WHQ78164'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\admin'
+    'LOCALAPPDATA' => 'C:\\Users\\admin\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WHQ78164'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\Program Files\\PHPStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;D:\\Program Files\\Composer'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'AMD64 Family 21 Model 16 Stepping 1, AuthenticAMD'
+    'PROCESSOR_LEVEL' => '21'
+    'PROCESSOR_REVISION' => '1001'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WHQ78164'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WHQ78164'
+    'USERNAME' => 'admin'
+    'USERPROFILE' => 'C:\\Users\\admin'
+    'VBOX_MSI_INSTALL_PATH' => 'D:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    'HTTP_COOKIE' => 'CNZZDATA1254397725=376447555-1444276282-http%253A%252F%252Flocalhost%252F%7C1444276282; PHPSESSID=s92s2ek9hs92q39ounlk68vbh1; _csrf=144b17a01576d4a3ed1610e09a1f062a2970604874e6b3ede477ded40ecc1583a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%223nxRW4K7bfOLVyLytgerOXEeiBRM-kdA%22%3B%7D; _identity=690579e3dc6ab620e8e9fd2ce227fbf8dd00ed4bc3b36f7442e54e9676cecc46a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A14%3A%22%5B6%2C%22%22%2C2592000%5D%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'localhost'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '57497'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/Program Files/PHPStudy/WWW'
+    'DOCUMENT_URI' => '/vcards/frontend/web/index.php'
+    'REQUEST_URI' => '/vcards/frontend/web/index.php?r=anti%2Fantipage'
+    'SCRIPT_NAME' => '/vcards/frontend/web/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=anti%2Fantipage'
+    'PATH_TRANSLATED' => 'D:/Program Files/PHPStudy/WWW'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/Program Files/PHPStudy/WWW/vcards/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/vcards/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1446484551.6736
+    'REQUEST_TIME' => 1446484551
+]
+2015-11-03 01:21:26 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in D:\Program Files\PHPStudy\WWW\vcards\frontend\views\vcards\_lsidelogin.php:20
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\frontend\views\vcards\_lsidelogin.php(20): yii\base\ErrorHandler->handleError(8, 'Trying to get p...', 'D:\\Program File...', 20, Array)
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\View.php(325): require('D:\\Program File...')
+#2 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\\Program File...', Array)
+#3 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\\Program File...', Array, NULL)
+#4 D:\Program Files\PHPStudy\WWW\vcards\frontend\views\vcards\index.php(623): yii\base\View->render('_lsidelogin')
+#5 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\View.php(325): require('D:\\Program File...')
+#6 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\\Program File...', Array)
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\\Program File...', Array, Object(frontend\controllers\VcardsController))
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(402): yii\base\View->render('index', Array, Object(frontend\controllers\VcardsController))
+#9 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\VcardsController.php(80): yii\base\Controller->renderPartial('index', Array)
+#10 [internal function]: frontend\controllers\VcardsController->actionIndex('2')
+#11 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#12 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#13 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('index', Array)
+#14 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('vcards/index', Array)
+#15 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#16 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#17 {main}
+2015-11-03 01:21:26 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][info][application] $_GET = [
+    'r' => 'vcards/index'
+    'uid' => '2'
+]
+
+$_COOKIE = [
+    '_identity' => '0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a:2:{i:0;s:9:\"_identity\";i:1;s:14:\"[4,\"\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\admin\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WHQ78164'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\admin'
+    'LOCALAPPDATA' => 'C:\\Users\\admin\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WHQ78164'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\Program Files\\PHPStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;D:\\Program Files\\Composer'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'AMD64 Family 21 Model 16 Stepping 1, AuthenticAMD'
+    'PROCESSOR_LEVEL' => '21'
+    'PROCESSOR_REVISION' => '1001'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WHQ78164'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WHQ78164'
+    'USERNAME' => 'admin'
+    'USERPROFILE' => 'C:\\Users\\admin'
+    'VBOX_MSI_INSTALL_PATH' => 'D:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    'HTTP_COOKIE' => '_identity=0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A14%3A%22%5B4%2C%22%22%2C2592000%5D%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '127.0.0.1'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '57737'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/Program Files/PHPStudy/WWW'
+    'DOCUMENT_URI' => '/vcards/frontend/web/index.php'
+    'REQUEST_URI' => '/vcards/frontend/web/index.php?r=vcards%2Findex&uid=2'
+    'SCRIPT_NAME' => '/vcards/frontend/web/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=vcards%2Findex&uid=2'
+    'PATH_TRANSLATED' => 'D:/Program Files/PHPStudy/WWW'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/Program Files/PHPStudy/WWW/vcards/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/vcards/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1446484886.6684
+    'REQUEST_TIME' => 1446484886
+]
+2015-11-03 01:22:00 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][error][yii\db\IntegrityException] exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'price' cannot be null' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php:781
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(781): PDOStatement->execute()
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php(448): yii\db\Command->execute()
+#2 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(454): yii\db\Schema->insert('<span class="st...', '[<span class="s...')
+#3 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(424): yii\db\ActiveRecord->insertInternal('<span class="ke...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\BaseActiveRecord.php(593): yii\db\ActiveRecord->insert('<span class="ke...', '<span class="ke...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\ProductController.php(70): yii\db\BaseActiveRecord->save()
+#6 [internal function]: frontend\controllers\ProductController->actionCreate()
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#9 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#10 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#11 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#13 {main}
+
+Next exception 'yii\db\IntegrityException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'price' cannot be null
+The SQL being executed was: INSERT INTO `tbhome_product` (`uid`, `factory`, `name`, `describe`, `specification`, `unit`, `brand`, `price`) VALUES (4, '456', '456', '<p>456<br/></p>', '45', '465', '465', NULL)' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(791): yii\db\Schema->convertException(Object(PDOException), 'INSERT INTO `tb...')
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php(448): yii\db\Command->execute()
+#2 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(454): yii\db\Schema->insert('<span class="st...', '[<span class="s...')
+#3 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(424): yii\db\ActiveRecord->insertInternal('<span class="ke...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\BaseActiveRecord.php(593): yii\db\ActiveRecord->insert('<span class="ke...', '<span class="ke...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\ProductController.php(70): yii\db\BaseActiveRecord->save()
+#6 [internal function]: frontend\controllers\ProductController->actionCreate()
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#9 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#10 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#11 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#13 {main}
+Additional Information:
+Array
+(
+    [0] => 23000
+    [1] => 1048
+    [2] => Column 'price' cannot be null
+)
+
+2015-11-03 01:21:59 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][info][application] $_GET = [
+    'r' => 'product/create'
+]
+
+$_POST = [
+    '_csrf' => 'cW5sSUtOSDcrL1wacmMPDwA0KR0ceTxyBA0iLDh9HA4zL1wsMhllbw=='
+    'Product' => [
+        'factory' => '456'
+        'name' => '456'
+        'describe' => '<p>456<br/></p>'
+        'specification' => '45'
+        'unit' => '465'
+        'brand' => '465'
+        'price' => ''
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X\";}'
+    'PHPSESSID' => '9aoli4icml2nu9k07udhpidev2'
+    '_identity' => '0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a:2:{i:0;s:9:\"_identity\";i:1;s:14:\"[4,\"\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\admin\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WHQ78164'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\admin'
+    'LOCALAPPDATA' => 'C:\\Users\\admin\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WHQ78164'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\Program Files\\PHPStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;D:\\Program Files\\Composer'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'AMD64 Family 21 Model 16 Stepping 1, AuthenticAMD'
+    'PROCESSOR_LEVEL' => '21'
+    'PROCESSOR_REVISION' => '1001'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WHQ78164'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WHQ78164'
+    'USERNAME' => 'admin'
+    'USERPROFILE' => 'C:\\Users\\admin'
+    'VBOX_MSI_INSTALL_PATH' => 'D:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    'HTTP_COOKIE' => '_csrf=32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X%22%3B%7D; PHPSESSID=9aoli4icml2nu9k07udhpidev2; _identity=0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A14%3A%22%5B4%2C%22%22%2C2592000%5D%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate'
+    'HTTP_REFERER' => 'http://127.0.0.1/vcards/frontend/web/index.php?r=product%2Fcreate'
+    'HTTP_CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundarykn9fVEzHuslNBbJq'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36'
+    'HTTP_ORIGIN' => 'http://127.0.0.1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONTENT_LENGTH' => '939'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '127.0.0.1'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '57737'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/Program Files/PHPStudy/WWW'
+    'DOCUMENT_URI' => '/vcards/frontend/web/index.php'
+    'REQUEST_URI' => '/vcards/frontend/web/index.php?r=product%2Fcreate'
+    'SCRIPT_NAME' => '/vcards/frontend/web/index.php'
+    'CONTENT_LENGTH' => '939'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundarykn9fVEzHuslNBbJq'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=product%2Fcreate'
+    'PATH_TRANSLATED' => 'D:/Program Files/PHPStudy/WWW'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/Program Files/PHPStudy/WWW/vcards/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/vcards/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1446484919.9383
+    'REQUEST_TIME' => 1446484919
+]
+2015-11-03 01:25:43 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][error][yii\db\IntegrityException] exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'price' cannot be null' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php:781
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(781): PDOStatement->execute()
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php(448): yii\db\Command->execute()
+#2 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(454): yii\db\Schema->insert('<span class="st...', '[<span class="s...')
+#3 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(424): yii\db\ActiveRecord->insertInternal('<span class="ke...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\BaseActiveRecord.php(593): yii\db\ActiveRecord->insert('<span class="ke...', '<span class="ke...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\ProductController.php(70): yii\db\BaseActiveRecord->save()
+#6 [internal function]: frontend\controllers\ProductController->actionCreate()
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#9 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#10 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#11 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#13 {main}
+
+Next exception 'yii\db\IntegrityException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'price' cannot be null
+The SQL being executed was: INSERT INTO `tbhome_product` (`uid`, `factory`, `name`, `describe`, `specification`, `unit`, `brand`, `price`) VALUES (4, '', '', '', '', '', '', NULL)' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(791): yii\db\Schema->convertException(Object(PDOException), 'INSERT INTO `tb...')
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php(448): yii\db\Command->execute()
+#2 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(454): yii\db\Schema->insert('<span class="st...', '[<span class="s...')
+#3 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(424): yii\db\ActiveRecord->insertInternal('<span class="ke...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\BaseActiveRecord.php(593): yii\db\ActiveRecord->insert('<span class="ke...', '<span class="ke...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\ProductController.php(70): yii\db\BaseActiveRecord->save()
+#6 [internal function]: frontend\controllers\ProductController->actionCreate()
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#9 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#10 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#11 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#13 {main}
+Additional Information:
+Array
+(
+    [0] => 23000
+    [1] => 1048
+    [2] => Column 'price' cannot be null
+)
+
+2015-11-03 01:25:43 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][info][application] $_GET = [
+    'r' => 'product/create'
+]
+
+$_POST = [
+    '_csrf' => 'dzhMVFJfT20teXwHa3IIVQZiCQAFaDsoAlsCMSFsG1Q1eXwxKwhiNQ=='
+    'Product' => [
+        'factory' => ''
+        'name' => ''
+        'describe' => ''
+        'specification' => ''
+        'unit' => ''
+        'brand' => ''
+        'price' => ''
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X\";}'
+    'PHPSESSID' => '9aoli4icml2nu9k07udhpidev2'
+    '_identity' => '0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a:2:{i:0;s:9:\"_identity\";i:1;s:14:\"[4,\"\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\admin\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WHQ78164'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\admin'
+    'LOCALAPPDATA' => 'C:\\Users\\admin\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WHQ78164'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\Program Files\\PHPStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;D:\\Program Files\\Composer'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'AMD64 Family 21 Model 16 Stepping 1, AuthenticAMD'
+    'PROCESSOR_LEVEL' => '21'
+    'PROCESSOR_REVISION' => '1001'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WHQ78164'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WHQ78164'
+    'USERNAME' => 'admin'
+    'USERPROFILE' => 'C:\\Users\\admin'
+    'VBOX_MSI_INSTALL_PATH' => 'D:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    'HTTP_COOKIE' => '_csrf=32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X%22%3B%7D; PHPSESSID=9aoli4icml2nu9k07udhpidev2; _identity=0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A14%3A%22%5B4%2C%22%22%2C2592000%5D%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate'
+    'HTTP_REFERER' => 'http://127.0.0.1/vcards/frontend/web/index.php?r=product%2Fcreate'
+    'HTTP_CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundary21DwJiCcI9hlYPFm'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36'
+    'HTTP_ORIGIN' => 'http://127.0.0.1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONTENT_LENGTH' => '910'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '127.0.0.1'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '57876'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/Program Files/PHPStudy/WWW'
+    'DOCUMENT_URI' => '/vcards/frontend/web/index.php'
+    'REQUEST_URI' => '/vcards/frontend/web/index.php?r=product%2Fcreate'
+    'SCRIPT_NAME' => '/vcards/frontend/web/index.php'
+    'CONTENT_LENGTH' => '910'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundary21DwJiCcI9hlYPFm'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=product%2Fcreate'
+    'PATH_TRANSLATED' => 'D:/Program Files/PHPStudy/WWW'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/Program Files/PHPStudy/WWW/vcards/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/vcards/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1446485143.8049
+    'REQUEST_TIME' => 1446485143
+]
+2015-11-03 01:25:58 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][error][yii\db\IntegrityException] exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'price' cannot be null' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php:781
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(781): PDOStatement->execute()
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php(448): yii\db\Command->execute()
+#2 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(454): yii\db\Schema->insert('<span class="st...', '[<span class="s...')
+#3 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(424): yii\db\ActiveRecord->insertInternal('<span class="ke...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\BaseActiveRecord.php(593): yii\db\ActiveRecord->insert('<span class="ke...', '<span class="ke...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\ProductController.php(70): yii\db\BaseActiveRecord->save()
+#6 [internal function]: frontend\controllers\ProductController->actionCreate()
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#9 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#10 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#11 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#13 {main}
+
+Next exception 'yii\db\IntegrityException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'price' cannot be null
+The SQL being executed was: INSERT INTO `tbhome_product` (`uid`, `factory`, `name`, `describe`, `specification`, `unit`, `brand`, `price`) VALUES (4, '', '', '', '', '', '', NULL)' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(791): yii\db\Schema->convertException(Object(PDOException), 'INSERT INTO `tb...')
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php(448): yii\db\Command->execute()
+#2 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(454): yii\db\Schema->insert('<span class="st...', '[<span class="s...')
+#3 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(424): yii\db\ActiveRecord->insertInternal('<span class="ke...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\BaseActiveRecord.php(593): yii\db\ActiveRecord->insert('<span class="ke...', '<span class="ke...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\ProductController.php(70): yii\db\BaseActiveRecord->save()
+#6 [internal function]: frontend\controllers\ProductController->actionCreate()
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#9 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#10 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#11 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#13 {main}
+Additional Information:
+Array
+(
+    [0] => 23000
+    [1] => 1048
+    [2] => Column 'price' cannot be null
+)
+
+2015-11-03 01:25:58 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][info][application] $_GET = [
+    'r' => 'product/create'
+]
+
+$_POST = [
+    '_csrf' => 'YlowbkdTNVM4GwA9fn5yaxMAdToQZEEWFzl.CzRgYWogGwALPgQYCw=='
+    'Product' => [
+        'factory' => ''
+        'name' => ''
+        'describe' => ''
+        'specification' => ''
+        'unit' => ''
+        'brand' => ''
+        'price' => ''
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X\";}'
+    'PHPSESSID' => '9aoli4icml2nu9k07udhpidev2'
+    '_identity' => '0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a:2:{i:0;s:9:\"_identity\";i:1;s:14:\"[4,\"\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\admin\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WHQ78164'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\admin'
+    'LOCALAPPDATA' => 'C:\\Users\\admin\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WHQ78164'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\Program Files\\PHPStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;D:\\Program Files\\Composer'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'AMD64 Family 21 Model 16 Stepping 1, AuthenticAMD'
+    'PROCESSOR_LEVEL' => '21'
+    'PROCESSOR_REVISION' => '1001'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WHQ78164'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WHQ78164'
+    'USERNAME' => 'admin'
+    'USERPROFILE' => 'C:\\Users\\admin'
+    'VBOX_MSI_INSTALL_PATH' => 'D:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    'HTTP_COOKIE' => '_csrf=32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X%22%3B%7D; PHPSESSID=9aoli4icml2nu9k07udhpidev2; _identity=0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A14%3A%22%5B4%2C%22%22%2C2592000%5D%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate'
+    'HTTP_REFERER' => 'http://127.0.0.1/vcards/frontend/web/index.php?r=product%2Fcreate'
+    'HTTP_CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundary6wSnZoCkH2msr6VF'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36'
+    'HTTP_ORIGIN' => 'http://127.0.0.1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONTENT_LENGTH' => '910'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '127.0.0.1'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '57876'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/Program Files/PHPStudy/WWW'
+    'DOCUMENT_URI' => '/vcards/frontend/web/index.php'
+    'REQUEST_URI' => '/vcards/frontend/web/index.php?r=product%2Fcreate'
+    'SCRIPT_NAME' => '/vcards/frontend/web/index.php'
+    'CONTENT_LENGTH' => '910'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundary6wSnZoCkH2msr6VF'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=product%2Fcreate'
+    'PATH_TRANSLATED' => 'D:/Program Files/PHPStudy/WWW'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/Program Files/PHPStudy/WWW/vcards/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/vcards/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1446485158.7036
+    'REQUEST_TIME' => 1446485158
+]
+2015-11-03 01:27:54 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][error][yii\db\IntegrityException] exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'price' cannot be null' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php:781
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(781): PDOStatement->execute()
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php(448): yii\db\Command->execute()
+#2 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(454): yii\db\Schema->insert('<span class="st...', '[<span class="s...')
+#3 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(424): yii\db\ActiveRecord->insertInternal('<span class="ke...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\BaseActiveRecord.php(593): yii\db\ActiveRecord->insert('<span class="ke...', '<span class="ke...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\ProductController.php(72): yii\db\BaseActiveRecord->save()
+#6 [internal function]: frontend\controllers\ProductController->actionCreate()
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#9 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#10 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#11 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#13 {main}
+
+Next exception 'yii\db\IntegrityException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'price' cannot be null
+The SQL being executed was: INSERT INTO `tbhome_product` (`uid`, `factory`, `name`, `describe`, `specification`, `unit`, `brand`, `price`) VALUES (4, '', '', '', '', '', '', NULL)' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(791): yii\db\Schema->convertException(Object(PDOException), 'INSERT INTO `tb...')
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php(448): yii\db\Command->execute()
+#2 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(454): yii\db\Schema->insert('<span class="st...', '[<span class="s...')
+#3 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\ActiveRecord.php(424): yii\db\ActiveRecord->insertInternal('<span class="ke...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\BaseActiveRecord.php(593): yii\db\ActiveRecord->insert('<span class="ke...', '<span class="ke...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\ProductController.php(72): yii\db\BaseActiveRecord->save()
+#6 [internal function]: frontend\controllers\ProductController->actionCreate()
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#9 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#10 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#11 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#13 {main}
+Additional Information:
+Array
+(
+    [0] => 23000
+    [1] => 1048
+    [2] => Column 'price' cannot be null
+)
+
+2015-11-03 01:27:53 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][info][application] $_GET = [
+    'r' => 'product/create'
+]
+
+$_POST = [
+    '_csrf' => 'SjhFNzJXRXEQeXVkC3oCSTtiAGNlYDE0P1sLUkFkEUgIeXVSSwBoKQ=='
+    'Product' => [
+        'factory' => ''
+        'name' => ''
+        'describe' => ''
+        'specification' => ''
+        'unit' => ''
+        'brand' => ''
+        'price' => ''
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X\";}'
+    'PHPSESSID' => '9aoli4icml2nu9k07udhpidev2'
+    '_identity' => '0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a:2:{i:0;s:9:\"_identity\";i:1;s:14:\"[4,\"\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\admin\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WHQ78164'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\admin'
+    'LOCALAPPDATA' => 'C:\\Users\\admin\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WHQ78164'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\Program Files\\PHPStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;D:\\Program Files\\Composer'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'AMD64 Family 21 Model 16 Stepping 1, AuthenticAMD'
+    'PROCESSOR_LEVEL' => '21'
+    'PROCESSOR_REVISION' => '1001'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WHQ78164'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WHQ78164'
+    'USERNAME' => 'admin'
+    'USERPROFILE' => 'C:\\Users\\admin'
+    'VBOX_MSI_INSTALL_PATH' => 'D:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    'HTTP_COOKIE' => '_csrf=32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X%22%3B%7D; PHPSESSID=9aoli4icml2nu9k07udhpidev2; _identity=0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A14%3A%22%5B4%2C%22%22%2C2592000%5D%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate'
+    'HTTP_REFERER' => 'http://127.0.0.1/vcards/frontend/web/index.php?r=product%2Fcreate'
+    'HTTP_CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryc3pnKZbU4zhtRvnK'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36'
+    'HTTP_ORIGIN' => 'http://127.0.0.1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONTENT_LENGTH' => '910'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '127.0.0.1'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '58010'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/Program Files/PHPStudy/WWW'
+    'DOCUMENT_URI' => '/vcards/frontend/web/index.php'
+    'REQUEST_URI' => '/vcards/frontend/web/index.php?r=product%2Fcreate'
+    'SCRIPT_NAME' => '/vcards/frontend/web/index.php'
+    'CONTENT_LENGTH' => '910'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryc3pnKZbU4zhtRvnK'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=product%2Fcreate'
+    'PATH_TRANSLATED' => 'D:/Program Files/PHPStudy/WWW'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/Program Files/PHPStudy/WWW/vcards/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/vcards/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1446485273.8048
+    'REQUEST_TIME' => 1446485273
+]
+2015-11-03 01:41:40 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vcards.tbhome_traceability_info_4' doesn't exist' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php:837
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(837): PDOStatement->execute()
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('fetch', NULL)
+#2 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php(115): yii\db\Command->queryOne()
+#3 [internal function]: frontend\controllers\AntiController->actionAntipage('ddbjadgeok90', '5', '9')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#5 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('antipage', Array)
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('anti/antipage', Array)
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#10 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vcards.tbhome_traceability_info_4' doesn't exist
+The SQL being executed was: SELECT * FROM tbhome_traceability_info_4 WHERE id=3' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(852): yii\db\Schema->convertException(Object(PDOException), 'SELECT * FROM t...')
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('fetch', NULL)
+#2 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php(115): yii\db\Command->queryOne()
+#3 [internal function]: frontend\controllers\AntiController->actionAntipage('ddbjadgeok90', '5', '9')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#5 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('antipage', Array)
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('anti/antipage', Array)
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#10 {main}
+Additional Information:
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table 'vcards.tbhome_traceability_info_4' doesn't exist
+)
+
+2015-11-03 01:41:40 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][info][application] $_GET = [
+    'r' => 'anti/antipage'
+    'replyid' => '5'
+    'productid' => '9'
+    'code' => 'ddbjadgeok90'
+    '_pjax' => '#w0'
+]
+
+$_COOKIE = [
+    '_csrf' => '32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X\";}'
+    'PHPSESSID' => '9aoli4icml2nu9k07udhpidev2'
+    '_identity' => '0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a:2:{i:0;s:9:\"_identity\";i:1;s:14:\"[4,\"\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\admin\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WHQ78164'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\admin'
+    'LOCALAPPDATA' => 'C:\\Users\\admin\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WHQ78164'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\Program Files\\PHPStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;D:\\Program Files\\Composer'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'AMD64 Family 21 Model 16 Stepping 1, AuthenticAMD'
+    'PROCESSOR_LEVEL' => '21'
+    'PROCESSOR_REVISION' => '1001'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WHQ78164'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WHQ78164'
+    'USERNAME' => 'admin'
+    'USERPROFILE' => 'C:\\Users\\admin'
+    'VBOX_MSI_INSTALL_PATH' => 'D:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    'HTTP_COOKIE' => '_csrf=32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X%22%3B%7D; PHPSESSID=9aoli4icml2nu9k07udhpidev2; _identity=0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A14%3A%22%5B4%2C%22%22%2C2592000%5D%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch'
+    'HTTP_REFERER' => 'http://127.0.0.1/vcards/frontend/web/index.php?r=anticode%2Findex'
+    'HTTP_X_PJAX_CONTAINER' => '#w0'
+    'HTTP_X_PJAX' => 'true'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36'
+    'HTTP_X_CSRF_TOKEN' => 'alhzY2pJcUswGUMwU2Q2cxsCNjc9fgUOHzs9Bhl6JXIoGUMGEx5cEw=='
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '127.0.0.1'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '58509'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/Program Files/PHPStudy/WWW'
+    'DOCUMENT_URI' => '/vcards/frontend/web/index.php'
+    'REQUEST_URI' => '/vcards/frontend/web/index.php?r=anti%2Fantipage&replyid=5&productid=9&code=ddbjadgeok90&_pjax=%23w0'
+    'SCRIPT_NAME' => '/vcards/frontend/web/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=anti%2Fantipage&replyid=5&productid=9&code=ddbjadgeok90&_pjax=%23w0'
+    'PATH_TRANSLATED' => 'D:/Program Files/PHPStudy/WWW'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/Program Files/PHPStudy/WWW/vcards/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/vcards/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1446486100.0954
+    'REQUEST_TIME' => 1446486100
+]
+2015-11-03 01:41:40 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vcards.tbhome_traceability_info_4' doesn't exist' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php:837
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(837): PDOStatement->execute()
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php(115): yii\db\Command->queryOne()
+#3 [internal function]: frontend\controllers\AntiController->actionAntipage('<span class="st...', '<span class="st...', '<span class="st...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[<span class="s...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#6 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#10 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vcards.tbhome_traceability_info_4' doesn't exist
+The SQL being executed was: SELECT * FROM tbhome_traceability_info_4 WHERE id=3' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(852): yii\db\Schema->convertException(Object(PDOException), 'SELECT * FROM t...')
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php(115): yii\db\Command->queryOne()
+#3 [internal function]: frontend\controllers\AntiController->actionAntipage('<span class="st...', '<span class="st...', '<span class="st...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[<span class="s...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#6 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#10 {main}
+Additional Information:
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table 'vcards.tbhome_traceability_info_4' doesn't exist
+)
+
+2015-11-03 01:41:40 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][info][application] $_GET = [
+    'r' => 'anti/antipage'
+    'replyid' => '5'
+    'productid' => '9'
+    'code' => 'ddbjadgeok90'
+]
+
+$_COOKIE = [
+    '_csrf' => '32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X\";}'
+    'PHPSESSID' => '9aoli4icml2nu9k07udhpidev2'
+    '_identity' => '0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a:2:{i:0;s:9:\"_identity\";i:1;s:14:\"[4,\"\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\admin\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WHQ78164'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\admin'
+    'LOCALAPPDATA' => 'C:\\Users\\admin\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WHQ78164'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\Program Files\\PHPStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;D:\\Program Files\\Composer'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'AMD64 Family 21 Model 16 Stepping 1, AuthenticAMD'
+    'PROCESSOR_LEVEL' => '21'
+    'PROCESSOR_REVISION' => '1001'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WHQ78164'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WHQ78164'
+    'USERNAME' => 'admin'
+    'USERPROFILE' => 'C:\\Users\\admin'
+    'VBOX_MSI_INSTALL_PATH' => 'D:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    'HTTP_COOKIE' => '_csrf=32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X%22%3B%7D; PHPSESSID=9aoli4icml2nu9k07udhpidev2; _identity=0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A14%3A%22%5B4%2C%22%22%2C2592000%5D%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch'
+    'HTTP_REFERER' => 'http://127.0.0.1/vcards/frontend/web/index.php?r=anticode%2Findex'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '127.0.0.1'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '58509'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/Program Files/PHPStudy/WWW'
+    'DOCUMENT_URI' => '/vcards/frontend/web/index.php'
+    'REQUEST_URI' => '/vcards/frontend/web/index.php?r=anti%2Fantipage&replyid=5&productid=9&code=ddbjadgeok90'
+    'SCRIPT_NAME' => '/vcards/frontend/web/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=anti%2Fantipage&replyid=5&productid=9&code=ddbjadgeok90'
+    'PATH_TRANSLATED' => 'D:/Program Files/PHPStudy/WWW'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/Program Files/PHPStudy/WWW/vcards/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/vcards/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1446486100.4878
+    'REQUEST_TIME' => 1446486100
+]
+2015-11-03 01:50:57 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vcards.tbhome_traceability_info_4' doesn't exist' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php:837
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(837): PDOStatement->execute()
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php(115): yii\db\Command->queryOne()
+#3 [internal function]: frontend\controllers\AntiController->actionAntipage('<span class="st...', '<span class="st...', '<span class="st...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[<span class="s...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#6 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#10 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vcards.tbhome_traceability_info_4' doesn't exist
+The SQL being executed was: SELECT * FROM tbhome_traceability_info_4 WHERE id=3' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(852): yii\db\Schema->convertException(Object(PDOException), 'SELECT * FROM t...')
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php(115): yii\db\Command->queryOne()
+#3 [internal function]: frontend\controllers\AntiController->actionAntipage('<span class="st...', '<span class="st...', '<span class="st...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[<span class="s...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#6 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#10 {main}
+Additional Information:
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table 'vcards.tbhome_traceability_info_4' doesn't exist
+)
+
+2015-11-03 01:50:57 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][info][application] $_GET = [
+    'r' => 'anti/antipage'
+    'replyid' => '5'
+    'productid' => '9'
+    'code' => 'ddbjadgeok90'
+]
+
+$_COOKIE = [
+    '_csrf' => '32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X\";}'
+    'PHPSESSID' => '9aoli4icml2nu9k07udhpidev2'
+    '_identity' => '0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a:2:{i:0;s:9:\"_identity\";i:1;s:14:\"[4,\"\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\admin\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WHQ78164'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\admin'
+    'LOCALAPPDATA' => 'C:\\Users\\admin\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WHQ78164'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\Program Files\\PHPStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;D:\\Program Files\\Composer'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'AMD64 Family 21 Model 16 Stepping 1, AuthenticAMD'
+    'PROCESSOR_LEVEL' => '21'
+    'PROCESSOR_REVISION' => '1001'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WHQ78164'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WHQ78164'
+    'USERNAME' => 'admin'
+    'USERPROFILE' => 'C:\\Users\\admin'
+    'VBOX_MSI_INSTALL_PATH' => 'D:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    'HTTP_COOKIE' => '_csrf=32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X%22%3B%7D; PHPSESSID=9aoli4icml2nu9k07udhpidev2; _identity=0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A14%3A%22%5B4%2C%22%22%2C2592000%5D%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch'
+    'HTTP_REFERER' => 'http://127.0.0.1/vcards/frontend/web/index.php?r=anticode%2Findex'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '127.0.0.1'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '58664'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/Program Files/PHPStudy/WWW'
+    'DOCUMENT_URI' => '/vcards/frontend/web/index.php'
+    'REQUEST_URI' => '/vcards/frontend/web/index.php?r=anti%2Fantipage&replyid=5&productid=9&code=ddbjadgeok90'
+    'SCRIPT_NAME' => '/vcards/frontend/web/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=anti%2Fantipage&replyid=5&productid=9&code=ddbjadgeok90'
+    'PATH_TRANSLATED' => 'D:/Program Files/PHPStudy/WWW'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/Program Files/PHPStudy/WWW/vcards/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/vcards/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1446486657.0862
+    'REQUEST_TIME' => 1446486657
+]
+2015-11-03 01:51:00 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vcards.tbhome_traceability_info_4' doesn't exist' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php:837
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(837): PDOStatement->execute()
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php(115): yii\db\Command->queryOne()
+#3 [internal function]: frontend\controllers\AntiController->actionAntipage('<span class="st...', '<span class="st...', '<span class="st...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[<span class="s...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#6 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#10 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vcards.tbhome_traceability_info_4' doesn't exist
+The SQL being executed was: SELECT * FROM tbhome_traceability_info_4 WHERE id=3' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(852): yii\db\Schema->convertException(Object(PDOException), 'SELECT * FROM t...')
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php(115): yii\db\Command->queryOne()
+#3 [internal function]: frontend\controllers\AntiController->actionAntipage('<span class="st...', '<span class="st...', '<span class="st...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[<span class="s...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#6 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#10 {main}
+Additional Information:
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table 'vcards.tbhome_traceability_info_4' doesn't exist
+)
+
+2015-11-03 01:50:59 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][info][application] $_GET = [
+    'r' => 'anti/antipage'
+    'replyid' => '5'
+    'productid' => '9'
+    'code' => 'ddbjadgeok90'
+]
+
+$_COOKIE = [
+    '_csrf' => '32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X\";}'
+    'PHPSESSID' => '9aoli4icml2nu9k07udhpidev2'
+    '_identity' => '0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a:2:{i:0;s:9:\"_identity\";i:1;s:14:\"[4,\"\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\admin\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WHQ78164'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\admin'
+    'LOCALAPPDATA' => 'C:\\Users\\admin\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WHQ78164'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\Program Files\\PHPStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;D:\\Program Files\\Composer'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'AMD64 Family 21 Model 16 Stepping 1, AuthenticAMD'
+    'PROCESSOR_LEVEL' => '21'
+    'PROCESSOR_REVISION' => '1001'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WHQ78164'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WHQ78164'
+    'USERNAME' => 'admin'
+    'USERPROFILE' => 'C:\\Users\\admin'
+    'VBOX_MSI_INSTALL_PATH' => 'D:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    'HTTP_COOKIE' => '_csrf=32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X%22%3B%7D; PHPSESSID=9aoli4icml2nu9k07udhpidev2; _identity=0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A14%3A%22%5B4%2C%22%22%2C2592000%5D%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch'
+    'HTTP_REFERER' => 'http://127.0.0.1/vcards/frontend/web/index.php?r=anticode%2Findex'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '127.0.0.1'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '58664'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/Program Files/PHPStudy/WWW'
+    'DOCUMENT_URI' => '/vcards/frontend/web/index.php'
+    'REQUEST_URI' => '/vcards/frontend/web/index.php?r=anti%2Fantipage&replyid=5&productid=9&code=ddbjadgeok90'
+    'SCRIPT_NAME' => '/vcards/frontend/web/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=anti%2Fantipage&replyid=5&productid=9&code=ddbjadgeok90'
+    'PATH_TRANSLATED' => 'D:/Program Files/PHPStudy/WWW'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/Program Files/PHPStudy/WWW/vcards/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/vcards/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1446486659.961
+    'REQUEST_TIME' => 1446486659
+]
+2015-11-03 01:53:34 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vcards.tbhome_traceability_info_4' doesn't exist' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php:837
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(837): PDOStatement->execute()
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php(116): yii\db\Command->queryOne()
+#3 [internal function]: frontend\controllers\AntiController->actionAntipage('<span class="st...', '<span class="st...', '<span class="st...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[<span class="s...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#6 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#10 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vcards.tbhome_traceability_info_4' doesn't exist
+The SQL being executed was: SELECT * FROM tbhome_traceability_info_4 WHERE id=3' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(852): yii\db\Schema->convertException(Object(PDOException), 'SELECT * FROM t...')
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php(116): yii\db\Command->queryOne()
+#3 [internal function]: frontend\controllers\AntiController->actionAntipage('<span class="st...', '<span class="st...', '<span class="st...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[<span class="s...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#6 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#10 {main}
+Additional Information:
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table 'vcards.tbhome_traceability_info_4' doesn't exist
+)
+
+2015-11-03 01:53:34 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][info][application] $_GET = [
+    'r' => 'anti/antipage'
+    'replyid' => '5'
+    'productid' => '9'
+    'code' => 'ddbjadgeok90'
+]
+
+$_COOKIE = [
+    '_csrf' => '32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X\";}'
+    'PHPSESSID' => '9aoli4icml2nu9k07udhpidev2'
+    '_identity' => '0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a:2:{i:0;s:9:\"_identity\";i:1;s:14:\"[4,\"\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\admin\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WHQ78164'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\admin'
+    'LOCALAPPDATA' => 'C:\\Users\\admin\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WHQ78164'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\Program Files\\PHPStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;D:\\Program Files\\Composer'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'AMD64 Family 21 Model 16 Stepping 1, AuthenticAMD'
+    'PROCESSOR_LEVEL' => '21'
+    'PROCESSOR_REVISION' => '1001'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WHQ78164'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WHQ78164'
+    'USERNAME' => 'admin'
+    'USERPROFILE' => 'C:\\Users\\admin'
+    'VBOX_MSI_INSTALL_PATH' => 'D:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    'HTTP_COOKIE' => '_csrf=32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X%22%3B%7D; PHPSESSID=9aoli4icml2nu9k07udhpidev2; _identity=0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A14%3A%22%5B4%2C%22%22%2C2592000%5D%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch'
+    'HTTP_REFERER' => 'http://127.0.0.1/vcards/frontend/web/index.php?r=anticode%2Findex'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '127.0.0.1'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '58681'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/Program Files/PHPStudy/WWW'
+    'DOCUMENT_URI' => '/vcards/frontend/web/index.php'
+    'REQUEST_URI' => '/vcards/frontend/web/index.php?r=anti%2Fantipage&replyid=5&productid=9&code=ddbjadgeok90'
+    'SCRIPT_NAME' => '/vcards/frontend/web/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=anti%2Fantipage&replyid=5&productid=9&code=ddbjadgeok90'
+    'PATH_TRANSLATED' => 'D:/Program Files/PHPStudy/WWW'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/Program Files/PHPStudy/WWW/vcards/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/vcards/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1446486814.301
+    'REQUEST_TIME' => 1446486814
+]
+2015-11-03 01:53:37 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vcards.tbhome_traceability_info_4' doesn't exist' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php:837
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(837): PDOStatement->execute()
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php(116): yii\db\Command->queryOne()
+#3 [internal function]: frontend\controllers\AntiController->actionAntipage('<span class="st...', '<span class="st...', '<span class="st...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[<span class="s...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#6 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#10 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vcards.tbhome_traceability_info_4' doesn't exist
+The SQL being executed was: SELECT * FROM tbhome_traceability_info_4 WHERE id=3' in D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(852): yii\db\Schema->convertException(Object(PDOException), 'SELECT * FROM t...')
+#1 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 D:\Program Files\PHPStudy\WWW\vcards\frontend\controllers\AntiController.php(116): yii\db\Command->queryOne()
+#3 [internal function]: frontend\controllers\AntiController->actionAntipage('<span class="st...', '<span class="st...', '<span class="st...')
+#4 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[<span class="s...')
+#5 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#6 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#7 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#8 D:\Program Files\PHPStudy\WWW\vcards\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 D:\Program Files\PHPStudy\WWW\vcards\frontend\web\index.php(23): yii\base\Application->run()
+#10 {main}
+Additional Information:
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table 'vcards.tbhome_traceability_info_4' doesn't exist
+)
+
+2015-11-03 01:53:37 [127.0.0.1][4][9aoli4icml2nu9k07udhpidev2][info][application] $_GET = [
+    'r' => 'anti/antipage'
+    'replyid' => '5'
+    'productid' => '9'
+    'code' => 'ddbjadgeok90'
+]
+
+$_COOKIE = [
+    '_csrf' => '32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X\";}'
+    'PHPSESSID' => '9aoli4icml2nu9k07udhpidev2'
+    '_identity' => '0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a:2:{i:0;s:9:\"_identity\";i:1;s:14:\"[4,\"\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\admin\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WHQ78164'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\admin'
+    'LOCALAPPDATA' => 'C:\\Users\\admin\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WHQ78164'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\Program Files\\PHPStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;D:\\Program Files\\Composer'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'AMD64 Family 21 Model 16 Stepping 1, AuthenticAMD'
+    'PROCESSOR_LEVEL' => '21'
+    'PROCESSOR_REVISION' => '1001'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\admin\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WHQ78164'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WHQ78164'
+    'USERNAME' => 'admin'
+    'USERPROFILE' => 'C:\\Users\\admin'
+    'VBOX_MSI_INSTALL_PATH' => 'D:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    'HTTP_COOKIE' => '_csrf=32b0aa863559a740bd2a40b2eae037da233da8aff4497589ee490cf4972a9f56a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ZA0S9-G8qZETW7tEucNes3T9BA0eyW-X%22%3B%7D; PHPSESSID=9aoli4icml2nu9k07udhpidev2; _identity=0105c1496db6e4fcdcca92d659dff5b9cb99a506fa167230d4dca3517d99e938a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A14%3A%22%5B4%2C%22%22%2C2592000%5D%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate,sdch'
+    'HTTP_REFERER' => 'http://127.0.0.1/vcards/frontend/web/index.php?r=anticode%2Findex'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '127.0.0.1'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '58681'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/Program Files/PHPStudy/WWW'
+    'DOCUMENT_URI' => '/vcards/frontend/web/index.php'
+    'REQUEST_URI' => '/vcards/frontend/web/index.php?r=anti%2Fantipage&replyid=5&productid=9&code=ddbjadgeok90'
+    'SCRIPT_NAME' => '/vcards/frontend/web/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=anti%2Fantipage&replyid=5&productid=9&code=ddbjadgeok90'
+    'PATH_TRANSLATED' => 'D:/Program Files/PHPStudy/WWW'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/Program Files/PHPStudy/WWW/vcards/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/vcards/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1446486817.6748
+    'REQUEST_TIME' => 1446486817
+]

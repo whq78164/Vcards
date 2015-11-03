@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'clicks',
             'remark',
-    /*        [
+         [
                 'header'=>'二维码图片', 'format' => 'html', 'value'=>function($data){
                 $urlval=yii\helpers\Url::to(['anti/antipage', 'code'=>$data->code, 'replyid'=>$data->replyid, 'productid'=>$data->replyid], true);
                 $urlval=urlencode($urlval);
@@ -65,12 +65,12 @@ $this->params['breadcrumbs'][] = $this->title;
              return Html::img($src, ['width'=>'100px']);
             },
             ],
-      */
+
 
  //           ['class' => 'yii\grid\ActionColumn'],
             ['class' => 'yii\grid\ActionColumn', 'header'=>'操作', 'template' => '{view} {update}'],
             [
-                'header'=>'预览', 'format' => 'html', 'value'=>function($data){
+                'header'=>'网址', 'format' => 'html', 'value'=>function($data){
                 return Html::a('查看',$data->url, ['target' => '_blank', 'class'=>'klj']);
             }
             ],

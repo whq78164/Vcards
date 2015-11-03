@@ -67,7 +67,9 @@ class ProductController extends Controller
         $model->uid = $uid;
        // $image=new Upload();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {
+			if($model->price==null) $model->price=0;
+			$model->save();
                     Yii::$app->getSession()->setFlash('success', '保存成功！');
                     return $this->redirect(['view', 'id'=>$model->id]);
         } else {

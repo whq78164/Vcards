@@ -106,10 +106,13 @@ class AntiController extends \yii\web\Controller
             $productid=$codeData['productid'];
             $reply=AntiReply::findOne($replyid);
             $product=Product::findOne($productid);
-
+			
+$tabletracea='tbhome_traceability_info_'.$uid;
+$ta=Yii::$app->db->createCommand("SHOW TABLES LIKE '".$tabletracea."'")->queryAll();
+if($ta!==null){$traceaReply='';}else{
 
             if($codeData['traceabilityid']){
-                $tabletracea='tbhome_traceability_info_'.$uid;
+                
                 $sqltracea="SELECT * FROM ".$tabletracea." WHERE id=".intval($codeData['traceabilityid']);
                 $commandtracea = $connection->createCommand($sqltracea);
                 $traceabilityinfo=$commandtracea->queryOne();
@@ -129,7 +132,7 @@ class AntiController extends \yii\web\Controller
 
             }else{$traceaReply='';}//$codeData['traceabilityid']==0
 
-
+}
 
 
 
