@@ -21,7 +21,7 @@ class m130524_201442_init extends Migration
 //            'uid' => $this->primaryKey(),
 //            'username' => $this->string()->notNull()->unique(),
               'uid' => Schema::TYPE_PK,
-              'username' => Schema::TYPE_STRING . '(10) NOT NULL',
+              'username' => Schema::TYPE_STRING . '(20) NOT NULL',
               'name' => Schema::TYPE_STRING . '(20) NOT NULL',
               'mobile' => Schema::TYPE_STRING . '(20) NOT NULL',
               'qq' => Schema::TYPE_INTEGER . ' NOT NULL',
@@ -142,7 +142,7 @@ class m130524_201442_init extends Migration
 
         $this->createTable('{{%sys}}', [
             'id' => Schema::TYPE_PK,
-            'admin_user' => Schema::TYPE_STRING . '(10) NOT NULL',
+            'admin_user' => Schema::TYPE_STRING . '(20) NOT NULL',
             'user_password' => Schema::TYPE_STRING . ' NOT NULL',
             'sitetitle' => Schema::TYPE_STRING . ' NOT NULL',
             'company' => Schema::TYPE_STRING . '(50) NOT NULL',
@@ -155,13 +155,16 @@ class m130524_201442_init extends Migration
             'siteurl' => Schema::TYPE_STRING . ' NOT NULL',
             'copyright' => Schema::TYPE_STRING . '(20) NOT NULL',
             'icp' => Schema::TYPE_STRING . '(20) NOT NULL',
+            'ip' => Schema::TYPE_STRING . '(30) NOT NULL',
             'status' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
         ], $tableOptions);
+        $this->createIndex('admin_user', '{{%sys}}', ['admin_user'],true);
+        $this->createIndex('ip', '{{%sys}}', ['ip'],true);
 
                 $this->insert('{{%sys}}', [
                     'id' => 1,
                     'admin_user' => 'admin',
-                    'user_password' => 'admin',
+            //        'user_password' => 'admin',
                     'qq' =>'798904845',
                     'company' =>'通宝科技',
                     'email' =>'admin@tbhome.com.cn',
@@ -173,7 +176,7 @@ class m130524_201442_init extends Migration
                'uid' => 1,
             'username' => 'admin',
             'password_hash' => '$2y$13$SlenslU25pIng3zGfdPdNus8um0U3yim5Z/I7a3GN47gPKj0xsmsW',//密码adminadmin
-            'name' => '泉州通宝科技',
+            'name' => 'www.vcards.top',
             'qq' =>'798904845',
             'role'=>100,
             'mobile' =>'15980016080',

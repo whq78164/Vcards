@@ -20,7 +20,8 @@
         "yiisoft/yii2-swiftmailer": "*",
         "kartik-v/yii2-grid": "*",
         "warrence/yii2-kartikgii": "dev-master",
-		"kartik-v/yii2-mpdf": "*"
+		"kartik-v/yii2-mpdf": "*",
+        "linslin/yii2-curl": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

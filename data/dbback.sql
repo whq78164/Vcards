@@ -1,23 +1,5 @@
-/*
-Navicat MySQL Data Transfer
-
-Source Server         : localPHPStudy
-Source Server Version : 50540
-Source Host           : localhost:3306
-Source Database       : vcards
-
-Target Server Type    : MYSQL
-Target Server Version : 50540
-File Encoding         : 65001
-
-Date: 2015-11-03 12:10:45
-*/
-
 SET FOREIGN_KEY_CHECKS=0;
 
--- ----------------------------
--- Table structure for tbhome_anti_code
--- ----------------------------
 DROP TABLE IF EXISTS `tbhome_anti_code`;
 CREATE TABLE `tbhome_anti_code` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -25,14 +7,11 @@ CREATE TABLE `tbhome_anti_code` (
   `code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `replyid` int(11) NOT NULL,
   `productid` int(11) NOT NULL,
-  `traceabilityid` int(11) NOT NULL DEFAULT '1',
   `query_time` int(11) NOT NULL,
   `clicks` int(11) NOT NULL,
   `prize` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `create_time` int(11) NOT NULL,
   `status` smallint(6) NOT NULL DEFAULT '10',
-  `remark` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`),
   KEY `uid` (`uid`)
@@ -40,6 +19,30 @@ CREATE TABLE `tbhome_anti_code` (
 
 -- ----------------------------
 -- Records of tbhome_anti_code
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for tbhome_anti_code_1
+-- ----------------------------
+DROP TABLE IF EXISTS `tbhome_anti_code_1`;
+CREATE TABLE `tbhome_anti_code_1` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL,
+  `code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `replyid` int(11) NOT NULL,
+  `productid` int(11) NOT NULL,
+  `query_time` int(11) NOT NULL,
+  `clicks` int(11) NOT NULL,
+  `prize` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `create_time` int(11) NOT NULL,
+  `status` smallint(6) NOT NULL DEFAULT '10',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`),
+  KEY `uid` (`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of tbhome_anti_code_1
 -- ----------------------------
 
 -- ----------------------------
@@ -76,8 +79,12 @@ CREATE TABLE `tbhome_anti_reply` (
   `valid_clicks` smallint(6) NOT NULL DEFAULT '10',
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- ----------------------------
+-- Records of tbhome_anti_reply
+-- ----------------------------
+INSERT INTO `tbhome_anti_reply` VALUES ('1', '1', '', '恭喜，您所查询的产品是正品', '您所查询的防伪码不存在，请谨防假冒', '', '10');
 
 -- ----------------------------
 -- Table structure for tbhome_anti_setting
@@ -96,7 +103,7 @@ CREATE TABLE `tbhome_anti_setting` (
 -- ----------------------------
 -- Records of tbhome_anti_setting
 -- ----------------------------
-INSERT INTO `tbhome_anti_setting` VALUES ('1', '防伪系统', '', '10', '0', '');
+INSERT INTO `tbhome_anti_setting` VALUES ('1', '唯卡微防伪', '', '10', '0', '');
 
 -- ----------------------------
 -- Table structure for tbhome_card_info
@@ -118,10 +125,11 @@ CREATE TABLE `tbhome_card_info` (
   `wechat_qrcode` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `work_tel` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of tbhome_card_info
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for tbhome_label
@@ -170,19 +178,8 @@ CREATE TABLE `tbhome_micropage` (
   `status` smallint(6) NOT NULL DEFAULT '10',
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
----------------------------
--- Table structure for tbhome_migration
--- ----------------------------
-DROP TABLE IF EXISTS `tbhome_migration`;
-CREATE TABLE `tbhome_migration` (
-  `version` varchar(180) NOT NULL,
-  `apply_time` int(11) DEFAULT NULL,
-  PRIMARY KEY (`version`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for tbhome_module
@@ -221,8 +218,11 @@ CREATE TABLE `tbhome_product` (
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`),
   KEY `hot` (`hot`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- ----------------------------
+-- Records of tbhome_product
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for tbhome_relation
@@ -240,7 +240,6 @@ CREATE TABLE `tbhome_relation` (
 -- Records of tbhome_relation
 -- ----------------------------
 
-
 -- ----------------------------
 -- Table structure for tbhome_setting
 -- ----------------------------
@@ -254,12 +253,11 @@ CREATE TABLE `tbhome_setting` (
   `status` smallint(6) NOT NULL DEFAULT '10',
   `leader` int(11) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of tbhome_setting
 -- ----------------------------
-INSERT INTO `tbhome_setting` VALUES ('2', '', '0', '10', '0', '10', '0');
 
 -- ----------------------------
 -- Table structure for tbhome_sys
@@ -307,30 +305,6 @@ CREATE TABLE `tbhome_tel` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for tbhome_traceability_data
--- ----------------------------
-DROP TABLE IF EXISTS `tbhome_traceability_data`;
-CREATE TABLE `tbhome_traceability_data` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` int(11) NOT NULL,
-  `productid` int(11) NOT NULL,
-  `traceabilityid` int(11) NOT NULL,
-  `query_time` int(11) NOT NULL,
-  `clicks` int(11) NOT NULL,
-  `remark` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `create_time` int(11) NOT NULL,
-  `status` smallint(6) NOT NULL DEFAULT '10',
-  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `localremark` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `uid` (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
--- Records of tbhome_traceability_data
--- ----------------------------
-
--- ----------------------------
 -- Table structure for tbhome_user
 -- ----------------------------
 DROP TABLE IF EXISTS `tbhome_user`;
@@ -354,13 +328,14 @@ CREATE TABLE `tbhome_user` (
   PRIMARY KEY (`uid`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of tbhome_user
 -- ----------------------------
 INSERT INTO `tbhome_user` VALUES ('1', 'admin', '泉州通宝科技', '15980016080', '798904845', 'admin@tbhome.com.cn', '$2y$13$SlenslU25pIng3zGfdPdNus8um0U3yim5Z/I7a3GN47gPKj0xsmsW', '', '10', '0', null, '100', '', '', '0', '0');
---------------------------
+
+-- ----------------------------
 -- Table structure for tbhome_usermodule
 -- ----------------------------
 DROP TABLE IF EXISTS `tbhome_usermodule`;
@@ -377,17 +352,3 @@ CREATE TABLE `tbhome_usermodule` (
 -- ----------------------------
 -- Records of tbhome_usermodule
 -- ----------------------------
-DROP TABLE IF EXISTS `tbhome_traceability_info`;
-CREATE TABLE `tbhome_traceability_info` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` int(11) NOT NULL,
-  `code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `label` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `describe` text COLLATE utf8_unicode_ci NOT NULL,
-  `remark` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `create_time` int(11) NOT NULL,
-  `status` smallint(6) NOT NULL DEFAULT '10',
-  PRIMARY KEY (`id`),
-  KEY `uid` (`uid`),
-  KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

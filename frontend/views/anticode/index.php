@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-//use yii\grid\GridView;
+
 use frontend\models\Product;
 use kartik\grid\GridView;
 use yii\widgets\Pjax;
@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'clicks',
             'remark',
-         [
+   /*      [
                 'header'=>'二维码图片', 'format' => 'html', 'value'=>function($data){
                 $urlval=yii\helpers\Url::to(['anti/antipage', 'code'=>$data->code, 'replyid'=>$data->replyid, 'productid'=>$data->replyid], true);
                 $urlval=urlencode($urlval);
@@ -66,14 +66,19 @@ $this->params['breadcrumbs'][] = $this->title;
             },
             ],
 
-
+*/
  //           ['class' => 'yii\grid\ActionColumn'],
-            ['class' => 'yii\grid\ActionColumn', 'header'=>'操作', 'template' => '{view} {update}'],
+            ['class' => 'yii\grid\ActionColumn', 'header'=>'操作', 'template' => '{view} {update}',],
+//            ['header'=>'链接', 'format' => 'html', 'value'=>function($model){
+  //              return Html::a('<span class="glyphicon glyphicon-link"></span>', $model->url);}
+    //        ],
+
             [
                 'header'=>'网址', 'format' => 'html', 'value'=>function($data){
-                return Html::a('查看',$data->url, ['target' => '_blank', 'class'=>'klj']);
+                return Html::a('<span class="glyphicon glyphicon-link"></span>', $data->url, ['style'=>"", 'class'=>""]);
             }
             ],
+
         ],
     ]); Pjax::end(); ?>
 

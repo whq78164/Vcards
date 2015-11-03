@@ -2,7 +2,7 @@
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     //add modules 'datecontrol' into your 'modules' section in common/config/main
-    /*'modules' => [
+    'modules' => [
         'datecontrol' =>  [
             'class' => 'kartik\datecontrol\Module',
 
@@ -27,7 +27,7 @@ return [
 
         ]
     ],
-    */
+
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',

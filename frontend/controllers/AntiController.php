@@ -158,7 +158,7 @@ if($ta!==null){$traceaReply='';}else{
             ], $reply->fail);
 
             $validClicks=$reply->valid_clicks;
-            if ($codeData['clicks']>$validClicks){
+            if ($codeData['clicks']>=$validClicks){
                 $queryResult=$reply->fail;
             }else{
                 $queryResult=$reply->success;
@@ -378,7 +378,7 @@ echo $rows;
 
 
 
-            if ($queryone['clicks']>$validClicks){
+            if ($queryone['clicks']>=$validClicks){
                 $queryResult=$replyFail;
             }else{
                 $queryResult=$replySuccess;

@@ -121,17 +121,34 @@ class m130524_201443_init extends Migration
         $this->createIndex('uid', '{{%traceability_data}}', ['uid']);
 
 /***************/
-        $this->insert('{{%anti_setting}}', [
+        $this->insert('{{%product}}', [
+            'id' => 1,
             'uid' => 1,
-            'title' => '防伪系统',
+            'share' => 10,
+            'image' => 'http://www.vcards.top/Uploads/default_face.jpg',
+            'factory' => '二维码轻工厂',
+            'name' => '二维码贴纸',
+            'describe' => '百度编辑器，编辑产品精彩图文详情',
+            'specification' => '50mm*70mm',
+            'unit' => '张',
+            'brand' => '唯卡',
+            'price' => 0.1,
+            'traceability' => 1,//追溯
+            'hot' => 0,
+
         ]);
 
         $this->insert('{{%anti_reply}}', [
             'id' => 1,
             'uid' => 1,
-            'success' => '恭喜，您所查询的产品是正品',
+            'success' => '您好！您所查询的商品为{{产品品牌}}正品！<br/>产品名称：{{产品名称}}<br/>生产厂家：{{产品厂家}}<br/>之前已被查询：{{查询次数}}次，<br/>上次查询时间：{{查询时间}}',
+            'tag' => '唯卡微防伪',
             'fail' => '您所查询的防伪码不存在，请谨防假冒',
+            'content' => '该信息为DIY网页，用百度编辑器，设计精彩图文内容',
+            'valid_clicks' => 10,
         ]);
+
+
 
     }
 

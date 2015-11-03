@@ -212,7 +212,10 @@ return [
     'SecurityCode'=>'防伪码',
     'ID'=>'序号',
 
-
+    'Keywords' => '关键词',
+    'Siteurl' => '站点网址',
+    'Copyright' => '版权',
+    'Icp' =>'ICP备案号',
 
 
 

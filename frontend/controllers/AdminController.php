@@ -8,6 +8,7 @@ use Yii;
 use common\models\User;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use linslin\yii2\curl;
 
 class AdminController extends \yii\web\Controller
 {
@@ -19,27 +20,74 @@ class AdminController extends \yii\web\Controller
         if (Yii::$app->user->identity->role!==100) {
             $this->goBack();
         }
-        $model = new Site();
 
-        if ($model->load(Yii::$app->request->post())) {
+        $curl = new curl\Curl();
+        $url='http://www.vcards.top/index.php?r=cloud/site';
+        $response = $curl->get($url);
+        $response=json_decode($response);
+
+        $modelRemote=$response;
+      //  $localmodel=Site::findOne(1);
+
+        $model = new Site();
+        $model->admin_user=$modelRemote->admin_user;
+        $model->sitetitle=$modelRemote->sitetitle;
+
+      //  $model->user_password=$_POST['user_password'];
+        $model->tel= $modelRemote->tel;
+        $model->qq=$modelRemote->qq;
+        $model->email=$modelRemote->email;
+        $model->siteurl=$modelRemote->siteurl;
+        $model->ip=$modelRemote->ip;
+
+
+
+        if (Yii::$app->request->post()) {
+            $model = new Site();
+            $model->load(Yii::$app->request->post());
             if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
+                $response=$curl->setOption(
+                    CURLOPT_POSTFIELDS,
+                    http_build_query([
+                        'admin_user' => $model->admin_user,
+                        'user_password' => $model->user_password,
+                        'sitetitle' => $model->sitetitle,
+                        'tel' => $model->tel,
+                        'qq' => $model->qq,
+                        'email' => $model->email,
+                        'siteurl' => $model->siteurl,
+                    ])
+                )->post($url);
+
+                $model->save();// form inputs are valid, do something here
+                Yii::$app->getSession()->setFlash('success', $response);
+                return $this->goBack(['admin/site']);//redirect(['user/user']);
             }
         }
+
+   //    var_dump($modelRemote);
 
         return $this->render('site', [
             'model' => $model,
         ]);
+
+
     }
 
 
 
     public function actionIndex()
     {
+        $curl = new curl\Curl();
+        $url='http://www.vcards.top/index.php?r=cloud/index';
+        $response = $curl->get($url);
+     //   $response=json_decode($response);
 
-
-        return $this->render('index');
+        return $this->render('index',
+        [
+            'model'=>$response//->content
+        ]
+        );
     }
 
 

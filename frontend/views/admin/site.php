@@ -10,24 +10,24 @@ use yii\widgets\ActiveForm;
 <div class="col-sm-12 col-md-8">
 
 <div class="">
-    <h1><?= Html::encode('站点设置') ?></h1>
+    <h1><?= Html::encode('注册站点') ?></h1>
     <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($model, 'admin_user') ?>
-        <?= $form->field($model, 'user_password') ?>
-        <?= $form->field($model, 'sitetitle') ?>
-        <?= $form->field($model, 'company') ?>
-        <?= $form->field($model, 'tel') ?>
-        <?= $form->field($model, 'qq') ?>
-        <?= $form->field($model, 'email') ?>
-        <?= $form->field($model, 'address') ?>
-        <?= $form->field($model, 'logo') ?>
-        <?= $form->field($model, 'keywords') ?>
-        <?= $form->field($model, 'siteurl') ?>
-        <?= $form->field($model, 'copyright') ?>
-        <?= $form->field($model, 'icp') ?>
-        <?= $form->field($model, 'status') ?>
-    
+        <?= $form->field($model, 'admin_user')->textInput(['placeholder'=>'必填'])->label('平台用户名：')->hint('用户注册。注册成功后，将享受程序永久升级和正版技术支持。') ?>
+        <?= $form->field($model, 'user_password')->passwordInput() ?>
+        <?= $form->field($model, 'sitetitle')->textInput(['placeholder'=>'必填']) ?>
+        <?= $form->field($model, 'tel')->textInput(['placeholder'=>'必填']) ?>
+        <?= $form->field($model, 'qq')->textInput(['placeholder'=>'必填']) ?>
+        <?= $form->field($model, 'email')->textInput(['placeholder'=>'必填']) ?>
+    <?= $form->field($model, 'siteurl')->textInput(['placeholder'=>'必填']) ?>
+        <?//= $form->field($model, 'logo') ?>
+        <?//= $form->field($model, 'keywords') ?>
+    <?= $form->field($model, 'ip') ?>
+        <?//= $form->field($model, 'status') ?>
+    <?//= $form->field($model, 'company') ?>
+    <?//= $form->field($model, 'address') ?>
+    <?//= $form->field($model, 'copyright') ?>
+    <?//= $form->field($model, 'icp') ?>
         <div class="form-group">
             <?= Html::submitButton(Yii::t('tbhome', 'Submit'), ['class' => 'btn btn-primary']) ?>
         </div>

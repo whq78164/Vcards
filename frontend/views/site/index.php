@@ -16,10 +16,10 @@ $this->title = '唯卡微名片营销平台';
         <h1>开启微商新时代！</h1>
 
         <p style="font-family:'楷体'" class="text-right" >
-            基于微名片的系统整合，献给企业老板和互联网创业者！<br/>------唯卡微名片商务平台
+            基于微名片的系统整合，献给现代化企业和互联网创业者！<br/>------唯卡微名片商务平台
         </p>
 <div><br><br><br><br>
-        <p><a class="text-center btn btn-lg btn-success" href="">开始</a></p>
+        <p><a class="text-center btn btn-lg btn-success" href="<?=\yii\helpers\Url::to(['site/signup'], true)?>">开始</a></p>
         </div>
     </header>
 
@@ -41,10 +41,50 @@ $this->title = '唯卡微名片营销平台';
     <li>根据用户反馈与需求，持续更新功能模块和插件扩展。</li>
               </ul>
 </p>
-
-
-                <p><a class="btn btn-default" href="">开始 &raquo;</a></p>
+                <p><a class="btn btn-default" href="<?=\yii\helpers\Url::to(['site/signup'], true)?>">开始 &raquo;</a></p>
             </div>
+            <div class="col-lg-4">
+                <h2>品牌防伪</h2>
+                绿盾二维码防伪系统
+                <p>
+                <ul>
+                    <li>  官方微信二维码防伪查询,定制防窜货系统 .</li>
+
+                    <li>  防伪刮刮卡涂层, 防伪标签贴纸不干胶定制扫描查询防伪.</li>
+
+                    <li>    支持防伪系统特殊定制！</li>
+                    <li>    二维码防伪验证系统,支持添加二维码抽奖功能.</li>
+                    <li>   防伪验证或抽奖前,先关注微信公众号,成为粉丝.</li>
+
+                    <li>  企业品牌宣传和微信公众号推广的最佳工具!</li>
+                </ul>
+                </p>
+
+                <p>
+                    <a class="btn btn-default" href="<?=\yii\helpers\Url::to(['site/signup'], true)?>">
+                        开始
+                    </a>
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <h2>扩展模块</h2>
+                更多功能不断添加中
+                <p><ul>
+                    <li>支持个性化开发定制</li>
+                    <li>基于ECS和RDS云服务系统</li>
+                    <li>前进永不止步</li>
+                </ul>
+                </p>
+
+                <p><a class="btn btn-default" href="<?=\yii\helpers\Url::to(['site/signup'], true)?>">扩展 &raquo;</a></p>
+            </div>
+
+        </div>
+
+
+    <!--
+            <div class="row">
+
             <div class="col-lg-4">
                 <h2>HTML5场景宣传动画</h2>
                 唯卡场景秀（企业宣传和推广必备）：
@@ -57,6 +97,7 @@ $this->title = '唯卡微名片营销平台';
 
                 <p><a class="btn btn-default" href="http://xiu.vcards.top/">开始 &raquo;</a></p>
             </div>
+
             <div class="col-lg-4">
                 <h2>微信营销平台</h2>
                 模块化微信开发
@@ -71,30 +112,7 @@ $this->title = '唯卡微名片营销平台';
 
                 <p><a class="btn btn-default" href="http://weixin.vcards.top/">开始 &raquo;</a></p>
             </div>
-        </div>
 
-<!--
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>品牌防伪</h2>
-                绿盾二维码防伪系统
-                <p>
-                    <ul>
-                  <li>  官方微信二维码防伪查询,定制防窜货系统 .</li>
-
-                    <li>  防伪刮刮卡涂层, 防伪标签贴纸不干胶定制扫描查询防伪.</li>
-
-                    <li>    支持防伪系统特殊定制！</li>
-                    <li>    二维码防伪验证系统,支持添加二维码抽奖功能.</li>
-                    <li>   防伪验证或抽奖前,先关注微信公众号,成为粉丝.</li>
-
-                    <li>  企业品牌宣传和微信公众号推广的最佳工具!</li>
-                    </ul>
-                </p>
-
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
             <div class="col-lg-4">
                 <h2>产品追溯</h2>
 产品二维码追溯系统
@@ -108,25 +126,14 @@ $this->title = '唯卡微名片营销平台';
 
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
             </div>
-            <div class="col-lg-4">
-                <h2>扩展模块</h2>
-                更多功能不断添加中
-                <p><ul>
-                    <li>支持个性化开发定制</li>
-                    <li>基于ECS和RDS云服务系统</li>
-                    <li>前进永不止步</li>
-                </ul>
-                </p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">扩展 &raquo;</a></p>
             </div>
-        </div>
--->
+
 
 
     </div>
 
-
+-->
 
 
 
