@@ -38,6 +38,8 @@ class AdminController extends \yii\web\Controller
         $model->qq=$modelRemote->qq;
         $model->email=$modelRemote->email;
         $model->siteurl=$modelRemote->siteurl;
+        $model->copyright=$modelRemote->copyright;
+        $model->icp=$modelRemote->icp;
         $model->ip=$modelRemote->ip;
 
 
@@ -56,6 +58,8 @@ class AdminController extends \yii\web\Controller
                         'qq' => $model->qq,
                         'email' => $model->email,
                         'siteurl' => $model->siteurl,
+                        'copyright' => $model->copyright,
+                        'icp' => $model->icp,
                     ])
                 )->post($url);
 
@@ -81,11 +85,11 @@ class AdminController extends \yii\web\Controller
         $curl = new curl\Curl();
         $url='http://www.vcards.top/index.php?r=cloud/index';
         $response = $curl->get($url);
-     //   $response=json_decode($response);
+        $response=json_decode($response);
 
         return $this->render('index',
         [
-            'model'=>$response//->content
+            'model'=>$response
         ]
         );
     }

@@ -10,7 +10,7 @@ $this->title = '唯卡微名片营销平台';
     body p{font-family:"楷体"; line-height:1.5em;}
     .jumbotron { background:#181015 url(images/bg_header.jpg) no-repeat; background-size: cover; text-align: center; color:white; font-family:"Open sans", Helvetica, Arial; min-height:520px; padding-top:50px;  font-weight:300; }
 </style>
-<div  class="">
+
 
     <header class="jumbotron">
         <h1>开启微商新时代！</h1>

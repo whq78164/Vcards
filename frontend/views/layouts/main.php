@@ -11,6 +11,13 @@ use frontend\assets\AppAsset;
 //use frontend\assets\UeditorAsset;
 use common\widgets\Alert;
 //UeditorAsset::register($this);
+use linslin\yii2\curl;
+
+$curl = new curl\Curl();
+$url='http://www.vcards.top/index.php?r=cloud/site';
+$response = $curl->get($url);
+$response=json_decode($response);
+
 AppAsset::register($this);
 
 ?>
@@ -21,7 +28,9 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+
+    <title><?= Html::encode($response->sitetitle) ?></title>
+
     <?php $this->head() ?>
 </head>
 <body>
@@ -31,7 +40,7 @@ AppAsset::register($this);
 
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::t('tbhome', 'Vcards').'微名片',
+        'brandLabel' => $response->sitetitle,//Yii::t('tbhome', 'Vcards').'微名片',
 //        'brandLabel' => ['label' => Yii::t('tbhome', 'Vcards'), 'class' => 'h1'],
 
         'brandUrl' => Yii::$app->homeUrl,
@@ -102,9 +111,8 @@ AppAsset::register($this);
 <?//php Yii::powered()=Yii::t('tbhome', 'Vcards')?>
 <footer class="footer">
     <div class="container">
-        <!--p class="pull-left">&copy; <?= Yii::powered().' '.date('Y') ?></p-->
-
-        <p class="pull-left"><?= Yii::powered() ?></p>
+        <p class="pull-left"><?= $response->copyright ?></p>
+        <p class="pull-left">&copy; <?= $response->icp ?></p>
     </div>
 </footer>
 

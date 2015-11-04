@@ -8,6 +8,13 @@ use frontend\assets\AppAsset;
 //use yii\bootstrap\Nav;
 //use yii\bootstrap\NavBar;
 use frontend\assets\Mobile_Detect;
+
+use linslin\yii2\curl;
+$curl = new curl\Curl();
+$url='http://www.vcards.top/index.php?r=cloud/site';
+$response = $curl->get($url);
+$response=json_decode($response);
+
 AmazeAsset::register($this);
 AppAsset::register($this);
 $mobile=new Mobile_Detect();
@@ -29,7 +36,7 @@ $role=Yii::$app->user->identity->role;
   <link rel="icon" type="image/png" href="assets/i/favicon.png">
   <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode($response->sitetitle) ?></title>
     <?php $this->head() ?>
 </head>
 <style type="text/css" xmlns="http://www.w3.org/1999/html">
@@ -48,7 +55,7 @@ $role=Yii::$app->user->identity->role;
     <div class="am-topbar-brand">
         <a href="<?=yii\helpers\Url::to(['site/index'], true)?>">
             <span class="am-icon-home am-icon-md"></span>
-        <strong><?=Yii::t('tbhome', 'Vcards').'微名片'?></strong>
+        <strong><?=$response->sitetitle?></strong>
 
         <!--a href="<?=yii\helpers\Url::to(['user/index'], true)?>">
             <small>用户首页</small>
@@ -410,9 +417,9 @@ $role=Yii::$app->user->identity->role;
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left"><?= Yii::t('tbhome', 'Vcards').'微名片&copy; by 通宝科技 '.date('Y') ?></p>
+        <p class="pull-left"><?= $response->copyright ?></p>
 
-        <!--p class="pull-right"><?= 'Vcards'//Yii::powered() ?></p-->
+        <p class="pull-right"><?= $response->icp ?></p>
     </div>
 </footer>
 

@@ -2,11 +2,15 @@
 /* @var $this yii\web\View */
 ?>
 <div class="col-md-8">
-<h1>欢迎使用唯卡微名片营销平台</h1>
+<h1><?=$model->sitetitle?></h1>
+
+    <p>
+        您现在是：<?=$model->role?>
+    </p>
 
 <p>
 
-<?=$model?>
+<?=$model->content?>
 </p>
 
 </div>
