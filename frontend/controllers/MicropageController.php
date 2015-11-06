@@ -94,7 +94,7 @@ class MicropageController extends Controller
     public function  actionOnepage()
     {
         $uid=Yii::$app->user->id;
-        $micropage = Micropage::find()->where(['uid' => $uid, 'status' => 10])->all();
+        $micropage = Micropage::find()->where(['uid' => $uid])->all();
 
         if ($micropage == null) {
             $model = new Micropage();

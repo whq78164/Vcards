@@ -29,7 +29,7 @@ class Micropage extends \yii\db\ActiveRecord
     {
         return [
             [['uid', 'page_title', 'page_content'], 'required'],
-            [['uid'], 'integer'],
+            [['uid', 'status'], 'integer'],
             [['page_content'], 'string'],
             [['page_title'], 'string', 'max' => 100]
         ];

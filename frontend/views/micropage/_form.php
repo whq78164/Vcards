@@ -35,6 +35,16 @@ use yii\widgets\ActiveForm;
         ]
     ]); ?>
 
+    <?= $form->field($model, 'status')->dropDownList([10=>'前台显示', 11=>'前台不显示']) ?>
+    <!--div class="form-group field-micropage-status">
+        <label class="control-label" for="micropage-status">Status</label>
+        <select id="micropage-status" class="form-control" name="Micropage[status]">
+            <option value=10 selected>前台显示</option>
+            <option value=11>前台不显示</option>
+        </select>
+
+        <div class="help-block"></div>
+    </div-->
 
 
 

@@ -182,6 +182,13 @@ if (Yii::$app->user->identity->role!==100) {
                             </a>
                         </li>
 
+                        <li>
+                            <a href="<?=yii\helpers\Url::to(['cloudtable/index'], true)?>">
+                                <span class="am-icon-server"></span>
+                                云平台用户
+                            </a>
+                        </li>
+
 
                     </ul>
                 </li>

@@ -30,7 +30,7 @@ class AdminController extends \yii\web\Controller
       //  $localmodel=Site::findOne(1);
 
         $model = new Site();
-        $model->admin_user=$modelRemote->admin_user;
+      $model->admin_user=$modelRemote->admin_user;
         $model->sitetitle=$modelRemote->sitetitle;
 
       //  $model->user_password=$_POST['user_password'];

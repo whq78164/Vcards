@@ -62,6 +62,7 @@ class m130524_201442_init extends Migration
               'tpl' => Schema::TYPE_INTEGER . ' NOT NULL',
               'vip' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
               'upline' => Schema::TYPE_INTEGER . ' NOT NULL',
+              'leader', Schema::TYPE_INTEGER.' NOT NULL ',
               'status' => Schema::TYPE_SMALLINT.' NOT NULL DEFAULT 10',
         ], $tableOptions);
 
@@ -76,6 +77,7 @@ class m130524_201442_init extends Migration
             'address' => Schema::TYPE_STRING . ' NOT NULL',
             'business' => Schema::TYPE_TEXT . ' NOT NULL',
             'signature' => Schema::TYPE_STRING . ' NOT NULL',
+            'work_tel', Schema::TYPE_STRING.'(20) NOT NULL',
             'fax' => Schema::TYPE_STRING . '(20) NOT NULL',
             'location' => Schema::TYPE_STRING . '(30) NOT NULL',
             'wechat_account' => Schema::TYPE_STRING . '(20) NOT NULL',
@@ -158,8 +160,8 @@ class m130524_201442_init extends Migration
             'ip' => Schema::TYPE_STRING . '(30) NOT NULL',
             'status' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
         ], $tableOptions);
-        $this->createIndex('admin_user', '{{%sys}}', ['admin_user'],true);
-        $this->createIndex('ip', '{{%sys}}', ['ip'],true);
+     //   $this->createIndex('admin_user', '{{%sys}}', ['admin_user']);
+        $this->createIndex('ip', '{{%sys}}', ['ip']);
 
                 $this->insert('{{%sys}}', [
                     'id' => 1,
