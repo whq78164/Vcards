@@ -27,24 +27,24 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 
-<body style="background-color: #eee;padding-top: 40px; padding-bottom: 40px;">
+<body style="background-color: #eee;padding-top: 10px; padding-bottom: 10px;">
 <?php $this->beginBody() ?>
-<h3 class="form-signin-heading text-center"><?=$traceabilityinfo['label']?></h3>
+<!--h3 class="form-signin-heading text-center"><?//=$traceabilityinfo['label']?></h3-->
 
-<div class="container">
+<div class="container
+">
+    <?=$queryResult?>
 
-    <br/>
+    <!--div class="alert alert-info" id="ReturnResult">
 
-    <div class="alert alert-info" id="ReturnResult">
-        <div class="alert alert-<?=$colour?>" >
-<?=$queryResult?>
-        </div>
-        <!--div class="row col-md-10">
-        <?//=$antireply->content?>
-        </div-->
-    </div>
-    <label class="pull-right"><?$product->brand?></label>
+        <!--div class="alert alert-<?//=$colour?>" >
+
+        </div->
+
+    </div-->
+    <!--label class="pull-right"><?//=$product->brand?></label-->
 </div>
+
 <?php $this->endBody() ?>
 </body>
 </html>

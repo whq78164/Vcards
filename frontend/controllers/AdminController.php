@@ -125,37 +125,21 @@ class AdminController extends \yii\web\Controller
         return $this->redirect(['admin/indexuser']);
     }
 
-    protected function findModel($uid)
-    {
-        if (($model = User::findOne($uid)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
-
 
 
 
     public function actionUpdate($id)
     {
 
-        //$model = User::findIdentity($id);
-
-        $model = new User();
-
+        $model = $this->findModel($id);
         $request = Yii::$app->request;
-        $model = $model->findIdentity($id);
-        if ($request->isPost) {
+        if ($request->post()) {
 
-
-      //      $post = $request->post();
-      //      var_dump($_POST);
             $password=$_POST['User']['password'];
 
-
-
             $model->load($request->post());
+
+
             if (strlen($password)>5){
                 $password_hash = Yii::$app->security->generatePasswordHash($password);
                 $model->password_hash=$password_hash;
@@ -173,6 +157,36 @@ class AdminController extends \yii\web\Controller
             ]);
         }
     }
+
+
+    public function actionUpdate9($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public function actionCreate()
@@ -206,6 +220,17 @@ class AdminController extends \yii\web\Controller
         }
     }
 
+
+
+
+    protected function findModel($uid)
+    {
+        if (($model = User::findOne($uid)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
 
 
 

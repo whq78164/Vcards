@@ -30,7 +30,7 @@ class AntiReply extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['uid','success', 'fail'], 'required'],
+            [['uid','success', 'fail', 'valid_clicks'], 'required'],
             [['uid', 'valid_clicks'], 'integer'],
             [['tag'], 'string', 'max' => 10],
             [['success', 'fail'], 'string', 'max' => 255],

@@ -136,8 +136,8 @@ if($ta!==null){$traceaReply='';}else{
 
 
 
-           $clicks=intval($codeData['clicks'])+1;
-           Yii::$app->db->createCommand()->update($table, ['clicks' => $clicks, 'query_time'=>time()], "code ='".$code."'")->execute();
+           $clicks=intval($codeData['clicks']);
+           Yii::$app->db->createCommand()->update($table, ['clicks' => $clicks+1, 'query_time'=>time()], "code ='".$code."'")->execute();
 
             $query_time=date('Y年m月d日', $codeData['query_time']);//$query_time=date('Y年m月d日 H:i:s', $codeData['query_time']);
             if ($codeData['query_time']==0){$query_time=0;}
@@ -173,7 +173,7 @@ if($ta!==null){$traceaReply='';}else{
                     'antireply'=>$reply,
                     'queryResult'=>$queryResult,
                     'product'=>$product,
-                    'colour'=>'success',
+               //     'colour'=>'success',
                 ]
             );
 

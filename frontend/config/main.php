@@ -63,15 +63,16 @@ return [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.163.com',  //每种邮箱的host配置不一样
                 'username' => 'whq78164@163.com',
-                'password' => 'gg770880',
+                'password' => '123456789',
                 'port' => '25',
                 'encryption' => 'tls',//加密
             ],
 
             'messageConfig'=>[
                 'charset'=>'UTF-8',
-                'from'=>['whq78164@163.com'=>'admin',
+                'from'=>['whq78164@163.com'=>'通宝科技',//收件箱发件人姓名
                     '798904845@qq.com' => 'supportEmail',
+                  //  '554553400@163.com' =>'adminEmail',
                 ]
             ],
 

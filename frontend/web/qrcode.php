@@ -41,9 +41,9 @@ $filename=$_GET['filename'];
 //header('Content-Type:text/html;charset=UTF-8');
 //生成二维码图片
 if(!isset($filename)){
-    QRcode::png($value,false,'M',8,1);
+    QRcode::png($value,false,'H',8,1);
 }else{
-    QRcode::png($value,$filename,'M',6,1);
+    QRcode::png($value,$filename,'H',6,1);
     echo '<img src="'.$filename.'">';
 }
 /*

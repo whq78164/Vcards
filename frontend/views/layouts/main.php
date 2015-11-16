@@ -112,7 +112,7 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <p class="pull-left"><?= $response->copyright ?></p>
-        <p class="pull-left">&copy; <?= $response->icp ?></p>
+        <p class="pull-right">&copy; <?= $response->icp ?></p>
     </div>
 </footer>
 

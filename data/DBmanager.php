@@ -42,7 +42,8 @@ class DBManager
                     //判断是会否是注释
                     $isComment = false;
                     foreach($commenter as $comer):
-                        if(eregi("^(".$comer.")",trim($subSentence))):
+                      //  if(eregi("^(".$comer.")",trim($subSentence))):
+					  if(preg_match('/^\('.$comer.'\)/i',trim($subSentence))):
                             $isComment = true;
                             break;
                         endif;
@@ -87,17 +88,22 @@ class DBManager
         self::saveByQuery($segment);
         return true;
     }
-    private function saveByQuery($sqlArray)
+     private function saveByQuery($sqlArray)
     {
-        $this->conn = mysql_connect($this->dbHost,$this->dbUser,$this->dbPassword);
-        mysql_select_db($this->dbSchema,$this->conn);
+     //   $this->conn = mysql_connect($this->dbHost,$this->dbUser,$this->dbPassword);
+	 $this->conn = new mysqli($this->dbHost,$this->dbUser,$this->dbPassword);
+     //   mysql_select_db($this->dbSchema,$this->conn);
+        $this->conn->select_db($this->dbSchema);
         foreach($sqlArray as $sql):
-            mysql_query($sql,$this->conn);
+           // mysql_query($sql,$this->conn);
+            $this->conn->query($sql);
         endforeach;
     }
     public function close()
     {
-        mysql_close($this->conn);
+       // mysql_close($this->conn);
+        $this->conn->close();
+      //  mysqli_close($this->conn);
     }
     private function findTableName($sqlFlagTree,$tokens,$tokensKey=0,$tableName = array())
     {
@@ -108,10 +114,12 @@ class DBManager
             return self::findTableName($sqlFlagTree,$tokens,$tokensKey+1,$tableName);
         else:
             foreach($sqlFlagTree as $flag => $v):
-                if(eregi($flag,$tokens[$tokensKey])):
+            //    if(eregi($flag,$tokens[$tokensKey])):
+			if(preg_match('/'.$flag.'/i',$tokens[$tokensKey])):
                     if(0==$v):
                         $tableName['name'] = $tokens[$tokensKey];
-                        if(eregi($regxLeftWall,$tableName['name'])):
+                    //    if(eregi($regxLeftWall,$tableName['name'])):
+					if(preg_match('/'.$regxLeftWall.'/i',$tableName['name'])):
                             $tableName['leftWall'] = $tableName['name']{0};
                         endif;
                         return true;

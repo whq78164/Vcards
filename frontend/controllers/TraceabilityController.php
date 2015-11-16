@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 use frontend\models\TraceabilityData;
+use frontend\models\TraceabilityDatanew;
 use Yii;
 use frontend\models\Product;
 use frontend\models\TraceabilityInfonew;
@@ -176,11 +177,12 @@ class TraceabilityController extends \yii\web\Controller
                     'traceabilityinfo'=>$traceabilityinfo,
                     'queryResult'=>$reply,
                     'product'=>$product,
-                    'colour'=>'success',
+           //         'colour'=>'success',
                 ]
             );
 
     }
+
 
 
 

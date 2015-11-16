@@ -68,7 +68,10 @@ class ProductController extends Controller
        // $image=new Upload();
 
         if ($model->load(Yii::$app->request->post()) ) {
-			if($model->price==null) $model->price=0;
+            if($model->price==null) $model->price=0;
+            if($model->image==null) $model->image='Uploads/default_face.jpg';
+            if($model->traceability==null) $model->traceability=1;
+            if($model->hot==null) $model->hot=1;
 			$model->save();
                     Yii::$app->getSession()->setFlash('success', '保存成功！');
                     return $this->redirect(['view', 'id'=>$model->id]);

@@ -2,9 +2,10 @@
 
 use yii\helpers\Html;
 use frontend\models\Product;
-use frontend\models\TraceabilityInfo;
-use kartik\grid\GridView;
-use yii\widgets\Pjax;
+//use frontend\models\TraceabilityInfo;
+//use kartik\grid\GridView;
+//use yii\widgets\Pjax;
+use yii\grid\GridView;
 
 
 /* @var $this yii\web\View */
@@ -17,21 +18,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="traceabilitydata-index col-md-12">
 
-
-    <?php Pjax::begin(); echo GridView::widget([
+    <div class="page-header">
+            <h1><?= Html::encode($this->title) ?></h1>
+        </div>
+    <?=GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'panel' => [
-            'heading'=>'<h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> '.Html::encode($this->title).' </h3>',
-            'type'=>'info',
-            //   'before'=>Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('tbhome', 'Add'), ['create'], ['class' => 'btn btn-success']),
-            'after'=>Html::a('<i class="glyphicon glyphicon-repeat"></i> 重置', ['index'], ['class' => 'btn btn-info']),
-            'showFooter'=>false
-        ],
-        'responsive'=>true,
-        'hover'=>true,
-        'condensed'=>true,
-        'floatHeader'=>true,
+
         'columns' => [
        //     ['class' => 'yii\grid\SerialColumn'],
 
@@ -96,13 +89,52 @@ $this->params['breadcrumbs'][] = $this->title;
 
             // 'status',
             ['class' => 'yii\grid\ActionColumn', 'header'=>'操作', 'template' => '{view} {update}'],
+
+
+
+
+
+
             [
-                'header'=>'浏览', 'format' => 'html', 'value'=>function($data){
-                return Html::a('查看',['/traceability/page', 'id'=>$data->id, 'uid'=>Yii::$app->user->id]);
-            }
+                'class' => 'yii\grid\ActionColumn', //'template' => '{view} {update}'
+                'header'=>'网址',
+                'buttons' => [
+                    'view' => function ($url, $model, $key) {
+                      //  $url=$model->url;
+                        $options = [
+                        //    'title' => Yii::t('yii', 'View'),
+                       //     'aria-label' => Yii::t('yii', 'View'),
+                         //   'data-pjax' => '0',
+                            'class'=>'glyphicon glyphicon-link'
+                        ];
+                        return Html::a('',['/traceability/page', 'id'=>$model->id, 'uid'=>$model->uid], $options);
+                     //   return Html::a('<span class="glyphicon glyphicon-link"></span>', $url, $options);
+                    },
+                    'update'=>function(){},'delete'=>function(){},
+                ],
+
             ],
 
+
         ],
-    ]); Pjax::end(); ?>
+    ]);?>
+
+    <form method="post" id="login-form" role="form" action="<?=yii\helpers\Url::to(['excelall'])?>" >
+        <label>按序号导出数据：</label>
+        <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
+        <input name="start" type="text" placeholder="第一条数据序号">
+        <input name="end" type="text" placeholder="最后一条数据序号">
+        <button class= 'btn btn-success' type="submit">导出所选数据</button>
+    </form>
+
+    <form method="post" id="login-form" role="form" action="<?=yii\helpers\Url::to(['genimage'])?>" >
+        <label>生产二维码图片(一次最多200张)：</label>
+        <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
+        <input name="start" type="text" placeholder="第一条数据序号">
+        <input name="end" type="text" placeholder="最后一条数据序号">
+        <button class= 'btn btn-success' type="submit">下载二维码</button>
+    </form>
+
+
 
 </div>

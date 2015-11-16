@@ -1,8 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use kartik\grid\GridView;
-use yii\widgets\Pjax;
+//use kartik\grid\GridView;
+//use yii\widgets\Pjax;
+use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\TraceabilityinfoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -10,23 +11,15 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('tbhome', 'Traceabilityinfo');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<p>
+    <?= Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('tbhome', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
+</p>
+
 <div class="traceabilityinfo-index col-md-12">
-    <?php Pjax::begin(); echo GridView::widget([
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-
-        'panel' => [
-            'heading'=>'<h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> '.Html::encode($this->title).' </h3>',
-            'type'=>'info',
-            'before'=>Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('tbhome', 'Add'), ['create'], ['class' => 'btn btn-success']),
-            'after'=>Html::a('<i class="glyphicon glyphicon-repeat"></i> 重置', ['index'], ['class' => 'btn btn-info']),
-            'showFooter'=>false
-        ],
-        'responsive'=>true,
-        'hover'=>true,
-        'condensed'=>true,
-        'floatHeader'=>true,
-
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

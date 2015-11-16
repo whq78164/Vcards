@@ -18,7 +18,11 @@ use yii\widgets\ActiveForm;
 
     <?//= $form->field($model, 'page_content')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'page_content')->widget('frontend\assets\UeditorWidget',[
+
+
+
+
+    <?php if($model->id<6 &&$model->id>0){echo $form->field($model, 'page_content')->textarea(['rows' => 6]);}else{echo $form->field($model, 'page_content')->widget('frontend\assets\UeditorWidget',[
         'serverparam'=>[
             'myuploadpath'=> Yii::getAlias('@web/Uploads/').$model['uid'],
         ],
@@ -33,21 +37,18 @@ use yii\widgets\ActiveForm;
         'attributes'=>[
             'style'=>'height:80px'
         ]
-    ]); ?>
+    ]);} ?>
 
-    <?= $form->field($model, 'status')->dropDownList([10=>'前台显示', 11=>'前台不显示']) ?>
-    <!--div class="form-group field-micropage-status">
-        <label class="control-label" for="micropage-status">Status</label>
-        <select id="micropage-status" class="form-control" name="Micropage[status]">
-            <option value=10 selected>前台显示</option>
-            <option value=11>前台不显示</option>
-        </select>
 
-        <div class="help-block"></div>
-    </div-->
+
+
+
+
+
 
 
 
+    <?= $form->field($model, 'status')->dropDownList([10=>'前台显示', 11=>'前台不显示']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('tbhome', 'Create') : Yii::t('tbhome', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
