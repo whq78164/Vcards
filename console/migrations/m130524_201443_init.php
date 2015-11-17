@@ -32,8 +32,8 @@ class m130524_201443_init extends Migration
           $this->createTable('{{%anti_reply}}', [
             'id' =>  Schema::TYPE_PK,
             'uid' => Schema::TYPE_INTEGER . ' NOT NULL',
-              'tag' => Schema::TYPE_STRING . '(10) NOT NULL',
-            'success' => Schema::TYPE_STRING . ' NOT NULL',
+              'tag' => Schema::TYPE_STRING . '(30) NOT NULL',
+            'success' => Schema::TYPE_TEXT . ' NOT NULL',
             'fail' => Schema::TYPE_STRING . ' NOT NULL',
               'content' => Schema::TYPE_TEXT . ' NOT NULL',
             'valid_clicks' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',

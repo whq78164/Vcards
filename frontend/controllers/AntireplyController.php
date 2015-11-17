@@ -78,6 +78,7 @@ class AntireplyController extends Controller
 
     public function  actionOnereply()
     {
+
         $uid=Yii::$app->user->id;
         $antireply = AntiReply::find()->where(['uid' => $uid])->all();
 
@@ -113,6 +114,7 @@ class AntireplyController extends Controller
      */
     public function actionUpdate($id)
     {
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

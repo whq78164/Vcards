@@ -289,14 +289,14 @@ class TraceabilitydataController extends Controller
 
             //     $uid = Yii::$app->user->id;
             //     $dirPath = 'Uploads/' . $uid . '/GenQRcode';
-            delDirAndFile($dirPath);
+
 
 //文件的类型
             header('Content-type: application/zip');
 //下载显示的名字
             header('Content-Disposition: attachment; filename="QRcodeImage.zip"');
             readfile($filename);
-
+            delDirAndFile($dirPath);
             //  $this->redirect(['index']);
             //    Yii::$app->getSession()->setFlash('success', '已生产二维码图片' . $num . '张, 目录' . $dirPath);
             exit();

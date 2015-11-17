@@ -33,8 +33,8 @@ class AntiReply extends \yii\db\ActiveRecord
             [['uid','success', 'fail', 'valid_clicks'], 'required'],
             [['uid', 'valid_clicks'], 'integer'],
             [['tag'], 'string', 'max' => 10],
-            [['success', 'fail'], 'string', 'max' => 255],
-            [['content'], 'string'],
+            [['fail'], 'string', 'max' => 255],
+            [['success', 'content'], 'string'],
       //      [['uid'], 'unique']
         ];
     }

@@ -70,7 +70,7 @@ CREATE TABLE `tbhome_anti_reply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` int(11) NOT NULL,
   `tag` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `success` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `success` text COLLATE utf8_unicode_ci NOT NULL,
   `fail` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `valid_clicks` smallint(6) NOT NULL DEFAULT '10',
